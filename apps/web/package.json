@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:pages": "next-on-pages",
+    "build:pages": "next-on-pages && mkdir -p ../../.vercel && rm -rf ../../.vercel/output && cp -R .vercel/output ../../.vercel/output",
     "start": "next start",
     "lint": "eslint",
     "postbuild": "next-sitemap"
