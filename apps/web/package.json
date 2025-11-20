@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:pages": "pnpm run build && pnpm exec next-on-pages",
+    "build": "next build && next-on-pages",
+    "build:pages": "pnpm run build",
     "start": "next start",
     "lint": "eslint",
     "postbuild": "next-sitemap"
