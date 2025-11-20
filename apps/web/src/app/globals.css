@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Luxe dark default */
+  --background: 0 0% 3%;
+  --foreground: 0 0% 96%;
+  --accent: 175 100% 50%;
+  --muted: 0 0% 20%;
+  --card: 0 0% 6%;
+  --border: 0 0% 18%;
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 6%;
+    --accent: 175 100% 39%;
+    --muted: 0 0% 93%;
+    --card: 0 0% 100%;
+    --border: 0 0% 89%;
+  }
+}
+
+html {
+  @apply bg-background text-foreground;
+}
+
+body {
+  @apply antialiased;
+  background-image: var(--monaco-gradient, none);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
