@@ -396,3 +396,29 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Node/Next + project-specific ignores
+.DS_Store
+.env
+.env*.local
+.next/
+out/
+.vercel/
+node_modules/
+dist/
+coverage/
+playwright-report/
+.turbo/
+.cache/
+pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Confidential and markdown exclusions (do not commit SSOT or any Markdown)
+EasyDocs/
+Brainstorm.md
+R&D.md
+TechStack.md
+assistant-ia.md
+**/*.md
