@@ -1,0 +1,31 @@
+{
+  "name": "easyclub",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "dev": "pnpm -C apps/web dev",
+    "build": "pnpm -C apps/web build",
+    "start": "pnpm -C apps/web start",
+    "lint": "pnpm -C apps/web exec eslint . --max-warnings=0",
+    "typecheck": "pnpm -C apps/web tsc --noEmit",
+    "test": "pnpm -C apps/web vitest run",
+    "test:e2e": "pnpm -C apps/web playwright test --project=chromium",
+    "format": "prettier --write .",
+    "prepare": "husky",
+    "ci:md-guard": "node ./scripts/check-no-md.cjs"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --no-warn-ignored --fix --max-warnings=0",
+      "prettier --write"
+    ],
+    "*.{css,json}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
+
