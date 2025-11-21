@@ -15,7 +15,7 @@ const items = [
   { name: 'Poster 360°', price: 19, img: '/images/mockups/poster.png' },
 ];
 
-function TiltCard({ children }: { children: React.ReactNode }): JSX.Element {
+function TiltCard({ children }: { children: React.ReactNode }): React.JSX.Element {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rx = useSpring(useTransform(y, [-50, 50], [8, -8]), { stiffness: 200, damping: 20 });
@@ -39,7 +39,7 @@ function TiltCard({ children }: { children: React.ReactNode }): JSX.Element {
   );
 }
 
-export function MerchMarketplaceSection(): JSX.Element {
+export function MerchMarketplaceSection(): React.JSX.Element {
   const [added, setAdded] = React.useState<string | null>(null);
   return (
     <Section

@@ -49,6 +49,9 @@ export default function RootLayout({
 }>) {
   const redesignEnabled =
     process.env.REDESIGN_ENABLED === '1' || process.env.REDESIGN_ENABLED === 'true';
+  const analyticsEnabled =
+    process.env.NEXT_PUBLIC_VERCEL_ANALYTICS === '1' ||
+    process.env.NEXT_PUBLIC_VERCEL_ANALYTICS === 'true';
   return (
     <html lang="fr" data-redesign={redesignEnabled ? '1' : undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
@@ -58,7 +61,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LenisProvider>
             {children}
-            <Analytics />
+            {analyticsEnabled ? <Analytics /> : null}
             {/* JSON-LD for Organization and Website */}
             <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
               {JSON.stringify({

@@ -31,7 +31,7 @@ function useShuttleData(persons: number, price: number) {
   return { nights, months };
 }
 
-export function VIPShuttlesSection(): JSX.Element {
+export function VIPShuttlesSection(): React.JSX.Element {
   const [persons, setPersons] = React.useState(24);
   const [price, setPrice] = React.useState(40);
   const { nights, months } = useShuttleData(persons, price);

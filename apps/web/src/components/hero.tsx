@@ -18,6 +18,9 @@ const Hero3D = dynamic(
 
 export function Hero() {
   const prefersReduced = useReducedMotion();
+  const heroVideoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL;
+  const showHeroVideo =
+    !prefersReduced && typeof heroVideoSrc === 'string' && heroVideoSrc.length > 0;
   return (
     <section
       id="hero"
@@ -25,7 +28,7 @@ export function Hero() {
       className="bg-monaco-gradient relative isolate overflow-hidden"
     >
       {/* Optional background video slot (replace /public/media/club.webm as needed) */}
-      {!prefersReduced ? (
+      {showHeroVideo ? (
         <video
           className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_40%,rgba(255,255,255,0.95),transparent)]"
           autoPlay
@@ -35,7 +38,10 @@ export function Hero() {
           preload="none"
           poster="/globe.svg"
         >
-          <source src="/videos/hero-bg.webm" type="video/webm" />
+          <source
+            src={heroVideoSrc!}
+            type={heroVideoSrc && heroVideoSrc.endsWith('.mp4') ? 'video/mp4' : 'video/webm'}
+          />
         </video>
       ) : null}
       <div

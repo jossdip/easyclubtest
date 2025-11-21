@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
 
-export default function NotFound(): JSX.Element {
+export default function NotFound(): React.JSX.Element {
   return (
     <div className="grid min-h-[60vh] place-items-center px-4">
       <div className="text-center">

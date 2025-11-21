@@ -3,7 +3,7 @@ import { Nav } from '@/components/nav';
 import { ContactForm } from '@/components/screens/contact-form';
 import { Section } from '@/components/section';
 
-export default function ContactPage(): JSX.Element {
+export default function ContactPage(): React.JSX.Element {
   return (
     <>
       <Nav />

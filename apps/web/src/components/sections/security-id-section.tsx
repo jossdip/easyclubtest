@@ -15,7 +15,7 @@ const DeviceCanvas = dynamic(
   { ssr: false, loading: () => null },
 );
 
-export function SecurityIDSection(): JSX.Element {
+export function SecurityIDSection(): React.JSX.Element {
   const [scanning, setScanning] = React.useState(false);
   const [result, setResult] = React.useState<'idle' | 'success' | 'fraud'>('idle');
   const [lottieJson, setLottieJson] = React.useState<Record<string, unknown> | null>(null);

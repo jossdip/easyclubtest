@@ -5,7 +5,7 @@ import { Section } from '@/components/section';
 const content =
   'Conditions générales d’utilisation (CGU). Service fourni “tel quel”, sous réserve de disponibilité. Conformité et sécurité au cœur. Contactez‑nous pour les modalités contractuelles complètes.';
 
-export default function CGUPage(): JSX.Element {
+export default function CGUPage(): React.JSX.Element {
   return (
     <>
       <Nav />

@@ -11,7 +11,7 @@ import { SecurityIDSection } from '@/components/sections/security-id-section';
 import { SmartWasteSection } from '@/components/sections/smart-waste-section';
 import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
   return (
     <>
       <Nav />

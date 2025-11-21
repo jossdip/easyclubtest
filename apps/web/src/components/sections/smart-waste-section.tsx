@@ -31,7 +31,7 @@ function buildData(mode: Mode) {
   }));
 }
 
-export function SmartWasteSection(): JSX.Element {
+export function SmartWasteSection(): React.JSX.Element {
   const [mode, setMode] = React.useState<Mode>('Quantité');
   const data = buildData(mode);
   const color = mode === 'Quantité' ? '#60a5fa' : mode === 'Économie' ? '#34d399' : '#f59e0b';

@@ -8,7 +8,7 @@ import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export function BraceletLickalyserSection(): JSX.Element {
+export function BraceletLickalyserSection(): React.JSX.Element {
   const [bac, setBac] = React.useState(0.4); // g/L estimation
   const percent = Math.min(100, Math.max(0, (bac / 3) * 100));
   const color = bac < 0.5 ? '#34d399' : bac < 1.2 ? '#f59e0b' : '#ef4444';

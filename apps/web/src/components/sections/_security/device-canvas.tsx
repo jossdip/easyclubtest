@@ -1,6 +1,7 @@
 'use client';
 
 import { Canvas, useFrame } from '@react-three/fiber';
+import type {} from '@react-three/fiber';
 import * as React from 'react';
 
 type Rotatable = { rotation: { x: number; y: number; z: number } };

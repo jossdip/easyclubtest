@@ -22,7 +22,7 @@ const data = [
   { name: 'T4', etablissements: 30, bracelets: 2100, ca: 95 },
 ];
 
-export function KPIsRoadmapSection(): JSX.Element {
+export function KPIsRoadmapSection(): React.JSX.Element {
   return (
     <Section
       id="kpis"

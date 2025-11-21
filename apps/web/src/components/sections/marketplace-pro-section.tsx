@@ -21,7 +21,7 @@ const cards = [
   { title: 'Messagerie', desc: 'Discussions et devis' },
 ];
 
-export function MarketplaceProSection(): JSX.Element {
+export function MarketplaceProSection(): React.JSX.Element {
   const [filters, setFilters] = React.useState<FilterState>({
     role: 'Tout',
     tri: 'Pertinence',

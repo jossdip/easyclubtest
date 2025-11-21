@@ -48,7 +48,7 @@ const pillars: Pillar[] = [
   },
 ];
 
-export function FundamentalsSection(): JSX.Element {
+export function FundamentalsSection(): React.JSX.Element {
   return (
     <Section id="fundamentaux" title="Fundamentaux" subtitle="Mission, valeur et piliers clés">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
