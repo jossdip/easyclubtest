@@ -1,11 +1,12 @@
 import { ImageResponse } from 'next/og';
 
+import { slogan } from '@/content/site';
+
 export const runtime = 'edge';
 
 export async function GET() {
-  const title = 'EasyClub – Caisse NF525, IA & Monaco‑grade';
-  const subtitle =
-    'POS tout‑en‑un. IA intégrée. Modèle 1% split à l’acquéreur. Performance, luxe, précision.';
+  const title = slogan;
+  const subtitle = 'POS Monaco‑grade — NF525, IA, matériel pro, modèle 1% (split à l’acquéreur).';
 
   return new ImageResponse(
     (

@@ -1,13 +1,16 @@
+export const slogan =
+  "EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne. Née à Monaco, conçue pour le monde.";
+
 export const navItems = [
-  { href: '#pos', label: 'Caisse' },
-  { href: '#reservations', label: 'Réservations' },
-  { href: '#avenir-bracelet', label: 'Bracelet (R&D)' },
+  { href: '#fundamentaux', label: 'Fundamentaux' },
   { href: '#securite', label: 'Sécurité' },
-  { href: '#durabilite', label: 'Durabilité' },
-  { href: '#transport', label: 'Transport' },
-  { href: '#modele-1pct', label: 'Modèle 1%' },
-  { href: '#conformite', label: 'Conformité' },
-  { href: '/contact', label: 'Contact' },
+  { href: '#bracelet', label: 'Bracelet' },
+  { href: '#marketplace', label: 'Marketplace' },
+  { href: '#merch', label: 'Merch' },
+  { href: '#navettes', label: 'Navettes' },
+  { href: '#dechets', label: 'Déchets' },
+  { href: '#kpis', label: 'KPIs' },
+  { href: '#contact', label: 'Contact' },
 ] as const;
 
 export const hero = {
@@ -20,6 +23,18 @@ export const hero = {
     { href: '/contact', label: 'Contact', variant: 'outline' as const },
   ],
 };
+
+export const sections = [
+  { id: 'fundamentaux', title: 'Fundamentaux', subtitle: 'Mission, piliers, conformité' },
+  { id: 'securite', title: 'Sécurité', subtitle: 'Vérification CNI, fraude, historique' },
+  { id: 'bracelet', title: 'Bracelet', subtitle: 'Estimation, alertes, points' },
+  { id: 'marketplace', title: 'Marketplace Pro', subtitle: 'Ressources & notations' },
+  { id: 'merch', title: 'Marketplace Merch', subtitle: 'On‑demand & 360°' },
+  { id: 'navettes', title: 'Navettes VIP', subtitle: 'Revenus & confort' },
+  { id: 'dechets', title: 'Déchets', subtitle: 'KPIs & ROI' },
+  { id: 'kpis', title: 'KPIs & Roadmap', subtitle: 'Phases et projections' },
+  { id: 'contact', title: 'Contact', subtitle: 'Demande de démo' },
+] as const;
 
 export const valueProps = [
   {

@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -11,6 +12,7 @@ import { cn } from '@/lib/utils';
 export function Nav() {
   const [open, setOpen] = React.useState(false);
   const [activeId, setActiveId] = React.useState<string | null>(null);
+  const [hidden, setHidden] = React.useState(false);
 
   React.useEffect(() => {
     if (typeof window === 'undefined') {
@@ -18,15 +20,15 @@ export function Nav() {
     }
     const ids = [
       'hero',
-      'pos',
-      'reservations',
-      'avenir-bracelet',
+      'fundamentaux',
       'securite',
-      'durabilite',
-      'transport',
-      'modele-1pct',
-      'conformite',
-      'cta-contact',
+      'bracelet',
+      'marketplace',
+      'merch',
+      'navettes',
+      'dechets',
+      'kpis',
+      'contact',
     ];
     const elements = ids
       .map((id) => document.getElementById(id))
@@ -49,6 +51,20 @@ export function Nav() {
     return () => observer.disconnect();
   }, []);
 
+  React.useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setHidden(y > lastY && y > 80);
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith('#')) {
       return;
@@ -67,10 +83,13 @@ export function Nav() {
   };
 
   return (
-    <nav
+    <motion.nav
       className="fixed inset-x-0 top-0 z-50 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/30"
       role="navigation"
       aria-label="Navigation principale"
+      initial={false}
+      animate={{ y: hidden ? -72 : 0 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="font-semibold tracking-tight">
@@ -156,6 +175,6 @@ export function Nav() {
           </div>
         </div>
       ) : null}
-    </nav>
+    </motion.nav>
   );
 }

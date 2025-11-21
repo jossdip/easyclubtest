@@ -41,8 +41,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   const toggleTheme = React.useCallback(() => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  }, [setTheme]);
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  }, [theme, setTheme]);
 
   React.useEffect(() => {
     // initialize from storage or system
