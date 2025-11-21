@@ -36,6 +36,30 @@ const config: Config = {
         'monaco-gradient-strong':
           'radial-gradient(1200px 600px at 10% -10%, rgba(0,255,200,0.22), transparent 60%), radial-gradient(1200px 600px at 90% 110%, rgba(0,140,255,0.22), transparent 60%)',
       },
+      keyframes: {
+        aurora: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        floaty: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        shine: {
+          '0%': { transform: 'translateX(-150%)' },
+          '100%': { transform: 'translateX(150%)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 0px rgba(0,255,200,0.0), 0 0 0px rgba(160,0,255,0.0)' },
+          '50%': { boxShadow: '0 0 64px rgba(0,255,200,0.18), 0 0 96px rgba(160,0,255,0.12)' },
+        },
+      },
+      animation: {
+        aurora: 'aurora 12s ease-in-out infinite',
+        floaty: 'floaty 6s ease-in-out infinite',
+        shine: 'shine 1.2s ease-out',
+        pulseGlow: 'pulseGlow 4s ease-in-out infinite',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
