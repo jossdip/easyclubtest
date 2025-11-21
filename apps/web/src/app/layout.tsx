@@ -51,6 +51,12 @@ export default function RootLayout({
   return (
     <html lang="fr" data-redesign={redesignEnabled ? '1' : undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <a
+          href="#main"
+          className="skip-link"
+        >
+          Passer au contenu
+        </a>
         <ThemeProvider>
           <LenisProvider>
             {children}
