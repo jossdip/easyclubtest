@@ -1,0 +1,44 @@
+'use client';
+
+import { motion, useReducedMotion } from 'framer-motion';
+import * as React from 'react';
+
+import { Section } from '@/components/section';
+
+export function ReservationsSection(): React.JSX.Element {
+  const prefersReducedMotion = useReducedMotion();
+  return (
+    <section id="reservations" aria-label="App Réservation">
+      <Section
+        title="App Réservation — client‑first"
+        subtitle="Découverte, réservation et commandes en quelques gestes. UX gamifiée, 3–5 étapes claires."
+      >
+        <div className="relative mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              className="border-border bg-card/60 shadow-elev-1 rounded-xl border p-5 backdrop-blur"
+              initial={{
+                opacity: 0,
+                y: prefersReducedMotion ? 0 : 20,
+                rotateX: prefersReducedMotion ? 0 : -8,
+              }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.05 }}
+            >
+              <div className="text-foreground/70 text-sm">
+                Étape {i}
+                <span className="text-foreground block text-base font-semibold">
+                  {i === 1 && 'Découverte et choix'}
+                  {i === 2 && 'Réservation et confirmation'}
+                  {i === 3 && 'Commande et arrivée'}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+    </section>
+  );
+}

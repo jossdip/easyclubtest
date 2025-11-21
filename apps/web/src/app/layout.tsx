@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import Script from 'next/script';
 
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import './globals.css';
@@ -20,6 +21,23 @@ export const metadata: Metadata = {
   description:
     "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur. Performance, luxe et précision.",
   metadataBase: new URL('https://easyclub.app'),
+  openGraph: {
+    title: 'EasyClub – Caisse NF525, IA & Monaco‑grade',
+    description:
+      "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur.",
+    url: 'https://easyclub.app',
+    siteName: 'EasyClub',
+    images: [{ url: '/api/og', width: 1200, height: 630, alt: 'EasyClub' }],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EasyClub – Caisse NF525, IA & Monaco‑grade',
+    description:
+      "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur.",
+    images: ['/api/og'],
+  },
 };
 
 export default function RootLayout({
@@ -33,6 +51,30 @@ export default function RootLayout({
         <LenisProvider>
           {children}
           <Analytics />
+          {/* JSON-LD for Organization and Website */}
+          <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'EasyClub',
+              url: 'https://easyclub.app',
+              logo: 'https://easyclub.app/og.png',
+              sameAs: [],
+            })}
+          </Script>
+          <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'EasyClub',
+              url: 'https://easyclub.app',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: 'https://easyclub.app/?q={search_term_string}',
+                'query-input': 'required name=search_term_string',
+              },
+            })}
+          </Script>
         </LenisProvider>
       </body>
     </html>

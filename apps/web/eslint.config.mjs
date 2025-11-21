@@ -21,6 +21,8 @@ export default [
       'coverage/**',
       'playwright-report/**',
       'test-results/**',
+      'e2e/**',
+      'playwright.config.ts',
       'next-sitemap.config.js',
     ],
   },
