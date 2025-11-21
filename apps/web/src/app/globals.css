@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  /* Luxe dark default */
-  --background: 0 0% 3%;
-  --foreground: 0 0% 96%;
-  --accent: 175 100% 50%;
-  --muted: 0 0% 20%;
-  --card: 0 0% 6%;
-  --border: 0 0% 18%;
+  /* Nightlife Luxe palette (dark) */
+  --background: 228 15% 6%;      /* deep navy/charcoal */
+  --foreground: 220 18% 94%;     /* soft off-white for contrast */
+  --accent: 190 95% 55%;         /* electric cyan */
+  --muted: 220 14% 18%;          /* subdued surfaces */
+  --card: 230 12% 10%;           /* card background */
+  --border: 220 14% 28%;         /* subtle borders */
 
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 10px;
 
-  /* Nightlife neon palette */
-  --neon-cyan: 175 100% 50%;
-  --neon-magenta: 300 100% 60%;
-  --neon-violet: 260 100% 65%;
+  /* Neon accents */
+  --neon-cyan: 190 95% 55%;
+  --neon-magenta: 300 92% 62%;
+  --neon-violet: 260 88% 66%;
 }
 
 @media (prefers-color-scheme: light) {
@@ -38,7 +38,10 @@ html {
 
 body {
   @apply antialiased;
-  background-image: var(--monaco-gradient, none);
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(0,255,200,0.20), transparent 60%),
+    radial-gradient(1200px 600px at 90% 110%, rgba(120,0,255,0.18), transparent 60%);
 }
 
 @media (prefers-reduced-motion: reduce) {
