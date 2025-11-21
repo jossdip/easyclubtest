@@ -2,7 +2,12 @@ import { test, expect } from '@playwright/test';
 
 test('home loads and CTA visible', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  const h1 = page.getByRole('heading', { level: 1 });
+  await expect(h1).toBeVisible();
+  await expect(h1).toContainText(
+    "EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne.",
+  );
+  await expect(h1).toContainText('Née à Monaco, conçue pour le monde.');
   await expect(page.getByRole('link', { name: /demandez une démo/i })).toBeVisible();
 });
 
@@ -17,14 +22,14 @@ test('nav anchors scroll to sections', async ({ page }) => {
   await page.goto('/');
   // Map labels to ids we expect in the page
   const anchors: Array<{ label: RegExp; id: string }> = [
-    { label: /caisse/i, id: 'pos' },
-    { label: /réservations/i, id: 'reservations' },
-    { label: /bracelet/i, id: 'avenir-bracelet' },
+    { label: /fundamentaux/i, id: 'fundamentaux' },
     { label: /sécurité/i, id: 'securite' },
-    { label: /durabilité/i, id: 'durabilite' },
-    { label: /transport/i, id: 'transport' },
-    { label: /modèle 1%/i, id: 'modele-1pct' },
-    { label: /conformité/i, id: 'conformite' },
+    { label: /bracelet/i, id: 'bracelet' },
+    { label: /marketplace/i, id: 'marketplace' },
+    { label: /merch/i, id: 'merch' },
+    { label: /navettes/i, id: 'navettes' },
+    { label: /déchets/i, id: 'dechets' },
+    { label: /kpis/i, id: 'kpis' },
   ];
   for (const { label, id } of anchors) {
     await page.getByRole('link', { name: label }).first().click();
