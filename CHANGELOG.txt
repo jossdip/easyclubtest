@@ -1,0 +1,15 @@
+## Unreleased
+
+### Added
+- Tokenized theming (`apps/web/src/styles/tokens.css`) with data-theme support
+- ThemeProvider and ThemeToggle, plus `/ui` showcase (noindex)
+- Skeleton and EmptyState components
+- Accessibility: Skip link and `id="main"` landmark
+
+### Changed
+- Tailwind configured to respect `[data-theme="dark"]`
+- Base typography, links, and focus styles under `data-redesign="1"`
+
+### Docs
+- Design system, audit, and rationale written (kept out of git due to repo MD guard)
+

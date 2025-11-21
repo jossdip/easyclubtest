@@ -15,7 +15,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <POSSection />
         <ReservationsSection />

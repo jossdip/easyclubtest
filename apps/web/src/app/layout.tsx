@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import Script from 'next/script';
 
 import { LenisProvider } from '@/components/providers/lenis-provider';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 import './globals.css';
 
 const geistSans = Geist({
@@ -45,37 +46,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const redesignEnabled =
+    process.env.REDESIGN_ENABLED === '1' || process.env.REDESIGN_ENABLED === 'true';
   return (
-    <html lang="fr">
+    <html lang="fr" data-redesign={redesignEnabled ? '1' : undefined}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LenisProvider>
-          {children}
-          <Analytics />
-          {/* JSON-LD for Organization and Website */}
-          <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
-            {JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'EasyClub',
-              url: 'https://easyclub.app',
-              logo: 'https://easyclub.app/og.png',
-              sameAs: [],
-            })}
-          </Script>
-          <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
-            {JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: 'EasyClub',
-              url: 'https://easyclub.app',
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: 'https://easyclub.app/?q={search_term_string}',
-                'query-input': 'required name=search_term_string',
-              },
-            })}
-          </Script>
-        </LenisProvider>
+        <a href="#main" className="skip-link">
+          Passer au contenu
+        </a>
+        <ThemeProvider>
+          <LenisProvider>
+            {children}
+            <Analytics />
+            {/* JSON-LD for Organization and Website */}
+            <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">
+              {JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'EasyClub',
+                url: 'https://easyclub.app',
+                logo: 'https://easyclub.app/og.png',
+                sameAs: [],
+              })}
+            </Script>
+            <Script id="ld-website" type="application/ld+json" strategy="afterInteractive">
+              {JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'EasyClub',
+                url: 'https://easyclub.app',
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: 'https://easyclub.app/?q={search_term_string}',
+                  'query-input': 'required name=search_term_string',
+                },
+              })}
+            </Script>
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

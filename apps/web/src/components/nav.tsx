@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 
+import { ThemeToggle } from '@/components/theme-toggle';
 import { buttonVariants } from '@/components/ui/button';
 import { navItems } from '@/content/site';
 import { cn } from '@/lib/utils';
@@ -75,7 +76,7 @@ export function Nav() {
         <Link href="/" className="font-semibold tracking-tight">
           EasyClub
         </Link>
-        <div className="hidden gap-6 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {navItems
             .filter((i) => i.href.startsWith('#'))
             .map((item) => (
@@ -94,6 +95,7 @@ export function Nav() {
                 {item.label}
               </Link>
             ))}
+          <ThemeToggle className="text-foreground/80 hover:text-foreground" />
         </div>
         <div className="flex items-center gap-3">
           <Link
