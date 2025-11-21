@@ -1,10 +1,12 @@
 export const navItems = [
-  { href: '/', label: 'Accueil' },
-  { href: '/solution', label: 'Solution' },
-  { href: '/fonctionnalites', label: 'Fonctionnalités' },
-  { href: '/materiel', label: 'Matériel' },
-  { href: '/conformite', label: 'Conformité' },
-  { href: '/tarifs', label: 'Tarifs' },
+  { href: '#pos', label: 'Caisse' },
+  { href: '#reservations', label: 'Réservations' },
+  { href: '#avenir-bracelet', label: 'Bracelet (R&D)' },
+  { href: '#securite', label: 'Sécurité' },
+  { href: '#durabilite', label: 'Durabilité' },
+  { href: '#transport', label: 'Transport' },
+  { href: '#modele-1pct', label: 'Modèle 1%' },
+  { href: '#conformite', label: 'Conformité' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 

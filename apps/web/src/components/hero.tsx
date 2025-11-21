@@ -18,7 +18,11 @@ const Hero3D = dynamic(
 
 export function Hero() {
   return (
-    <section aria-label="Hero" className="bg-monaco-gradient relative isolate overflow-hidden">
+    <section
+      id="hero"
+      aria-label="Hero"
+      className="bg-monaco-gradient relative isolate overflow-hidden"
+    >
       <div className="bg-monaco-gradient pointer-events-none absolute inset-0 -z-10" />
       <div className="mx-auto flex min-h-[80dvh] max-w-6xl flex-col items-center justify-center gap-6 px-4 pt-24 text-center">
         <motion.p
