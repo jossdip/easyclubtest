@@ -3,7 +3,9 @@ import { test, expect } from '@playwright/test';
 test('home loads and CTA visible', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.getByRole('link', { name: /demandez une démo/i })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: /découvrir la plateforme|nous contacter/i }).first(),
+  ).toBeVisible();
 });
 
 test('contact form validates', async ({ page }) => {
@@ -17,14 +19,14 @@ test('nav anchors scroll to sections', async ({ page }) => {
   await page.goto('/');
   // Map labels to ids we expect in the page
   const anchors: Array<{ label: RegExp; id: string }> = [
-    { label: /caisse/i, id: 'pos' },
-    { label: /réservations/i, id: 'reservations' },
-    { label: /bracelet/i, id: 'avenir-bracelet' },
+    { label: /fundamentaux/i, id: 'fundamentaux' },
     { label: /sécurité/i, id: 'securite' },
-    { label: /durabilité/i, id: 'durabilite' },
-    { label: /transport/i, id: 'transport' },
-    { label: /modèle 1%/i, id: 'modele-1pct' },
-    { label: /conformité/i, id: 'conformite' },
+    { label: /bracelet/i, id: 'bracelet' },
+    { label: /marketplace pro/i, id: 'marketplace' },
+    { label: /merch/i, id: 'merch' },
+    { label: /navettes vip/i, id: 'navettes' },
+    { label: /déchets/i, id: 'dechets' },
+    { label: /kpis/i, id: 'kpis' },
   ];
   for (const { label, id } of anchors) {
     await page.getByRole('link', { name: label }).first().click();

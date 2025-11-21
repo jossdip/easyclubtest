@@ -24,7 +24,7 @@ export function Hero() {
       aria-label="Hero"
       className="bg-monaco-gradient relative isolate overflow-hidden"
     >
-      {/* Optional background video slot (replace /public/media/club.webm as needed) */}
+      {/* Optional background video */}
       {!prefersReduced ? (
         <video
           className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_40%,rgba(255,255,255,0.95),transparent)]"
@@ -35,8 +35,7 @@ export function Hero() {
           preload="none"
           poster="/globe.svg"
         >
-          <source src="/media/club.webm" type="video/webm" />
-          <source src="/media/club.av1.webm" type="video/webm; codecs=av01.0.05M.08" />
+          <source src="/videos/hero-bg.webm" type="video/webm" />
         </video>
       ) : null}
       <div
@@ -80,10 +79,14 @@ export function Hero() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
           className={cn(
-            'max-w-3xl bg-gradient-to-b from-white to-white/70 bg-clip-text text-5xl font-semibold leading-[1.05] text-transparent md:text-6xl',
+            'max-w-5xl text-balance bg-gradient-to-b from-white to-white/80 bg-clip-text text-4xl font-extrabold leading-tight tracking-tight text-transparent sm:text-6xl',
+            'drop-shadow-[0_1px_1px_rgba(255,255,255,0.05)]',
           )}
         >
-          {heroContent.title}
+          {/* H1 exact wording required */}
+          {"EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne."}
+          <br className="hidden sm:block" />
+          {'Née à Monaco, conçue pour le monde.'}
         </motion.h1>
         <motion.ul
           initial={{ opacity: 0, y: 10 }}
@@ -109,7 +112,9 @@ export function Hero() {
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
           className="text-foreground/70 max-w-2xl text-balance text-lg"
         >
-          {heroContent.subtitle}
+          {/* Fundamentals intro */}
+          Mission, valeur, conformité, sécurité et durabilité réunies dans une plateforme POS
+          premium.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -118,16 +123,20 @@ export function Hero() {
           transition={{ duration: 0.4, ease: 'easeOut', delay: 0.15 }}
           className="flex flex-wrap items-center justify-center gap-4 pt-2"
         >
-          {heroContent.ctas.map((cta) => (
-            <Link
-              key={cta.label}
-              href={cta.href}
-              className={cn(buttonVariants({ variant: cta.variant, size: 'lg' }))}
-              role="button"
-            >
-              {cta.label}
-            </Link>
-          ))}
+          <Link
+            href="#fundamentaux"
+            className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            role="button"
+          >
+            Découvrir la plateforme
+          </Link>
+          <Link
+            href="/contact"
+            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+            role="button"
+          >
+            Nous contacter
+          </Link>
         </motion.div>
       </div>
       <Hero3D />

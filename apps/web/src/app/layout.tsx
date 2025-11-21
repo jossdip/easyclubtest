@@ -5,6 +5,7 @@ import Script from 'next/script';
 
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
+import { slogan } from '@/content/site';
 import './globals.css';
 
 const geistSans = Geist({
@@ -18,12 +19,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'EasyClub – Caisse NF525, IA & Monaco‑grade',
+  title: slogan,
   description:
     "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur. Performance, luxe et précision.",
   metadataBase: new URL('https://easyclub.app'),
   openGraph: {
-    title: 'EasyClub – Caisse NF525, IA & Monaco‑grade',
+    title: slogan,
     description:
       "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur.",
     url: 'https://easyclub.app',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EasyClub – Caisse NF525, IA & Monaco‑grade',
+    title: slogan,
     description:
       "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur.",
     images: ['/api/og'],

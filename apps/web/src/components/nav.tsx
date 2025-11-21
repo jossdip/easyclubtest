@@ -1,5 +1,6 @@
 'use client';
 
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -11,6 +12,15 @@ import { cn } from '@/lib/utils';
 export function Nav() {
   const [open, setOpen] = React.useState(false);
   const [activeId, setActiveId] = React.useState<string | null>(null);
+  const [hidden, setHidden] = React.useState(false);
+  const { scrollY } = useScroll();
+  const lastY = React.useRef(0);
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    const current = y ?? 0;
+    const delta = current - (lastY.current ?? 0);
+    setHidden(delta > 4 && current > 48);
+    lastY.current = current;
+  });
 
   React.useEffect(() => {
     if (typeof window === 'undefined') {
@@ -18,15 +28,15 @@ export function Nav() {
     }
     const ids = [
       'hero',
-      'pos',
-      'reservations',
-      'avenir-bracelet',
+      'fundamentaux',
       'securite',
-      'durabilite',
-      'transport',
-      'modele-1pct',
-      'conformite',
-      'cta-contact',
+      'bracelet',
+      'marketplace',
+      'merch',
+      'navettes',
+      'dechets',
+      'kpis',
+      'contact',
     ];
     const elements = ids
       .map((id) => document.getElementById(id))
@@ -67,10 +77,13 @@ export function Nav() {
   };
 
   return (
-    <nav
+    <motion.nav
       className="fixed inset-x-0 top-0 z-50 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/30"
       role="navigation"
       aria-label="Navigation principale"
+      initial={false}
+      animate={{ y: hidden ? -72 : 0 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 30, mass: 0.6 }}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="font-semibold tracking-tight">
@@ -99,9 +112,12 @@ export function Nav() {
         </div>
         <div className="flex items-center gap-3">
           <Link
-            href="/contact"
+            href="#contact"
             className={buttonVariants({ variant: 'outline', size: 'sm' })}
             role="button"
+            onClick={(e) =>
+              handleAnchorClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, '#contact')
+            }
           >
             Contact
           </Link>
@@ -156,6 +172,6 @@ export function Nav() {
           </div>
         </div>
       ) : null}
-    </nav>
+    </motion.nav>
   );
 }

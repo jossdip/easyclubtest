@@ -1,23 +1,26 @@
 export const navItems = [
-  { href: '#pos', label: 'Caisse' },
-  { href: '#reservations', label: 'Réservations' },
-  { href: '#avenir-bracelet', label: 'Bracelet (R&D)' },
+  { href: '#fundamentaux', label: 'Fundamentaux' },
   { href: '#securite', label: 'Sécurité' },
-  { href: '#durabilite', label: 'Durabilité' },
-  { href: '#transport', label: 'Transport' },
-  { href: '#modele-1pct', label: 'Modèle 1%' },
-  { href: '#conformite', label: 'Conformité' },
-  { href: '/contact', label: 'Contact' },
+  { href: '#bracelet', label: 'Bracelet' },
+  { href: '#marketplace', label: 'Marketplace Pro' },
+  { href: '#merch', label: 'Merch' },
+  { href: '#navettes', label: 'Navettes VIP' },
+  { href: '#dechets', label: 'Déchets' },
+  { href: '#kpis', label: 'KPIs & Roadmap' },
+  { href: '#contact', label: 'Contact' },
 ] as const;
+
+export const slogan =
+  "EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne. Née à Monaco, conçue pour le monde.";
 
 export const hero = {
   eyebrow: 'POS • IA • NF525',
   title: 'EasyClub — POS “Monaco‑grade”.',
   subtitle:
-    'SaaS nightlife‑grade : NF525, assistant IA embarqué, offline‑first, matériel pro. Modèle simple : 1% à l’acquéreur, pas d’abonnement.',
+    'Fundamentaux: mission, valeur, conformité, sécurité, durabilité. Modèle simple: 1% à l’acquéreur, pas d’abonnement.',
   ctas: [
-    { href: '/contact', label: 'Demandez une démo', variant: 'default' as const },
-    { href: '/contact', label: 'Contact', variant: 'outline' as const },
+    { href: '#fundamentaux', label: 'Découvrir la plateforme', variant: 'default' as const },
+    { href: '/contact', label: 'Nous contacter', variant: 'outline' as const },
   ],
 };
 
@@ -45,3 +48,15 @@ export const valueProps = [
 export const footer = {
   rights: '© ' + new Date().getFullYear() + ' EasyClub. Tous droits réservés.',
 };
+
+export const sections = [
+  { id: 'fundamentaux', title: 'Fundamentaux', icon: 'ShieldCheck' },
+  { id: 'securite', title: 'Sécurité', icon: 'Shield' },
+  { id: 'bracelet', title: 'Bracelet', icon: 'Activity' },
+  { id: 'marketplace', title: 'Marketplace Pro', icon: 'Store' },
+  { id: 'merch', title: 'Merch', icon: 'ShoppingBag' },
+  { id: 'navettes', title: 'Navettes VIP', icon: 'Bus' },
+  { id: 'dechets', title: 'Déchets', icon: 'Recycle' },
+  { id: 'kpis', title: 'KPIs & Roadmap', icon: 'ChartBar' },
+  { id: 'contact', title: 'Contact', icon: 'Mail' },
+] as const;
