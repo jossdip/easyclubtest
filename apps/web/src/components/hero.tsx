@@ -24,6 +24,21 @@ export function Hero() {
       aria-label="Hero"
       className="bg-monaco-gradient relative isolate overflow-hidden"
     >
+      {/* Optional background video slot (replace /public/media/club.webm as needed) */}
+      {!prefersReduced ? (
+        <video
+          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_40%,rgba(255,255,255,0.95),transparent)]"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          poster="/globe.svg"
+        >
+          <source src="/media/club.webm" type="video/webm" />
+          <source src="/media/club.av1.webm" type="video/webm; codecs=av01.0.05M.08" />
+        </video>
+      ) : null}
       <div
         className={cn(
           'pointer-events-none absolute inset-0 -z-10',

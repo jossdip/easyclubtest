@@ -12,9 +12,9 @@ export const navItems = [
 
 export const hero = {
   eyebrow: 'POS • IA • NF525',
-  title: 'Point de vente Monaco‑grade.',
+  title: 'EasyClub — POS “Monaco‑grade”.',
   subtitle:
-    'Caisse certifiable NF525, assistant IA intégré et matériel pro. Pensé pour l’hôtellerie‑restauration où la précision et la vitesse ne se négocient pas.',
+    'SaaS nightlife‑grade : NF525, assistant IA embarqué, offline‑first, matériel pro. Modèle simple : 1% à l’acquéreur, pas d’abonnement.',
   ctas: [
     { href: '/contact', label: 'Demandez une démo', variant: 'default' as const },
     { href: '/contact', label: 'Contact', variant: 'outline' as const },
