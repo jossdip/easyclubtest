@@ -5,9 +5,48 @@ import * as React from 'react';
 
 import { buttonVariants } from '@/components/ui/button';
 import { navItems } from '@/content/site';
+import { cn } from '@/lib/utils';
 
 export function Nav() {
   const [open, setOpen] = React.useState(false);
+  const [activeId, setActiveId] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    const ids = [
+      'hero',
+      'pos',
+      'reservations',
+      'avenir-bracelet',
+      'securite',
+      'durabilite',
+      'transport',
+      'modele-1pct',
+      'conformite',
+      'cta-contact',
+    ];
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (elements.length === 0) {
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) {
+          setActiveId(visible.target.id);
+        }
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: [0.1, 0.25, 0.5, 0.75] },
+    );
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!href.startsWith('#')) {
@@ -44,7 +83,13 @@ export function Nav() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleAnchorClick(e, item.href)}
-                className="text-foreground/80 hover:text-foreground text-sm"
+                className={cn(
+                  'text-sm',
+                  activeId && item.href === `#${activeId}`
+                    ? 'text-foreground'
+                    : 'text-foreground/80 hover:text-foreground',
+                )}
+                aria-current={activeId && item.href === `#${activeId}` ? 'page' : undefined}
               >
                 {item.label}
               </Link>
@@ -94,7 +139,13 @@ export function Nav() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleAnchorClick(e, item.href)}
-                  className="hover:text-foreground text-foreground/80 text-sm"
+                  className={cn(
+                    'text-sm',
+                    activeId && item.href === `#${activeId}`
+                      ? 'text-foreground'
+                      : 'text-foreground/80 hover:text-foreground',
+                  )}
+                  aria-current={activeId && item.href === `#${activeId}` ? 'page' : undefined}
                   role="menuitem"
                 >
                   {item.label}

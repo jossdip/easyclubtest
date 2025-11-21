@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import * as React from 'react';
 
 import { Section } from '@/components/section';
@@ -13,6 +14,26 @@ export function ReservationsSection(): React.JSX.Element {
         title="App Réservation — client‑first"
         subtitle="Découverte, réservation et commandes en quelques gestes. UX gamifiée, 3–5 étapes claires."
       >
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: prefersReducedMotion ? 0 : 14,
+            rotateX: prefersReducedMotion ? 0 : -5,
+          }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="bg-monaco-gradient/30 relative mb-8 rounded-2xl border border-white/10 p-4 backdrop-blur"
+          style={{ transformPerspective: '800px' }}
+          aria-hidden
+        >
+          <div className="shadow-elev-2 relative mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/40">
+            <Image src="/globe.svg" alt="" width={1000} height={600} className="opacity-80" />
+            {!prefersReducedMotion ? (
+              <div className="animate-pulseGlow pointer-events-none absolute inset-0" />
+            ) : null}
+          </div>
+        </motion.div>
         <div className="relative mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
           {[1, 2, 3].map((i) => (
             <motion.div
