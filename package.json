@@ -25,16 +25,21 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "eslint --no-warn-ignored --fix --max-warnings=0",
+    "apps/web/**/*.{ts,tsx,js}": [
+      "pnpm -C apps/web exec eslint --no-warn-ignored --fix --max-warnings=0",
       "prettier --write"
     ],
-    "*.{css,json}": [
+    "apps/web/**/*.{css,json}": [
+      "prettier --write"
+    ],
+    "*.{js,cjs,mjs,json,md}": [
       "prettier --write"
     ]
   },
   "devDependencies": {
-    "husky": "^9.1.7"
+    "eslint": "^9.39.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2"
   }
 }
-

@@ -1,4 +1,3 @@
 #!/bin/sh
 pnpm run ci:md-guard
-pnpm -C apps/web exec lint-staged
-
+npx lint-staged
