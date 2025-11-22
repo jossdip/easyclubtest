@@ -1,11 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 
+import { Link } from '@/i18n/navigation';
 import { buttonVariants } from '@/components/ui/button';
-import { hero as heroContent } from '@/content/site';
 import { cn } from '@/lib/utils';
 
 const Hero3D = dynamic(
@@ -17,6 +17,8 @@ const Hero3D = dynamic(
 );
 
 export function Hero() {
+  const t = useTranslations('Hero');
+
   return (
     <section aria-label="Hero" className="bg-monaco-gradient relative isolate overflow-hidden">
       <div className="bg-monaco-gradient pointer-events-none absolute inset-0 -z-10" />
@@ -28,7 +30,7 @@ export function Hero() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-foreground/60 text-sm uppercase tracking-widest"
         >
-          {heroContent.eyebrow}
+          {t('eyebrow')}
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 12 }}
@@ -39,7 +41,7 @@ export function Hero() {
             'max-w-3xl bg-gradient-to-b from-white to-white/70 bg-clip-text text-5xl font-semibold leading-[1.05] text-transparent md:text-6xl',
           )}
         >
-          {heroContent.title}
+          {t('title')}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -48,7 +50,7 @@ export function Hero() {
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
           className="text-foreground/70 max-w-2xl text-balance text-lg"
         >
-          {heroContent.subtitle}
+          {t('subtitle')}
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -57,16 +59,20 @@ export function Hero() {
           transition={{ duration: 0.4, ease: 'easeOut', delay: 0.15 }}
           className="flex flex-wrap items-center justify-center gap-4 pt-2"
         >
-          {heroContent.ctas.map((cta) => (
-            <Link
-              key={cta.label}
-              href={cta.href}
-              className={cn(buttonVariants({ variant: cta.variant, size: 'lg' }))}
-              role="button"
-            >
-              {cta.label}
-            </Link>
-          ))}
+          <Link
+            href="/contact"
+            className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            role="button"
+          >
+            {t('cta_demo')}
+          </Link>
+          <Link
+            href="/contact"
+            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+            role="button"
+          >
+            {t('cta_contact')}
+          </Link>
         </motion.div>
       </div>
       <Hero3D />

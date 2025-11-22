@@ -1,0 +1,42 @@
+{
+  "Hero": {
+    "eyebrow": "POS • IA • NF525",
+    "title": "Point de vente Monaco‑grade.",
+    "subtitle": "Caisse certifiable NF525, assistant IA intégré et matériel pro. Pensé pour l’hôtellerie‑restauration où la précision et la vitesse ne se négocient pas.",
+    "cta_demo": "Demandez une démo",
+    "cta_contact": "Contact"
+  },
+  "ValueProps": {
+    "items": {
+      "compliance": {
+        "title": "Conformité NF525",
+        "description": "Scellement, clôtures, archivage, audit et traçabilité avancée."
+      },
+      "ai": {
+        "title": "Assistant IA",
+        "description": "Commandes vocales, actions contextuelles, monitoring des coûts, continuité hors‑ligne."
+      },
+      "model": {
+        "title": "Modèle 1%",
+        "description": "1% du paiement split à l’acquéreur. Pas d’abonnement."
+      },
+      "hardware": {
+        "title": "Matériel pro",
+        "description": "Écrans tactiles, imprimantes thermiques, TPE Ingenico/Verifone, scanners, tiroir‑caisse."
+      }
+    }
+  },
+  "Footer": {
+    "rights": "© {year} EasyClub. Tous droits réservés.",
+    "links": {
+      "home": "Accueil",
+      "solution": "Solution",
+      "features": "Fonctionnalités",
+      "hardware": "Matériel",
+      "compliance": "Conformité",
+      "pricing": "Tarifs",
+      "contact": "Contact"
+    },
+    "marquee": "EasyClub • POS • IA • NF525 • Monaco-grade • "
+  }
+}
