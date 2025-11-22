@@ -1,19 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
-const Hero3D = dynamic(
-  () => import('@/components/hero3d').then((m) => m.Hero3D).catch(() => () => null),
-  {
-    ssr: false,
-    loading: () => null,
-  },
-);
 
 export function Hero() {
   return (
@@ -83,8 +74,6 @@ export function Hero() {
           </Link>
         </motion.div>
       </div>
-
-      <Hero3D />
     </section>
   );
 }
