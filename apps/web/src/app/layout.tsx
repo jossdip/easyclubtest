@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `EasyClub – Caisse NF525, IA & Monaco‑grade · ${slogan}`,
   description:
-    "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur. Performance, luxe et précision.",
+    "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro. Performance, luxe et précision au service de la nuit.",
   metadataBase: new URL('https://easyclub.app'),
   openGraph: {
     title: `EasyClub – Caisse NF525, IA & Monaco‑grade · ${slogan}`,
