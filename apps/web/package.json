@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "pages:build": "pnpm run build && npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint",
     "postbuild": "next-sitemap"
@@ -38,6 +39,7 @@
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.12.12",
     "@types/three": "^0.169.0",
+    "@cloudflare/next-on-pages": "^1.0.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.8.1",
