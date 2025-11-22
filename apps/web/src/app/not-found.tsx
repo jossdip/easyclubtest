@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 
 export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
 
 export default function NotFound(): React.JSX.Element {
   return (

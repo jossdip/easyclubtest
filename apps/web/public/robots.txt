@@ -3,7 +3,4 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://easyclub.app
-
-# Sitemaps
-Sitemap: https://easyclub.app/sitemap.xml
+Host: https://easyclub.fr
