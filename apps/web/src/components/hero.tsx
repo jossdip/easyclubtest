@@ -66,6 +66,18 @@ export function Hero() {
           {'Née à Monaco, conçue pour le monde.'}
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
+          className="text-foreground/80 max-w-2xl text-balance text-lg"
+        >
+          {
+            'Mission, valeur, conformité, sécurité et durabilité — les fondamentaux en un coup d’œil.'
+          }
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
