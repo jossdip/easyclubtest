@@ -7,6 +7,8 @@ import { FundamentalsSection } from '@/components/sections/fundamentals-section'
 import { SecurityIDSection } from '@/components/sections/security-id-section';
 import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home(): React.JSX.Element {
   return (
     <>
