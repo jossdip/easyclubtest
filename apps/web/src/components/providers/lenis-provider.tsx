@@ -1,6 +1,6 @@
 'use client';
 
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import * as React from 'react';
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {

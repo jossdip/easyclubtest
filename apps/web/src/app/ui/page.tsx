@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: 'UI Showcase',
   robots: { index: false, follow: false },

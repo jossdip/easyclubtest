@@ -2,6 +2,8 @@ import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
 
+export const runtime = 'edge';
+
 export default function NotFound(): React.JSX.Element {
   return (
     <div className="grid min-h-[60vh] place-items-center px-4">

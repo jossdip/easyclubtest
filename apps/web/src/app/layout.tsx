@@ -8,6 +8,8 @@ import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import './globals.css';
 
+export const runtime = 'edge';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
