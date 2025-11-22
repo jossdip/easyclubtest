@@ -3,8 +3,9 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import type {} from '@react-three/fiber';
 import * as React from 'react';
+import type { Object3D } from 'three';
 
-type Rotatable = { rotation: { x: number; y: number; z: number } };
+type Rotatable = Object3D;
 
 function ScannerBox({ scanning }: { scanning: boolean }) {
   const ref = React.useRef<Rotatable | null>(null);
@@ -17,9 +18,9 @@ function ScannerBox({ scanning }: { scanning: boolean }) {
   return (
     <group>
       <mesh
-        ref={(node) => {
+        ref={(node: Object3D | null) => {
           // tolerate null during unmount
-          ref.current = (node as unknown as Rotatable) || null;
+          ref.current = node;
         }}
         position={[0, 0, 0]}
         castShadow
