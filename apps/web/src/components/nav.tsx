@@ -18,16 +18,7 @@ export function Nav() {
     if (typeof window === 'undefined') {
       return;
     }
-    const ids = [
-      'hero',
-      'fundamentaux',
-      'securite',
-      'bracelet',
-      'navettes',
-      'dechets',
-      'kpis',
-      'contact',
-    ];
+    const ids = ['hero', 'fundamentaux', 'securite', 'bracelet', 'navettes', 'dechets', 'contact'];
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));

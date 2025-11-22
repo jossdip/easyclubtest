@@ -1,31 +1,52 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import * as React from 'react';
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+const VIDEOS = [
+  '/videos/video_man_book_table_on_easyclub_app_on_his_couch.mp4',
+  '/videos/man_walking_into_a_nightclub_getting_scanned_by_easyclub_bouncer_qrcode.mp4',
+  '/videos/People_getting_served_champagne_at_table_in_easyclub_nightclub.mp4',
+  '/videos/man_walking_out_nightclub_getting_into_easyclub_van.mp4',
+];
+
 export function Hero() {
+  const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
+
+  const handleVideoEnded = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % VIDEOS.length);
+  };
+
   return (
     <section
       id="hero"
       aria-label="Hero"
-      className="relative isolate flex min-h-[90dvh] items-center justify-center overflow-hidden"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
-      <video
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/images/fallback/Image_fallback_hero.jpg"
-      >
-        <source
-          src="/videos/People_getting_served_champagne_at_table_in_easyclub_nightclub.mp4"
-          type="video/mp4"
-        />
-      </video>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentVideoIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 -z-20 h-full w-full"
+        >
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnded}
+            poster="/images/fallback/Image_fallback_hero.jpg"
+            src={VIDEOS[currentVideoIndex]}
+          />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Overlay for readability */}
       <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-[1px]" />
@@ -61,16 +82,6 @@ export function Hero() {
             role="button"
           >
             Découvrir la plateforme
-          </Link>
-          <Link
-            href="/contact"
-            className={cn(
-              buttonVariants({ variant: 'outline', size: 'lg' }),
-              'h-auto border-white/20 bg-white/10 px-8 py-6 text-lg text-white hover:bg-white/20',
-            )}
-            role="button"
-          >
-            Nous contacter
           </Link>
         </motion.div>
       </div>

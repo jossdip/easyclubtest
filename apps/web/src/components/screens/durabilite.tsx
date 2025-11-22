@@ -1,58 +1,65 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Recycle, Leaf, BarChart3 } from 'lucide-react';
 import * as React from 'react';
 
 import { Section } from '@/components/section';
 
 export function DurabiliteSection(): React.JSX.Element {
-  const prefersReducedMotion = useReducedMotion();
   return (
-    <section id="durabilite" aria-label="Durabilité et gestion des déchets">
+    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
       <Section
         title="Durabilité — déchets, recyclage, réutilisable"
         subtitle="Réduction des déchets, verres réutilisables, filières de recyclage et sensibilisation."
       >
-        <div className="border-border bg-card/60 shadow-elev-1 relative isolate overflow-hidden rounded-2xl border p-8 backdrop-blur">
-          <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-            <motion.div
-              className="absolute -left-16 top-10 h-48 w-48 rounded-full"
-              initial={{ y: 0 }}
-              animate={{ y: prefersReducedMotion ? 0 : [0, -8, 0] }}
-              transition={{
-                duration: 6,
-                repeat: prefersReducedMotion ? 0 : Infinity,
-                ease: 'easeInOut',
-              }}
-              style={{
-                background:
-                  'radial-gradient(closest-side, rgba(0,255,200,0.15), transparent), radial-gradient(closest-side, rgba(0,140,255,0.12), transparent)',
-                filter: 'blur(16px)',
-              }}
-            />
-            <motion.div
-              className="absolute -right-16 bottom-10 h-56 w-56 rounded-full"
-              initial={{ y: 0 }}
-              animate={{ y: prefersReducedMotion ? 0 : [0, 10, 0] }}
-              transition={{
-                duration: 7,
-                repeat: prefersReducedMotion ? 0 : Infinity,
-                ease: 'easeInOut',
-              }}
-              style={{
-                background:
-                  'radial-gradient(closest-side, rgba(160,0,255,0.15), transparent), radial-gradient(closest-side, rgba(0,200,255,0.12), transparent)',
-                filter: 'blur(20px)',
-              }}
-            />
-          </div>
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <li>Tri intelligent côté bar et salle</li>
-            <li>Réemploi et verres réutilisables</li>
-            <li>Indicateurs de réduction des déchets</li>
-          </ul>
+        <div className="grid gap-6 lg:grid-cols-3">
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="group relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-gradient-to-b from-emerald-900/10 to-transparent p-8"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 shadow-lg shadow-emerald-900/20">
+              <Recycle className="h-7 w-7" />
+            </div>
+            <h3 className="mb-3 text-xl font-bold text-emerald-100">Tri Intelligent</h3>
+            <p className="leading-relaxed text-emerald-100/70">
+              Système de tri intégré au bar et en salle. Les poubelles connectées informent le staff
+              en temps réel pour optimiser la collecte.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="group relative overflow-hidden rounded-2xl border border-teal-500/20 bg-gradient-to-b from-teal-900/10 to-transparent p-8"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-500/20 text-teal-400 shadow-lg shadow-teal-900/20">
+              <Leaf className="h-7 w-7" />
+            </div>
+            <h3 className="mb-3 text-xl font-bold text-teal-100">Réemploi & Consigne</h3>
+            <p className="leading-relaxed text-teal-100/70">
+              Gestion native des gobelets réutilisables et des consignes (Eco-cups). Suivez le taux
+              de retour et l'impact carbone évité.
+            </p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="group relative overflow-hidden rounded-2xl border border-cyan-500/20 bg-gradient-to-b from-cyan-900/10 to-transparent p-8"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-900/20">
+              <BarChart3 className="h-7 w-7" />
+            </div>
+            <h3 className="mb-3 text-xl font-bold text-cyan-100">Impact Mesurable</h3>
+            <p className="leading-relaxed text-cyan-100/70">
+              Tableaux de bord dédiés à la RSE. Visualisez vos économies de CO2 et de déchets pour
+              votre communication et vos audits.
+            </p>
+          </motion.div>
         </div>
       </Section>
-    </section>
+    </motion.div>
   );
 }

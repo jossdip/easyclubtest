@@ -13,93 +13,84 @@ type Pillar = {
   icon: React.ReactNode;
   title: string;
   description: string;
+  color: string;
 };
 
 const pillars: Pillar[] = [
   {
-    icon: <ScrollText className="h-5 w-5" aria-hidden />,
+    icon: <ScrollText className="h-6 w-6" aria-hidden />,
     title: 'Mission',
     description: "Élever l'expérience nocturne avec un POS Monaco‑grade, sûr et durable.",
+    color: 'from-blue-500/20 to-cyan-500/20',
   },
   {
-    icon: <BadgeCheck className="h-5 w-5" aria-hidden />,
+    icon: <BadgeCheck className="h-6 w-6" aria-hidden />,
     title: 'Valeur',
     description: "Simplicité et précision : NF525, IA d'assistance, matériel pro, modèle 1%.",
+    color: 'from-emerald-500/20 to-green-500/20',
   },
   {
-    icon: <ShieldCheck className="h-5 w-5" aria-hidden />,
+    icon: <ShieldCheck className="h-6 w-6" aria-hidden />,
     title: 'Conformité',
     description: 'Scellement, clôtures, archivage et audit avancé NF525.',
+    color: 'from-indigo-500/20 to-purple-500/20',
   },
   {
-    icon: <LockKeyhole className="h-5 w-5" aria-hidden />,
+    icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
     title: 'Sécurité',
     description: 'Contrôle d’accès, anti‑fraude, traçabilité et listes noires.',
+    color: 'from-red-500/20 to-orange-500/20',
   },
   {
-    icon: <Leaf className="h-5 w-5" aria-hidden />,
+    icon: <Leaf className="h-6 w-6" aria-hidden />,
     title: 'Durabilité',
     description: 'Réduction des déchets, navettes VIP, efficacité opérationnelle.',
+    color: 'from-teal-500/20 to-emerald-500/20',
   },
   {
-    icon: <HandCoins className="h-5 w-5" aria-hidden />,
+    icon: <HandCoins className="h-6 w-6" aria-hidden />,
     title: 'Modèle économique',
     description: '1% split à l’acquéreur, pas d’abonnement. Alignement total.',
+    color: 'from-amber-500/20 to-yellow-500/20',
   },
 ];
 
 export function FundamentalsSection(): React.JSX.Element {
   return (
-    <Section id="fundamentaux" title="Fundamentaux" subtitle="Mission, valeur et piliers clés">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <Section id="fundamentaux" title="Fondamentaux" subtitle="Mission, valeur et piliers clés">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {pillars.map((p, i) => (
           <motion.div
             key={p.title}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.4, ease: 'easeOut', delay: i * 0.03 }}
-            className="border-border/60 bg-card/60 group rounded-xl border p-4 backdrop-blur"
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all hover:bg-white/10 hover:shadow-lg"
           >
-            <div className="text-primary/90 inline-flex items-center gap-2">
-              <span className="bg-primary/10 group-hover:bg-primary/15 grid h-8 w-8 place-items-center rounded-md transition-colors">
+            <div
+              className={`absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${p.color}`}
+            />
+
+            <div className="relative z-10 flex flex-col gap-4">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white shadow-inner">
                 {p.icon}
-              </span>
-              <h3 className="text-base font-semibold">{p.title}</h3>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold tracking-tight">{p.title}</h3>
+                <p className="text-muted-foreground group-hover:text-foreground/90 mt-2 text-sm leading-relaxed transition-colors">
+                  {p.description}
+                </p>
+              </div>
             </div>
-            <p className="text-foreground/80 mt-2 text-sm">{p.description}</p>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-3">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="lg:col-span-1"
-        >
-          <SecuriteSection />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: 0.05 }}
-          className="lg:col-span-1"
-        >
-          <ConformiteSection />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: 0.1 }}
-          className="lg:col-span-1"
-        >
-          <DurabiliteSection />
-        </motion.div>
+      <div className="mt-24 space-y-24">
+        <SecuriteSection />
+        <ConformiteSection />
+        <DurabiliteSection />
       </div>
     </Section>
   );

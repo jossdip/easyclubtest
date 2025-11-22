@@ -1,36 +1,58 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { FileCheck, Lock, Database } from 'lucide-react';
 import * as React from 'react';
 
 import { Section } from '@/components/section';
 
 export function ConformiteSection(): React.JSX.Element {
-  const prefersReducedMotion = useReducedMotion();
   return (
-    <section id="conformite" aria-label="Conformité NF525">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="relative"
+    >
       <Section
         title="Conformité NF525 — crédible et vérifiable"
-        subtitle="Inaltérabilité, clôtures, scellement, archivage et audit. Communication factuelle et claire."
+        subtitle="Inaltérabilité, clôtures, scellement, archivage et audit."
       >
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {['Inaltérabilité', 'Scellement & clôtures', 'Archivage & audit'].map((label, idx) => (
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              title: 'Inaltérabilité',
+              desc: "Documentation interne et journaux scellés garantissant l'intégrité des données.",
+              icon: Lock,
+            },
+            {
+              title: 'Scellement & clôtures',
+              desc: 'Processus de clôture journalière/mensuelle automatisé et sécurisé.',
+              icon: FileCheck,
+            },
+            {
+              title: 'Archivage & audit',
+              desc: 'Exports horodatés et outils de contrôle fiscal intégrés.',
+              icon: Database,
+            },
+          ].map((item, i) => (
             <motion.div
-              key={label}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="border-border bg-card/60 shadow-elev-1 rounded-xl border p-6 backdrop-blur"
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 transition-all hover:border-white/20"
             >
-              <div className="text-base font-semibold">{label}</div>
-              <p className="text-foreground/70 mt-2 text-sm">
-                Documentation interne, journaux scellés, exports horodatés et contrôles réguliers.
-              </p>
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 transition-all duration-300 group-hover:scale-110 group-hover:bg-indigo-500/20">
+                <item.icon className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
+              <p className="text-muted-foreground">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </Section>
-    </section>
+    </motion.div>
   );
 }
