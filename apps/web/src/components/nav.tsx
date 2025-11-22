@@ -1,6 +1,6 @@
-import { LanguageSwitcher } from '@/components/language-switcher';
+import Link from 'next/link';
+
 import { ThemeToggle } from '@/components/theme-toggle';
-import { Link } from '@/i18n/navigation';
 
 export function Nav() {
   return (
@@ -14,7 +14,6 @@ export function Nav() {
           EasyClub
         </Link>
         <div className="flex items-center gap-2">
-          <LanguageSwitcher />
           <ThemeToggle />
         </div>
       </div>

@@ -2,9 +2,6 @@ import { Footer } from '@/components/footer';
 import { Nav } from '@/components/nav';
 import { Section } from '@/components/section';
 
-export const runtime = 'edge';
-export const dynamic = 'force-dynamic';
-
 const content =
   'Politique de confidentialité. Données minimisées, chiffrées en transit et au repos. Aucune revente. Droit d’accès et de suppression sur demande. Contact : privacy@easyclub.app';
 
