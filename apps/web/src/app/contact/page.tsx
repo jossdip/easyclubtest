@@ -3,6 +3,8 @@ import { Nav } from '@/components/nav';
 import { ContactForm } from '@/components/screens/contact-form';
 import { Section } from '@/components/section';
 
+export const dynamic = 'force-dynamic';
+
 export default function ContactPage(): React.JSX.Element {
   return (
     <>

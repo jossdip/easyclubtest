@@ -10,15 +10,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      keyframes: {
-        marquee: {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - 1rem))' },
-        },
-      },
-      animation: {
-        marquee: 'marquee var(--marquee-duration) linear infinite',
-      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -47,6 +38,10 @@ const config: Config = {
           'radial-gradient(1200px 600px at 10% -10%, rgba(0,255,200,0.22), transparent 60%), radial-gradient(1200px 600px at 90% 110%, rgba(0,140,255,0.22), transparent 60%)',
       },
       keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - 1rem))' },
+        },
         aurora: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
@@ -65,6 +60,7 @@ const config: Config = {
         },
       },
       animation: {
+        marquee: 'marquee var(--marquee-duration) linear infinite',
         aurora: 'aurora 12s ease-in-out infinite',
         floaty: 'floaty 6s ease-in-out infinite',
         shine: 'shine 1.2s ease-out',
