@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm -C apps/web dev",
     "build": "pnpm -C apps/web build",
-    "build:pages": "cd apps/web && pnpm dlx @cloudflare/next-on-pages@1",
+    "build:pages": "pnpm -C apps/web run pages:build",
     "start": "pnpm -C apps/web start",
     "lint": "pnpm -C apps/web exec eslint . --max-warnings=0",
     "typecheck": "pnpm -C apps/web tsc --noEmit",
@@ -40,6 +40,7 @@
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }

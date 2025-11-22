@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "pnpm run build && npx @cloudflare/next-on-pages",
+    "pages:build": "npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint",
-    "postbuild": "next-sitemap && npx @cloudflare/next-on-pages"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
