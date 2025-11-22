@@ -35,3 +35,6 @@ export const valueProps = [
 export const footer = {
   rights: '© ' + new Date().getFullYear() + ' EasyClub. Tous droits réservés.',
 };
+
+// Slogan court utilisé dans les métadonnées et titres
+export const slogan = 'Simplicité. Sécurité. Sérénité.';
