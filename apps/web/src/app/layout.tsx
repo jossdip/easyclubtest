@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 import { LenisProvider } from '@/components/providers/lenis-provider';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -23,25 +25,30 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://easyclub.app'),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <LenisProvider>
-            {children}
-            <Analytics />
-          </LenisProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <LenisProvider>
+              {children}
+              <Analytics />
+            </LenisProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

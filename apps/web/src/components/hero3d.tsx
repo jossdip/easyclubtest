@@ -37,10 +37,19 @@ function TorusKnot() {
 export function Hero3D(): React.JSX.Element | null {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
   const inView = useInquireView(containerRef);
-  const prefersReduced =
-    typeof window !== 'undefined' &&
-    window.matchMedia &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [prefersReduced, setPrefersReduced] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setPrefersReduced(mediaQuery.matches);
+
+      const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+      mediaQuery.addEventListener('change', handler);
+      return () => mediaQuery.removeEventListener('change', handler);
+    }
+  }, []);
+
   if (prefersReduced) {
     return null;
   }
