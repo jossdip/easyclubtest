@@ -1408,6 +1408,238 @@
                 width: 100%;
             }
         }
+        /* Eyebrow small slogan */
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: -10px;
+            margin-bottom: 22px;
+        }
+
+        /* Footer ticker */
+        .footer-ticker {
+            background: linear-gradient(90deg, #6C63FF, #FF6B6B, #6C63FF);
+            background-size: 200% 100%;
+            color: var(--text-color);
+            padding: 14px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .footer-ticker-inner {
+            display: inline-block;
+            white-space: nowrap;
+            animation: footer-ticker-move 22s linear infinite;
+            font-weight: 600;
+        }
+        @keyframes footer-ticker-move {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Passport UI */
+        .passport-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 480px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .passport-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px 200px at -10% -20%, rgba(108,99,255,0.2), transparent 60%);
+            pointer-events: none;
+        }
+        .passport-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .passport-title {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+        }
+        .passport-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .passport-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .passport-field label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+        .passport-field input {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 10px 12px;
+            color: var(--text-color);
+        }
+        .passport-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .passport-result {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+        .status-badge {
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .status-good { background: rgba(46, 204, 113, 0.18); border: 1px solid rgba(46, 204, 113, 0.5); color: #2ecc71; }
+        .status-warn { background: rgba(255, 178, 43, 0.18); border: 1px solid rgba(255, 178, 43, 0.5); color: #ffb22b; }
+        .status-bad { background: rgba(231, 76, 60, 0.18); border: 1px solid rgba(231, 76, 60, 0.5); color: #e74c3c; }
+
+        /* BAC advisory */
+        .bac-section .section-title { margin-bottom: 20px; }
+        .bac-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .bac-controls {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        .bac-slider {
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #2ecc71, #ffb22b, #e74c3c);
+            border-radius: 999px;
+            outline: none;
+        }
+        .bac-summary {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .pill {
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.06);
+        }
+        .advice {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+        .advice.ok { background: rgba(46, 204, 113, 0.12); border-color: rgba(46,204,113,0.4); }
+        .advice.warn { background: rgba(255, 178, 43, 0.12); border-color: rgba(255,178,43,0.4); }
+        .advice.critical { background: rgba(231, 76, 60, 0.12); border-color: rgba(231,76,60,0.4); }
+
+        /* Merch */
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .merch-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .merch-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+        .merch-card .merch-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        /* Green impact chart */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .chart {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 20px;
+            height: 260px;
+            display: flex;
+            align-items: end;
+            gap: 18px;
+        }
+        .bar {
+            flex: 1;
+            border-radius: 10px 10px 0 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.06));
+            border: 1px solid rgba(255,255,255,0.14);
+            position: relative;
+            min-height: 8px;
+        }
+        .bar::after {
+            content: attr(data-label);
+            position: absolute;
+            left: 50%;
+            bottom: -24px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+        .delta-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        /* Neon scroll-reactive background glow */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            inset: -20%;
+            pointer-events: none;
+            z-index: -2;
+            background: radial-gradient(600px 600px at calc(20% + var(--scrollX, 0px)) calc(20% + var(--scrollY, 0px)), rgba(108, 99, 255, 0.18), transparent 60%),
+                        radial-gradient(600px 600px at calc(80% - var(--scrollX, 0px)) calc(70% - var(--scrollY, 0px)), rgba(255, 107, 107, 0.16), transparent 60%);
+            filter: blur(40px) saturate(130%);
+        }
+        body::after {
+            background: conic-gradient(from calc(var(--scrollDeg, 0deg)), rgba(108, 99, 255, 0.08), rgba(255, 107, 107, 0.08), rgba(108, 99, 255, 0.08));
+            mix-blend-mode: screen;
+        }
     </style>
 </head>
 <body>
@@ -1426,6 +1658,7 @@
                 <div class="hero-content">
                     <h1 data-translate="hero-title">Révolutionnez votre vie nocturne</h1>
                     <p class="tagline" data-translate="hero-tagline">Simplicité. Sécurité. Sérénité.</p>
+                    <p class="eyebrow">POS • IA • NF525</p>
                     <p data-translate="hero-description">EasyClub n'est pas une application, c'est la réinvention de la nuit. Née à Monaco, conçue pour le monde.</p>
                     <a href="#features" class="cta-button" data-translate="hero-cta">Découvrir</a>
                 </div>
@@ -1531,12 +1764,65 @@
                         </div>
                     </div>
                     <div class="app-screenshot">
-                        <img src="Vrai Mockup1.PNG" alt="Aperçu de l'application EasyClub">
+                        <div class="passport-card" aria-label="Passeport EasyClub simulé">
+                            <div class="passport-header">
+                                <div class="passport-title">Passeport EasyClub</div>
+                                <div class="pill">Analyse en temps réel</div>
+                            </div>
+                            <div class="passport-row">
+                                <div class="passport-field">
+                                    <label>Nom complet</label>
+                                    <input id="pp-name" type="text" placeholder="Ex: Alex Martin">
+                                </div>
+                                <div class="passport-field">
+                                    <label>Date de naissance</label>
+                                    <input id="pp-dob" type="date">
+                                </div>
+                            </div>
+                            <div class="passport-row">
+                                <div class="passport-field">
+                                    <label>N° de réservation (optionnel)</label>
+                                    <input id="pp-res" type="text" placeholder="Ex: EC-48291">
+                                </div>
+                                <div class="passport-field">
+                                    <label>Badge bracelet testeur d'alcoolémie</label>
+                                    <input id="pp-breath" type="text" placeholder="ID bracelet (optionnel)">
+                                </div>
+                            </div>
+                            <div class="passport-actions">
+                                <button id="pp-analyze" class="cta-button">Analyser</button>
+                            </div>
+                            <div id="pp-results" class="passport-result" aria-live="polite">
+                                <div class="status-badge pill">En attente d'analyse…</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section id="bac" class="section bac-section">
+            <div class="container">
+                <h2 class="section-title">Recommandations intelligentes selon le seuil</h2>
+                <div class="bac-card">
+                    <div class="bac-controls">
+                        <label for="bac-slider">Seuil estimé (g/L)</label>
+                        <input id="bac-slider" class="bac-slider" type="range" min="0" max="1.5" step="0.05" value="0">
+                        <div class="bac-summary">
+                            <span id="bac-value" class="pill">0.00 g/L</span>
+                            <span id="bac-risk" class="pill">Risque: Faible</span>
+                            <span id="bac-action" class="pill">Action: Profitez en sécurité</span>
+                        </div>
+                    </div>
+                    <div id="bac-advice" class="advice ok">
+                        Hydratez-vous régulièrement. EasyClub veille discrètement: alertes amis, ping de sécurité, taxi en un clic si besoin.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap section removed per requirements -->
+        <!--
         <section id="roadmap" class="section">
             <div class="container">
                 <h2 class="section-title" data-translate="roadmap-title">Notre vision du futur</h2>
@@ -1555,7 +1841,7 @@
                             <h3 data-translate="roadmap-q3">Q3 2026</h3>
                             <p data-translate="roadmap-q3-title">Écosystème Nightlife Connecté</p>
                             <div class="roadmap-details">
-                                <p data-translate="roadmap-q3-desc">Lancement du bracelet Lickalyser, de la marketplace inter-établissements et du système de sécurité avancé avec vérification des CNI.</p>
+                                <p data-translate="roadmap-q3-desc">Lancement du bracelet testeur d'alcoolémie, de la marketplace inter-établissements et du système de sécurité avancé avec vérification des CNI.</p>
                             </div>
                         </div>
                     </div>
@@ -1580,6 +1866,7 @@
                 </div>
             </div>
         </section>
+        -->
 
         <section class="testimonials-3d section">
             <div class="container">
@@ -1789,6 +2076,67 @@
             </div>
         </section>
 
+        <section id="merch" class="section">
+            <div class="container">
+                <h2 class="section-title">Merchandising pro pour votre établissement</h2>
+                <p>Personnalisation, production à la demande et logistique gérées par EasyClub. Vous commandez, on s'occupe de tout.</p>
+                <div class="merch-grid">
+                    <div class="merch-card">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" alt="T‑shirt staff personnalisé">
+                        <div class="merch-body">
+                            <strong>T‑shirt Staff</strong>
+                            <span>Pour votre établissement • Production à la demande</span>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://images.unsplash.com/photo-1534214526114-0ea4d53b0d1c?q=80&w=1200&auto=format&fit=crop" alt="Casquette néon">
+                        <div class="merch-body">
+                            <strong>Casquette Néon</strong>
+                            <span>Pour votre établissement • Production à la demande</span>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://images.unsplash.com/photo-1607619056574-7b8d3d2f3392?q=80&w=1200&auto=format&fit=crop" alt="Verres gravés">
+                        <div class="merch-body">
+                            <strong>Verres gravés</strong>
+                            <span>Pour votre établissement • Production à la demande</span>
+                        </div>
+                    </div>
+                    <div class="merch-card">
+                        <img src="https://images.unsplash.com/photo-1518085250887-2f903c200fee?q=80&w=1200&auto=format&fit=crop" alt="Poster 360°">
+                        <div class="merch-body">
+                            <strong>Poster 360°</strong>
+                            <span>Pour votre établissement • Production à la demande</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="green-impact" class="section">
+            <div class="container">
+                <h2 class="section-title">Green Club — Impact mesuré</h2>
+                <div class="impact-grid">
+                    <div class="chart">
+                        <div id="bar-without" class="bar" data-label="Sans EasyClub" style="height: 60%"></div>
+                        <div id="bar-with" class="bar" data-label="Avec EasyClub" style="height: 30%"></div>
+                    </div>
+                    <div class="delta-card">
+                        <label for="waste-input">Déchets annuels estimés (kg)</label>
+                        <input id="waste-input" type="range" min="1000" max="20000" step="500" value="8000" class="bac-slider">
+                        <div class="bac-summary" style="margin-top:10px">
+                            <span id="waste-value" class="pill">8 000 kg</span>
+                            <span id="loss-delta" class="pill">Pertes évitées: ~€0</span>
+                            <span id="co2-delta" class="pill">CO₂ évité: 0 t</span>
+                        </div>
+                        <div style="margin-top:10px;color:rgba(255,255,255,0.8)">
+                            Visualisez l'économie et l'empreinte carbone si vos déchets sont traités par EasyClub.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="quiz" class="section">
             <div class="container">
                 <h2 class="section-title" data-translate="quiz-title">Votre avis compte</h2>
@@ -1875,21 +2223,20 @@
             </div>
         </section>
 
-        <div class="news-ticker">
-            <div class="ticker-wrapper">
-                <div class="ticker-item" data-translate="ticker-1">EasyClub en phase de développement - Rejoignez l'aventure dès le début !</div>
-                <div class="ticker-item" data-translate="ticker-2">Recrutement en cours pour notre équipe de développement</div>
-                <div class="ticker-item" data-translate="ticker-3">Préparation du lancement de notre première version beta</div>
-                <div class="ticker-item" data-translate="ticker-4">Soyez parmi les premiers à tester EasyClub</div>
-                <div class="ticker-item" data-translate="ticker-5">Inscrivez-vous à notre newsletter pour suivre notre progression</div>
-            </div>
-        </div>
+        
     </main>
 
     <footer>
+        <div class="footer-ticker">
+            <div class="container">
+                <div class="footer-ticker-inner">
+                    EasyClub lève des fonds à Monaco — Intéressé·e ? Contactez‑nous au <a href="mailto:contact@easyclub.app" style="color:white;text-decoration:underline">contact@easyclub.app</a> • EasyClub lève des fonds à Monaco — Intéressé·e ? Contactez‑nous au <a href="mailto:contact@easyclub.app" style="color:white;text-decoration:underline">contact@easyclub.app</a>
+                </div>
+            </div>
+        </div>
         <div class="footer-content">
             <div class="container">
-                <p>&copy; 2024 EasyClub. Tous droits réservés.</p>
+                <p>&copy; 2024 EasyClub. Tous droits réservés. • <a href="mailto:contact@easyclub.app" style="color:#6C63FF;text-decoration:underline">Nous contacter</a></p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1940,19 +2287,20 @@
             });
         });
 
-        // Roadmap interactive
-        document.querySelectorAll('.roadmap-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const details = item.querySelector('.roadmap-details');
-                if (details) {
-                    if (details.style.display === 'block') {
-                        details.style.display = 'none';
-                    } else {
-                        document.querySelectorAll('.roadmap-details').forEach(d => d.style.display = 'none');
-                        details.style.display = 'block';
-                    }
-                }
-            });
+        // Scroll-reactive neon background
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY || 0;
+                    const x = (window.innerWidth / 2) * Math.sin(y / 800);
+                    document.documentElement.style.setProperty('--scrollY', `${y * 0.05}px`);
+                    document.documentElement.style.setProperty('--scrollX', `${x * 0.05}px`);
+                    document.documentElement.style.setProperty('--scrollDeg', `${(y % 360)}deg`);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
 
         // Animation au scroll
@@ -2036,7 +2384,7 @@
                 'security-details': 'Système de vérification des CNI, détection des faux documents et liste noire partagée entre établissements pour une sécurité optimale.',
                 'shuttle-title': 'Navettes VIP',
                 'shuttle-desc': 'Transport premium entre établissements',
-                'shuttle-details': 'Service de navettes aménagées avec ambiance club, réservation en temps réel et intégration avec l\'application EasyClub.',
+                'shuttle-details': 'Navettes dédiées pour fluidifier les flux et renforcer la sécurité. Réservation temps réel, suivi des trajets et expérience client haut de gamme.',
                 'green-title': 'Green Club',
                 'green-desc': 'Gestion intelligente des déchets',
                 'green-details': 'Système de tri intelligent, collecte optimisée et transformation des déchets en merchandising écologique.',
@@ -2056,7 +2404,7 @@
                 'roadmap-q2-desc': 'Déploiement du système de caisse avec agent IA intégré, incluant la gestion des stocks, l\'optimisation des ventes et l\'assistance intelligente.',
                 'roadmap-q3': 'Q3 2026',
                 'roadmap-q3-title': 'Écosystème Nightlife Connecté',
-                'roadmap-q3-desc': 'Lancement du bracelet Lickalyser, de la marketplace inter-établissements et du système de sécurité avancé avec vérification des CNI.',
+                'roadmap-q3-desc': 'Lancement du bracelet testeur d\'alcoolémie, de la marketplace inter-établissements et du système de sécurité avancé avec vérification des CNI.',
                 'roadmap-q4': 'Q4 2026',
                 'roadmap-q4-title': 'Navettes VIP et Green Club',
                 'roadmap-q4-desc': 'Mise en service des navettes VIP et déploiement du système de gestion intelligente des déchets avec transformation en merchandising écologique.',
@@ -2169,7 +2517,7 @@
                 'security-details': 'ID verification system, fake document detection, and shared blacklist between establishments for optimal security.',
                 'shuttle-title': 'VIP Shuttles',
                 'shuttle-desc': 'Premium transport between venues',
-                'shuttle-details': 'Club-themed shuttle service with real-time booking and EasyClub app integration.',
+                'shuttle-details': 'Dedicated shuttles to smooth flows and enhance safety. Real-time booking, trip tracking, and a premium customer experience.',
                 'green-title': 'Green Club',
                 'green-desc': 'Smart waste management',
                 'green-details': 'Intelligent sorting system, optimized collection, and waste transformation into eco-friendly merchandise.',
@@ -2189,7 +2537,7 @@
                 'roadmap-q2-desc': 'Deployment of the cash register system with integrated AI agent, including stock management, sales optimization, and intelligent assistance.',
                 'roadmap-q3': 'Q3 2026',
                 'roadmap-q3-title': 'Connected Nightlife Ecosystem',
-                'roadmap-q3-desc': 'Launch of the Lickalyser bracelet, inter-venue marketplace, and advanced security system with ID verification.',
+                'roadmap-q3-desc': 'Launch of a breathalyzer wristband, inter-venue marketplace, and advanced security system with ID verification.',
                 'roadmap-q4': 'Q4 2026',
                 'roadmap-q4-title': 'VIP Shuttles and Green Club',
                 'roadmap-q4-desc': 'VIP shuttle service launch and smart waste management system deployment with eco-friendly merchandise transformation.',
@@ -2392,6 +2740,121 @@
                 });
             });
         });
+
+        // Passeport - analyse simulée
+        function hashString(str) {
+            let h = 0;
+            for (let i = 0; i < str.length; i++) {
+                h = (h << 5) - h + str.charCodeAt(i);
+                h |= 0;
+            }
+            return Math.abs(h);
+        }
+        function computeAge(dob) {
+            if (!dob) return null;
+            const d = new Date(dob);
+            if (Number.isNaN(d.getTime())) return null;
+            const diff = Date.now() - d.getTime();
+            const ageDate = new Date(diff);
+            return Math.abs(ageDate.getUTCFullYear() - 1970);
+        }
+        const ppBtn = document.getElementById('pp-analyze');
+        const ppName = document.getElementById('pp-name');
+        const ppDob = document.getElementById('pp-dob');
+        const ppRes = document.getElementById('pp-res');
+        const ppResults = document.getElementById('pp-results');
+        if (ppBtn) {
+            ppBtn.addEventListener('click', () => {
+                const name = (ppName.value || '').trim();
+                const dob = (ppDob.value || '').trim();
+                const res = (ppRes.value || '').trim();
+                const age = computeAge(dob);
+                const seed = hashString(name + dob + res);
+                const isBlacklisted = seed % 97 === 0; // faible proba
+                const isVIP = seed % 9 === 0 || !!res;
+                const isImportant = seed % 25 === 0;
+                const hasReservation = !!res;
+
+                const badges = [];
+                if (age !== null) {
+                    badges.push(`<div class="status-badge ${age >= 18 ? 'status-good' : 'status-bad'}">Âge: ${age} ${age < 18 ? '(mineur)' : ''}</div>`);
+                } else {
+                    badges.push(`<div class="status-badge status-warn">Âge: inconnu</div>`);
+                }
+                if (isBlacklisted) badges.push('<div class="status-badge status-bad">Liste noire</div>');
+                if (isVIP) badges.push('<div class="status-badge status-good">VIP</div>');
+                if (isImportant) badges.push('<div class="status-badge status-warn">Personnalité importante</div>');
+                if (hasReservation) badges.push('<div class="status-badge status-good">Réservation liée</div>');
+
+                if (badges.length === 0) {
+                    badges.push('<div class="status-badge pill">Aucun signal détecté</div>');
+                }
+                ppResults.innerHTML = badges.join('');
+            });
+        }
+
+        // BAC advisory logic
+        const bacSlider = document.getElementById('bac-slider');
+        const bacValue = document.getElementById('bac-value');
+        const bacRisk = document.getElementById('bac-risk');
+        const bacAction = document.getElementById('bac-action');
+        const bacAdvice = document.getElementById('bac-advice');
+        function updateBacUI(val) {
+            const v = parseFloat(val || '0') || 0;
+            bacValue.textContent = `${v.toFixed(2)} g/L`;
+            if (v < 0.2) {
+                bacRisk.textContent = 'Risque: Faible';
+                bacAction.textContent = 'Action: Profitez en sécurité';
+                bacAdvice.className = 'advice ok';
+                bacAdvice.textContent = 'Hydratez-vous régulièrement. EasyClub surveille discrètement: alertes amis et ping de sécurité.';
+            } else if (v < 0.5) {
+                bacRisk.textContent = 'Risque: Modéré';
+                bacAction.textContent = 'Action: Ralentir & eau';
+                bacAdvice.className = 'advice warn';
+                bacAdvice.textContent = 'Recommandation: eau, pause. EasyClub proposera taxi/retour sécurisé si besoin.';
+            } else if (v < 0.8) {
+                bacRisk.textContent = 'Risque: Élevé';
+                bacAction.textContent = 'Action: Arrêt, hydratation, nourriture';
+                bacAdvice.className = 'advice warn';
+                bacAdvice.textContent = 'EasyClub active un rappel à vos amis, désactive commandes alcool, propose taxi.';
+            } else {
+                bacRisk.textContent = 'Risque: Critique';
+                bacAction.textContent = 'Action: Assistance & sortie sécurisée';
+                bacAdvice.className = 'advice critical';
+                bacAdvice.textContent = 'EasyClub notifie le staff, propose taxi prioritaire et protocole de sécurité.';
+            }
+        }
+        if (bacSlider) {
+            bacSlider.addEventListener('input', (e) => updateBacUI(e.target.value));
+            updateBacUI(bacSlider.value);
+        }
+
+        // Green impact chart logic
+        const wasteInput = document.getElementById('waste-input');
+        const wasteValue = document.getElementById('waste-value');
+        const lossDelta = document.getElementById('loss-delta');
+        const co2Delta = document.getElementById('co2-delta');
+        const barWithout = document.getElementById('bar-without');
+        const barWith = document.getElementById('bar-with');
+        function updateWaste(val) {
+            const kg = parseInt(val || '0', 10);
+            wasteValue.textContent = kg.toLocaleString('fr-FR') + ' kg';
+            // Hypothèses simples: EasyClub réduit 45% d'ordures non traitées
+            const withKg = Math.round(kg * 0.55);
+            const withoutPct = 70;
+            const withPct = 35;
+            barWithout.style.height = withoutPct + '%';
+            barWith.style.height = withPct + '%';
+            // Estimation pertes €: 0.4€/kg non trié, CO2 0.0016t/kg
+            const lossSaved = Math.round((kg - withKg) * 0.4);
+            const co2Saved = ((kg - withKg) * 0.0016).toFixed(2);
+            lossDelta.textContent = 'Pertes évitées: ~€' + lossSaved.toLocaleString('fr-FR');
+            co2Delta.textContent = 'CO₂ évité: ' + co2Saved + ' t';
+        }
+        if (wasteInput) {
+            wasteInput.addEventListener('input', (e) => updateWaste(e.target.value));
+            updateWaste(wasteInput.value);
+        }
 
         // Initialiser la page en français
         translatePage('fr');

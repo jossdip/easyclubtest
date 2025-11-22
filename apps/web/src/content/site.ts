@@ -10,13 +10,9 @@ export const navItems = [
 
 export const hero = {
   eyebrow: 'POS • IA • NF525',
-  title: 'Point de vente Monaco‑grade.',
-  subtitle:
-    'Caisse certifiable NF525, assistant IA intégré et matériel pro. Pensé pour l’hôtellerie‑restauration où la précision et la vitesse ne se négocient pas.',
-  ctas: [
-    { href: '/contact', label: 'Demandez une démo', variant: 'default' as const },
-    { href: '/contact', label: 'Contact', variant: 'outline' as const },
-  ],
+  title: 'Révolutionnez votre vie nocturne',
+  subtitle: 'Simplicité. Sécurité. Sérénité.',
+  ctas: [{ href: '/fonctionnalites', label: 'Découvrir', variant: 'default' as const }],
 };
 
 export const valueProps = [
@@ -28,10 +24,6 @@ export const valueProps = [
     title: 'Assistant IA',
     description:
       'Commandes vocales, actions contextuelles, monitoring des coûts, continuité hors‑ligne.',
-  },
-  {
-    title: 'Modèle 1%',
-    description: '1% du paiement split à l’acquéreur. Pas d’abonnement.',
   },
   {
     title: 'Matériel pro',
