@@ -23,8 +23,6 @@ export function Nav() {
       'fundamentaux',
       'securite',
       'bracelet',
-      'marketplace',
-      'merch',
       'navettes',
       'dechets',
       'kpis',

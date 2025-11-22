@@ -1,11 +1,10 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import { buttonVariants } from '@/components/ui/button';
-import { hero as heroContent } from '@/content/site';
 import { cn } from '@/lib/utils';
 
 const Hero3D = dynamic(
@@ -17,146 +16,75 @@ const Hero3D = dynamic(
 );
 
 export function Hero() {
-  const prefersReduced = useReducedMotion();
-  const heroVideoSrc = process.env.NEXT_PUBLIC_HERO_VIDEO_URL;
-  const showHeroVideo =
-    !prefersReduced && typeof heroVideoSrc === 'string' && heroVideoSrc.length > 0;
   return (
     <section
       id="hero"
       aria-label="Hero"
-      className="bg-monaco-gradient relative isolate overflow-hidden"
+      className="relative isolate flex min-h-[90dvh] items-center justify-center overflow-hidden"
     >
-      {/* Optional background video slot (replace /public/media/club.webm as needed) */}
-      {showHeroVideo ? (
-        <video
-          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_40%,rgba(255,255,255,0.95),transparent)]"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          poster="/globe.svg"
-        >
-          <source
-            src={heroVideoSrc!}
-            type={heroVideoSrc && heroVideoSrc.endsWith('.mp4') ? 'video/mp4' : 'video/webm'}
-          />
-        </video>
-      ) : null}
-      <div
-        className={cn(
-          'pointer-events-none absolute inset-0 -z-10',
-          prefersReduced ? 'bg-monaco-gradient' : 'bg-monaco-gradient-strong animate-aurora',
-        )}
-        style={{ backgroundSize: '200% 200%' }}
-      />
-      {!prefersReduced ? (
-        <>
-          <div
-            className="pointer-events-none absolute -left-24 top-24 -z-10 h-80 w-80 rounded-full blur-3xl"
-            style={{
-              background: 'radial-gradient(closest-side, rgba(0,255,200,0.18), transparent)',
-            }}
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -right-24 bottom-16 -z-10 h-96 w-96 rounded-full blur-3xl"
-            style={{
-              background: 'radial-gradient(closest-side, rgba(160,0,255,0.18), transparent)',
-            }}
-            aria-hidden
-          />
-        </>
-      ) : null}
-      <div className="mx-auto flex min-h-[85dvh] max-w-6xl flex-col items-center justify-center gap-6 px-4 pt-24 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-foreground/60 text-sm uppercase tracking-widest"
-        >
-          {heroContent.eyebrow}
-        </motion.p>
+      <video
+        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/images/fallback/Image_fallback_hero.jpg"
+      >
+        <source
+          src="/videos/People_getting_served_champagne_at_table_in_easyclub_nightclub.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-[1px]" />
+
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 px-4 text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           className={cn(
-            'max-w-4xl text-balance bg-gradient-to-b from-white to-white/80 bg-clip-text text-4xl font-extrabold leading-tight tracking-tight text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.2)] sm:text-6xl',
+            'max-w-5xl text-balance bg-gradient-to-b from-white to-white/90 bg-clip-text text-5xl font-extrabold leading-none tracking-tight text-transparent drop-shadow-sm sm:text-7xl md:text-8xl',
           )}
         >
           {"EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne."}
           <br className="hidden sm:block" />
           {'Née à Monaco, conçue pour le monde.'}
         </motion.h1>
-        <motion.ul
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.08 }}
-          className="text-foreground/80 flex flex-wrap items-center justify-center gap-2"
-          aria-label="Piliers du produit"
-        >
-          {['NF525', 'Assistant IA', 'Matériel pro', 'Modèle 1%'].map((t) => (
-            <li
-              key={t}
-              className="border-border/60 bg-card/60 rounded-full border px-3 py-1 text-xs backdrop-blur"
-            >
-              {t}
-            </li>
-          ))}
-        </motion.ul>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
-          className="text-foreground/80 max-w-2xl text-balance text-lg"
-        >
-          {
-            'Mission, valeur, conformité, sécurité et durabilité — les fondamentaux en un coup d’œil.'
-          }
-        </motion.p>
+
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.4, ease: 'easeOut', delay: 0.15 }}
-          className="flex flex-wrap items-center justify-center gap-4 pt-2"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+          className="flex flex-wrap items-center justify-center gap-4"
         >
           <Link
             href="#fundamentaux"
-            className={cn(buttonVariants({ variant: 'default', size: 'lg' }))}
+            className={cn(
+              buttonVariants({ variant: 'default', size: 'lg' }),
+              'h-auto px-8 py-6 text-lg',
+            )}
             role="button"
           >
             Découvrir la plateforme
           </Link>
           <Link
             href="/contact"
-            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'h-auto border-white/20 bg-white/10 px-8 py-6 text-lg text-white hover:bg-white/20',
+            )}
             role="button"
           >
             Nous contacter
           </Link>
         </motion.div>
       </div>
+
       <Hero3D />
-      {!prefersReduced ? (
-        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-          <div className="animate-floaty absolute left-[10%] top-[20%] h-16 w-16 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md will-change-transform" />
-          <div
-            className="animate-floaty absolute right-[12%] top-[35%] h-24 w-24 rounded-full border border-white/10 bg-white/5 backdrop-blur-md will-change-transform"
-            style={{ animationDelay: '0.8s' }}
-          />
-          <div
-            className="animate-floaty absolute bottom-[15%] left-1/2 h-14 w-28 -translate-x-1/2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md will-change-transform"
-            style={{ animationDelay: '0.4s' }}
-          />
-        </div>
-      ) : null}
     </section>
   );
 }
