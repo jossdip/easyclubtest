@@ -3,6 +3,7 @@ import { Nav } from '@/components/nav';
 import { Section } from '@/components/section';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 const content =
   'Conditions générales d’utilisation (CGU). Service fourni “tel quel”, sous réserve de disponibilité. Conformité et sécurité au cœur. Contactez‑nous pour les modalités contractuelles complètes.';

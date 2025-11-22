@@ -8,6 +8,7 @@ import { SecurityIDSection } from '@/components/sections/security-id-section';
 import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default function Home(): React.JSX.Element {
   return (

@@ -4,6 +4,7 @@ import { ContactForm } from '@/components/screens/contact-form';
 import { Section } from '@/components/section';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'edge';
 
 export default function ContactPage(): React.JSX.Element {
   return (
