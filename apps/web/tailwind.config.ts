@@ -10,6 +10,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - 1rem))' },
+        },
+      },
+      animation: {
+        marquee: 'marquee var(--marquee-duration) linear infinite',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

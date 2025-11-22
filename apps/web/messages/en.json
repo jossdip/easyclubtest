@@ -1,0 +1,42 @@
+{
+  "Hero": {
+    "eyebrow": "POS • AI • NF525",
+    "title": "Monaco-grade Point of Sale.",
+    "subtitle": "NF525 certifiable register, integrated AI assistant, and pro hardware. Designed for hospitality where precision and speed are non-negotiable.",
+    "cta_demo": "Request a demo",
+    "cta_contact": "Contact"
+  },
+  "ValueProps": {
+    "items": {
+      "compliance": {
+        "title": "NF525 Compliance",
+        "description": "Sealing, closures, archiving, audit, and advanced traceability."
+      },
+      "ai": {
+        "title": "AI Assistant",
+        "description": "Voice commands, contextual actions, cost monitoring, offline continuity."
+      },
+      "model": {
+        "title": "1% Model",
+        "description": "1% of payment split to the acquirer. No subscription."
+      },
+      "hardware": {
+        "title": "Pro Hardware",
+        "description": "Touch screens, thermal printers, Ingenico/Verifone terminals, scanners, cash drawer."
+      }
+    }
+  },
+  "Footer": {
+    "rights": "© {year} EasyClub. All rights reserved.",
+    "links": {
+      "home": "Home",
+      "solution": "Solution",
+      "features": "Features",
+      "hardware": "Hardware",
+      "compliance": "Compliance",
+      "pricing": "Pricing",
+      "contact": "Contact"
+    },
+    "marquee": "EasyClub • POS • AI • NF525 • Monaco-grade • "
+  }
+}
