@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BadgeCheck, HandCoins, Leaf, LockKeyhole, ShieldCheck, ScrollText } from 'lucide-react';
+import { BadgeCheck, ShieldCheck, Sparkles, Crown, Infinity, HeartHandshake } from 'lucide-react';
 import * as React from 'react';
 
 import { ConformiteSection } from '@/components/screens/conformite';
@@ -18,46 +18,56 @@ type Pillar = {
 
 const pillars: Pillar[] = [
   {
-    icon: <ScrollText className="h-6 w-6" aria-hidden />,
-    title: 'Mission',
-    description: "Élever l'expérience nocturne avec un POS Monaco‑grade, sûr et durable.",
+    icon: <Crown className="h-6 w-6" aria-hidden />,
+    title: "L'Excellence Nocturne",
+    description:
+      "Une suite technologique d'exception, taillée sur mesure pour les lieux les plus prestigieux du monde.",
+    color: 'from-amber-500/20 to-yellow-500/20',
+  },
+  {
+    icon: <Sparkles className="h-6 w-6" aria-hidden />,
+    title: 'Héritage & Innovation',
+    description:
+      "L'âme de la fête, sublimée par une intelligence artificielle discrète, puissante et au service de l'émotion.",
+    color: 'from-purple-500/20 to-pink-500/20',
+  },
+  {
+    icon: <Infinity className="h-6 w-6" aria-hidden />,
+    title: 'Fluidité Absolue',
+    description:
+      "Chaque interaction devient une caresse. Commandes, paiements, tout s'efface pour laisser place à l'instant présent.",
     color: 'from-blue-500/20 to-cyan-500/20',
   },
   {
-    icon: <BadgeCheck className="h-6 w-6" aria-hidden />,
-    title: 'Valeur',
-    description: "Simplicité et précision : NF525, IA d'assistance, matériel pro, modèle 1%.",
-    color: 'from-emerald-500/20 to-green-500/20',
-  },
-  {
     icon: <ShieldCheck className="h-6 w-6" aria-hidden />,
-    title: 'Conformité',
-    description: 'Scellement, clôtures, archivage et audit avancé NF525.',
-    color: 'from-indigo-500/20 to-purple-500/20',
-  },
-  {
-    icon: <LockKeyhole className="h-6 w-6" aria-hidden />,
-    title: 'Sécurité',
-    description: 'Contrôle d’accès, anti‑fraude, traçabilité et listes noires.',
+    title: 'Sérénité Totale',
+    description:
+      'Protégez votre établissement, votre staff et vos clients avec une sécurité invisible, omniprésente et infaillible.',
     color: 'from-red-500/20 to-orange-500/20',
   },
   {
-    icon: <Leaf className="h-6 w-6" aria-hidden />,
-    title: 'Durabilité',
-    description: 'Réduction des déchets, navettes VIP, efficacité opérationnelle.',
-    color: 'from-teal-500/20 to-emerald-500/20',
+    icon: <HeartHandshake className="h-6 w-6" aria-hidden />,
+    title: 'Écosystème Vertueux',
+    description:
+      'Un modèle unique où nous grandissons ensemble. Pas de frais cachés, juste une alliance durable pour votre succès.',
+    color: 'from-emerald-500/20 to-green-500/20',
   },
   {
-    icon: <HandCoins className="h-6 w-6" aria-hidden />,
-    title: 'Modèle économique',
-    description: '1% split à l’acquéreur, pas d’abonnement. Alignement total.',
-    color: 'from-amber-500/20 to-yellow-500/20',
+    icon: <BadgeCheck className="h-6 w-6" aria-hidden />,
+    title: "L'Art de Recevoir",
+    description:
+      "Redonnez ses lettres de noblesse à l'hospitalité. La technologie s'efface pour glorifier l'humain et le service.",
+    color: 'from-indigo-500/20 to-violet-500/20',
   },
 ];
 
 export function FundamentalsSection(): React.JSX.Element {
   return (
-    <Section id="fundamentaux" title="Fondamentaux" subtitle="Mission, valeur et piliers clés">
+    <Section
+      id="fundamentaux"
+      title="Vision & Héritage"
+      subtitle="Redéfinir les standards de la nuit"
+    >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {pillars.map((p, i) => (
           <motion.div

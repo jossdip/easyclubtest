@@ -14,8 +14,21 @@ const VIDEOS = [
   '/videos/man_walking_out_nightclub_getting_into_easyclub_van.mp4',
 ];
 
+const HEADLINES = [
+  'Révolutionnons la nuit ensemble',
+  "L'avenir de la nuit commence ici",
+  "Redéfinir l'expérience nocturne",
+  "L'excellence au service de la nuit",
+  'Votre club, réinventé',
+];
+
 export function Hero() {
   const [currentVideoIndex, setCurrentVideoIndex] = React.useState(0);
+  const [headline, setHeadline] = React.useState(HEADLINES[0]);
+
+  React.useEffect(() => {
+    setHeadline(HEADLINES[Math.floor(Math.random() * HEADLINES.length)]);
+  }, []);
 
   const handleVideoEnded = () => {
     setCurrentVideoIndex((prev) => (prev + 1) % VIDEOS.length);
@@ -27,6 +40,36 @@ export function Hero() {
       aria-label="Hero"
       className="relative isolate flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
+      {/* Marquee Band */}
+      <div className="absolute top-24 z-10 w-full overflow-hidden border-y border-white/10 bg-black/50 py-3 backdrop-blur-sm">
+        <div className="animate-marquee2 flex whitespace-nowrap">
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+          <span className="mx-4 text-sm font-bold tracking-widest text-white/80">
+            EASYCLUB • POS • IA • NF525 • MONACO-GRADE
+          </span>
+        </div>
+      </div>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentVideoIndex}
@@ -51,32 +94,38 @@ export function Hero() {
       {/* Overlay for readability */}
       <div className="absolute inset-0 -z-10 bg-black/40 backdrop-blur-[1px]" />
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-8 px-4 text-center">
+      <div className="mx-auto mt-16 flex max-w-6xl flex-col items-center justify-center gap-8 px-4 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className={cn(
-            'max-w-5xl text-balance bg-gradient-to-b from-white to-white/90 bg-clip-text text-5xl font-extrabold leading-none tracking-tight text-transparent drop-shadow-sm sm:text-7xl md:text-8xl',
+            'max-w-5xl text-balance bg-gradient-to-b from-white to-white/90 bg-clip-text text-5xl font-extrabold uppercase leading-none tracking-tight text-transparent drop-shadow-sm sm:text-7xl md:text-8xl',
           )}
         >
-          {"EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne."}
-          <br className="hidden sm:block" />
-          {'Née à Monaco, conçue pour le monde.'}
+          {headline}
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
-          className="text-foreground/80 max-w-2xl text-balance text-lg"
+          className="flex flex-col items-center gap-4"
         >
-          {
-            'Mission, valeur, conformité, sécurité et durabilité — les fondamentaux en un coup d’œil.'
-          }
-        </motion.p>
+          <p className="text-foreground/90 max-w-3xl text-balance text-xl font-light md:text-2xl">
+            EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne.
+            <br />
+            Née à Monaco, conçue pour le monde.
+          </p>
+
+          <div className="mt-2 flex gap-3 text-lg font-medium tracking-wide md:text-xl">
+            <span className="text-neon-cyan">Simplicité.</span>
+            <span className="text-neon-magenta">Sécurité.</span>
+            <span className="text-neon-violet">Sérénité.</span>
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,21 +138,11 @@ export function Hero() {
             href="#fundamentaux"
             className={cn(
               buttonVariants({ variant: 'default', size: 'lg' }),
-              'h-auto px-8 py-6 text-lg',
+              'h-auto rounded-full px-8 py-6 text-lg',
             )}
             role="button"
           >
-            Découvrir la plateforme
-          </Link>
-          <Link
-            href="/contact"
-            className={cn(
-              buttonVariants({ variant: 'outline', size: 'lg' }),
-              'h-auto border-white/20 bg-white/10 px-8 py-6 text-lg text-white hover:bg-white/20',
-            )}
-            role="button"
-          >
-            Nous contacter
+            Découvrir la révolution
           </Link>
         </motion.div>
       </div>

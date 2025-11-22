@@ -42,6 +42,10 @@ const config: Config = {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - 1rem))' },
         },
+        marquee2: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
         aurora: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
@@ -61,6 +65,7 @@ const config: Config = {
       },
       animation: {
         marquee: 'marquee var(--marquee-duration) linear infinite',
+        marquee2: 'marquee2 30s linear infinite',
         aurora: 'aurora 12s ease-in-out infinite',
         floaty: 'floaty 6s ease-in-out infinite',
         shine: 'shine 1.2s ease-out',
