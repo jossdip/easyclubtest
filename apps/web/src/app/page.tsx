@@ -4,6 +4,8 @@ import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { Nav } from '@/components/nav';
 
+export const runtime = 'edge';
+
 export default function Home(): JSX.Element {
   const t = useTranslations('ValueProps');
   const keys = ['compliance', 'ai', 'model', 'hardware'] as const;
