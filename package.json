@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm -C apps/web dev",
     "build": "pnpm -C apps/web build",
-    "build:pages": "pnpm -C apps/web run build:pages",
+    "build:pages": "pnpm -C apps/web build",
     "start": "pnpm -C apps/web start",
     "lint": "pnpm -C apps/web exec eslint . --max-warnings=0",
     "typecheck": "pnpm -C apps/web tsc --noEmit",
