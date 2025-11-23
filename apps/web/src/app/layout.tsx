@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   description:
     "Solution POS tout‑en‑un conforme NF525, IA d'assistance, matériel pro, modèle 1% split à l’acquéreur. Performance, luxe et précision.",
   metadataBase: new URL('https://easyclub.app'),
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default async function RootLayout({
@@ -41,7 +44,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            forcedTheme="dark"
             enableSystem={false}
             disableTransitionOnChange
           >

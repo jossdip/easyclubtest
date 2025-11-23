@@ -1,7 +1,14 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
+
+const MARQUEE_ITEMS = [
+  'La Nightlife Réinventée',
+  "EasyClub : L'Expertise au Service de la Nuit",
+  "Opportunité d'Investissement : Levée de Fonds en Cours",
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,8 +25,6 @@ export function Footer() {
     { icon: Facebook, href: '#', label: 'Facebook', active: false },
   ];
 
-  const marqueeText = 'EasyClub • POS • IA • NF525 • Monaco-grade • ';
-
   return (
     <footer
       className="border-border overflow-hidden border-t bg-black/40"
@@ -28,23 +33,31 @@ export function Footer() {
     >
       <div className="bg-accent/5 border-border/40 relative flex overflow-x-hidden border-b py-3">
         <div className="animate-marquee flex whitespace-nowrap">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={i}
-              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-            >
-              {marqueeText}
-            </span>
+          {Array.from({ length: 4 }).map((_, groupIndex) => (
+            <React.Fragment key={groupIndex}>
+              {MARQUEE_ITEMS.map((text, i) => (
+                <span
+                  key={`${groupIndex}-${i}`}
+                  className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
+                >
+                  {text} •
+                </span>
+              ))}
+            </React.Fragment>
           ))}
         </div>
         <div className="animate-marquee2 absolute top-0 flex whitespace-nowrap py-3">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={`clone-${i}`}
-              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-            >
-              {marqueeText}
-            </span>
+          {Array.from({ length: 4 }).map((_, groupIndex) => (
+            <React.Fragment key={`clone-${groupIndex}`}>
+              {MARQUEE_ITEMS.map((text, i) => (
+                <span
+                  key={`clone-${groupIndex}-${i}`}
+                  className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
+                >
+                  {text} •
+                </span>
+              ))}
+            </React.Fragment>
           ))}
         </div>
       </div>

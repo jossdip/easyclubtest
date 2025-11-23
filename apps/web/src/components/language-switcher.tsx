@@ -3,21 +3,18 @@
 import { useLocale } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 
 export function LanguageSwitcher() {
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
-
-  const toggleLanguage = () => {
-    const nextLocale = locale === 'fr' ? 'en' : 'fr';
-    router.replace(pathname, { locale: nextLocale });
-  };
+  const nextLocale = locale === 'fr' ? 'en' : 'fr';
 
   return (
-    <Button variant="ghost" size="sm" onClick={toggleLanguage} className="font-medium">
-      {locale === 'fr' ? 'EN' : 'FR'}
+    <Button variant="ghost" size="sm" asChild className="font-medium">
+      <Link href={pathname} locale={nextLocale}>
+        {locale === 'fr' ? 'EN' : 'FR'}
+      </Link>
     </Button>
   );
 }
