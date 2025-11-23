@@ -11,7 +11,12 @@ export function LanguageSwitcher() {
   const nextLocale = locale === 'fr' ? 'en' : 'fr';
 
   return (
-    <Button variant="ghost" size="sm" asChild className="font-medium">
+    <Button
+      variant="outline"
+      size="lg"
+      asChild
+      className="border-white/20 bg-white/5 text-lg font-bold backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white"
+    >
       <Link href={pathname} locale={nextLocale}>
         {locale === 'fr' ? 'EN' : 'FR'}
       </Link>
