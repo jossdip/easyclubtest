@@ -1,11 +1,14 @@
 import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { Nav } from '@/components/nav';
+import { ConformiteSection } from '@/components/screens/conformite';
 import { POSSection } from '@/components/screens/pos';
 import { ReservationsSection } from '@/components/screens/reservations';
+import { SecuriteSection } from '@/components/screens/securite';
+import { BraceletLickalyserSection } from '@/components/sections/bracelet-lickalyser-section';
 import { CTAContactSection } from '@/components/sections/cta-contact-section';
-import { SecurityFeatures } from '@/components/sections/security-features';
-import { SmartWasteSection } from '@/components/sections/smart-waste-section';
+import { SecurityIDSection } from '@/components/sections/security-id-section';
+import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -18,8 +21,11 @@ export default function Home(): React.JSX.Element {
         <Hero />
         <POSSection />
         <ReservationsSection />
-        <SmartWasteSection />
-        <SecurityFeatures />
+        <SecurityIDSection />
+        <BraceletLickalyserSection />
+        <VIPShuttlesSection />
+        <ConformiteSection />
+        <SecuriteSection />
         <CTAContactSection />
       </main>
       <Footer />

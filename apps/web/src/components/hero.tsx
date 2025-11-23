@@ -115,9 +115,9 @@ export function Hero() {
           </p>
 
           <div className="mt-2 flex gap-3 text-lg font-medium tracking-wide md:text-xl">
-            <span className="text-neon-cyan">Gestion.</span>
-            <span className="text-neon-magenta">Expérience.</span>
-            <span className="text-neon-violet">Sécurité.</span>
+            <span className="text-neon-cyan">Simplicité.</span>
+            <span className="text-neon-magenta">Sécurité.</span>
+            <span className="text-neon-violet">Sérénité.</span>
           </div>
         </motion.div>
 

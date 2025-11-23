@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import Image from 'next/image';
 import * as React from 'react';
 
 import { Section } from '@/components/section';
@@ -11,7 +10,7 @@ export function ReservationsSection(): React.JSX.Element {
   return (
     <section id="reservations" aria-label="App Réservation">
       <Section
-        title="App Réservation — client‑first"
+        title="App Réservation"
         subtitle="Découverte, réservation et commandes en quelques gestes. UX gamifiée, 3–5 étapes claires."
       >
         <motion.div
@@ -27,11 +26,16 @@ export function ReservationsSection(): React.JSX.Element {
           style={{ transformPerspective: '800px' }}
           aria-hidden
         >
-          <div className="shadow-elev-2 relative mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/40">
-            <Image src="/globe.svg" alt="" width={1000} height={600} className="opacity-80" />
-            {!prefersReducedMotion ? (
-              <div className="animate-pulseGlow pointer-events-none absolute inset-0" />
-            ) : null}
+          <div className="shadow-elev-2 relative mx-auto aspect-video max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-black/40">
+            <video
+              src="/videos/video_man_book_table_on_easyclub_app_on_his_couch.mp4"
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
         </motion.div>
         <div className="relative mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">

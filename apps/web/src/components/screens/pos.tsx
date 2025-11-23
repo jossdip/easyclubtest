@@ -20,7 +20,7 @@ export function POSSection(): React.JSX.Element {
   return (
     <section id="pos" aria-label="Application Pro">
       <Section
-        title="Application Pro — Gestion & Pilotage"
+        title="Application Pro"
         subtitle="La plateforme tout-en-un pour gérer votre établissement : réservations, plan de salle, commandes, stocks et personnel."
       >
         <motion.div

@@ -25,7 +25,7 @@ export function SecuriteSection(): React.JSX.Element {
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
       <Section
-        title="Sécurité — alerte, protocole, prévention IA"
+        title="Sécurité"
         subtitle="Bouton alerte discret, protocole coordonné et prévention proactive assistée par IA."
       >
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/40 p-8 lg:p-12">
