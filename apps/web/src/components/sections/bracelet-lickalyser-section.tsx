@@ -11,7 +11,6 @@ import {
   ThumbsUp,
 } from 'lucide-react';
 import * as React from 'react';
-import { PolarAngleAxis, RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts';
 
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
@@ -19,7 +18,6 @@ import { cn } from '@/lib/utils';
 
 export function BraceletLickalyserSection(): React.JSX.Element {
   const [bac, setBac] = React.useState(0.4); // g/L estimation
-  const percent = Math.min(100, Math.max(0, (bac / 3) * 100));
 
   // Determine state based on BAC
   const getStatus = (level: number) => {
@@ -56,7 +54,6 @@ export function BraceletLickalyserSection(): React.JSX.Element {
   };
 
   const state = getStatus(bac);
-  const data = [{ name: 'Bac', value: percent, fill: state.color }];
 
   return (
     <Section
@@ -70,52 +67,16 @@ export function BraceletLickalyserSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-black/40 p-8 shadow-2xl"
+          className="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-black/40 shadow-2xl"
         >
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_70%)]" />
-
-          <ResponsiveContainer width="100%" height="100%">
-            <RadialBarChart
-              cx="50%"
-              cy="50%"
-              innerRadius="60%"
-              outerRadius="90%"
-              barSize={32}
-              data={data}
-              startAngle={220}
-              endAngle={-40}
-            >
-              <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
-              <RadialBar background dataKey="value" cornerRadius={20} />
-            </RadialBarChart>
-          </ResponsiveContainer>
-
-          <div className="pointer-events-none absolute inset-0 grid place-items-center">
-            <div className="text-center">
-              <motion.div
-                key={state.status}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="mb-2 flex justify-center"
-              >
-                <state.icon className="h-8 w-8" style={{ color: state.color }} />
-              </motion.div>
-              <div className="text-5xl font-bold tracking-tighter" style={{ color: state.color }}>
-                {bac.toFixed(2)} <span className="text-2xl font-normal text-white/60">g/L</span>
-              </div>
-              <div
-                className="mt-2 inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-wider backdrop-blur-md"
-                style={{
-                  borderColor: `${state.color}40`,
-                  backgroundColor: `${state.color}10`,
-                  color: state.color,
-                }}
-              >
-                {state.status}
-              </div>
-            </div>
-          </div>
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            src="/videos/Man_checks_his_band_calls_a_taxi_easyclub.mp4"
+          />
         </motion.div>
 
         <motion.div

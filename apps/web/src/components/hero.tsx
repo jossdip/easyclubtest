@@ -47,7 +47,7 @@ export function Hero() {
       className="relative isolate flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
       {/* Marquee Band */}
-      <div className="absolute top-24 z-10 w-full overflow-hidden border-y border-white/10 bg-black/50 py-3 backdrop-blur-sm">
+      <div className="fixed top-0 z-[60] w-full overflow-hidden border-y border-white/10 bg-black/50 py-3 backdrop-blur-sm">
         <div className="animate-marquee2 flex whitespace-nowrap">
           {Array.from({ length: 4 }).map((_, groupIndex) => (
             <React.Fragment key={groupIndex}>

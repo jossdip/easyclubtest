@@ -8,7 +8,7 @@ export function Nav() {
     <>
       {/* Transparent Nav Overlay */}
       <nav
-        className="pointer-events-none fixed inset-x-0 top-0 z-50"
+        className="pointer-events-none absolute inset-x-0 top-0 z-50"
         role="navigation"
         aria-label="Navigation principale"
       >
