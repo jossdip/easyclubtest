@@ -26,6 +26,31 @@
       }
     }
   },
+  "BusinessModel": {
+    "title": "Fini les Frais Fixes",
+    "subtitle": "Un modèle économique transparent qui s'aligne sur votre réussite",
+    "traditional_title": "Modèle Traditionnel",
+    "traditional_description": "Accumulation de coûts fixes et abonnements multiples",
+    "traditional_summary": "Des milliers d'euros de charges fixes mensuelles",
+    "costs": {
+      "subscriptions": "Abonnements logiciels multiples",
+      "pos_subscription": "Location de caisse",
+      "paper_costs": "Papier & consommables",
+      "hardware_costs": "Achat de tablettes & matériel",
+      "maintenance": "Frais de maintenance & mises à jour"
+    },
+    "easyclub_title": "Modèle EasyClub",
+    "easyclub_description": "Tout inclus, sans engagement, sans risque",
+    "benefits": {
+      "free_hardware": "Matériel complet fourni gratuitement",
+      "free_software": "Logiciel tout-en-un inclus",
+      "maintenance_included": "Maintenance & support 24/7 inclus",
+      "no_subscription": "0€ d'abonnement mensuel",
+      "paper_included": "Papier imprimante fourni"
+    },
+    "commission_rate": "Jusqu'à 1% de commission",
+    "commission_details": "Uniquement sur les paiements par carte bancaire"
+  },
   "Footer": {
     "rights": "© {year} EasyClub. Tous droits réservés.",
     "links": {

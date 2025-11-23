@@ -26,6 +26,31 @@
       }
     }
   },
+  "BusinessModel": {
+    "title": "No More Fixed Costs",
+    "subtitle": "A transparent business model aligned with your success",
+    "traditional_title": "Traditional Model",
+    "traditional_description": "Accumulation of fixed costs and multiple subscriptions",
+    "traditional_summary": "Thousands of euros in monthly fixed charges",
+    "costs": {
+      "subscriptions": "Multiple software subscriptions",
+      "pos_subscription": "POS rental fees",
+      "paper_costs": "Paper & consumables",
+      "hardware_costs": "Tablet & hardware purchases",
+      "maintenance": "Maintenance & update fees"
+    },
+    "easyclub_title": "EasyClub Model",
+    "easyclub_description": "All-inclusive, no commitment, no risk",
+    "benefits": {
+      "free_hardware": "Complete hardware provided for free",
+      "free_software": "All-in-one software included",
+      "maintenance_included": "24/7 maintenance & support included",
+      "no_subscription": "0€ monthly subscription",
+      "paper_included": "Printer paper provided"
+    },
+    "commission_rate": "Up to 1% commission",
+    "commission_details": "Only on credit card payments"
+  },
   "Footer": {
     "rights": "© {year} EasyClub. All rights reserved.",
     "links": {

@@ -6,6 +6,7 @@ import { POSSection } from '@/components/screens/pos';
 import { ReservationsSection } from '@/components/screens/reservations';
 import { SecuriteSection } from '@/components/screens/securite';
 import { BraceletLickalyserSection } from '@/components/sections/bracelet-lickalyser-section';
+import { BusinessModelSection } from '@/components/sections/business-model-section';
 import { CTAContactSection } from '@/components/sections/cta-contact-section';
 import { SecurityIDSection } from '@/components/sections/security-id-section';
 import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
@@ -26,6 +27,7 @@ export default function Home(): React.JSX.Element {
         <VIPShuttlesSection />
         <ConformiteSection />
         <SecuriteSection />
+        <BusinessModelSection />
         <CTAContactSection />
       </main>
       <Footer />
