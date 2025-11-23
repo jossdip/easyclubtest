@@ -20,38 +20,12 @@ export function Footer() {
     { icon: Facebook, href: '#', label: 'Facebook', active: false },
   ];
 
-  const marqueeText = t('marquee');
-
   return (
     <footer
       className="border-border overflow-hidden border-t bg-black/40"
       role="contentinfo"
       aria-label="Pied de page"
     >
-      {/* Marquee Section */}
-      <div className="bg-accent/5 border-border/40 relative flex overflow-x-hidden border-b py-3">
-        <div className="animate-marquee flex whitespace-nowrap">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={i}
-              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-            >
-              {marqueeText}
-            </span>
-          ))}
-        </div>
-        <div className="animate-marquee2 absolute top-0 flex whitespace-nowrap py-3">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <span
-              key={`clone-${i}`}
-              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-            >
-              {marqueeText}
-            </span>
-          ))}
-        </div>
-      </div>
-
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <p className="text-muted-foreground text-sm">{t('rights', { year })}</p>

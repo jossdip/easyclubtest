@@ -15,8 +15,8 @@ export function ConformiteSection(): React.JSX.Element {
       className="relative"
     >
       <Section
-        title="Conformité NF525 — crédible et vérifiable"
-        subtitle="Inaltérabilité, clôtures, scellement, archivage et audit."
+        title="Conformité NF525"
+        subtitle="Inaltérabilité, clôtures, scellement, archivage et audit. Crédible et vérifiable."
       >
         <div className="grid gap-6 md:grid-cols-3">
           {[
