@@ -6,7 +6,6 @@ import * as React from 'react';
 
 import { ConformiteSection } from '@/components/screens/conformite';
 import { DurabiliteSection } from '@/components/screens/durabilite';
-import { SecuriteSection } from '@/components/screens/securite';
 import { Section } from '@/components/section';
 
 type Pillar = {
@@ -111,7 +110,6 @@ export function FundamentalsSection(): React.JSX.Element {
       </div>
 
       <div className="mt-32 space-y-32">
-        <SecuriteSection />
         <ConformiteSection />
         <DurabiliteSection />
       </div>

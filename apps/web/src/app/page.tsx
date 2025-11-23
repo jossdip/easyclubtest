@@ -1,6 +1,8 @@
 import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { Nav } from '@/components/nav';
+import { POSSection } from '@/components/screens/pos';
+import { SecuriteSection } from '@/components/screens/securite';
 import { BraceletLickalyserSection } from '@/components/sections/bracelet-lickalyser-section';
 import { CTAContactSection } from '@/components/sections/cta-contact-section';
 import { FundamentalsSection } from '@/components/sections/fundamentals-section';
@@ -17,9 +19,11 @@ export default function Home(): React.JSX.Element {
       <main id="main">
         <Hero />
         <FundamentalsSection />
+        <POSSection />
         <SecurityIDSection />
         <BraceletLickalyserSection />
         <VIPShuttlesSection />
+        <SecuriteSection />
         <CTAContactSection />
       </main>
       <Footer />

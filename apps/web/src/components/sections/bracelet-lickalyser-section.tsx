@@ -58,8 +58,8 @@ export function BraceletLickalyserSection(): React.JSX.Element {
   return (
     <Section
       id="bracelet"
-      title="Bracelet Capteur d'Alcoolémie"
-      subtitle="Estimation immédiate, alertes amis et sécurité active"
+      title="Suivi de Consommation & Prévention"
+      subtitle="Suivi intelligent, alertes amis et sécurité active"
     >
       <div className="grid items-center gap-8 lg:grid-cols-2">
         <motion.div
