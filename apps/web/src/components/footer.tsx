@@ -32,32 +32,15 @@ export function Footer() {
       aria-label="Pied de page"
     >
       <div className="bg-accent/5 border-border/40 relative flex overflow-x-hidden border-b py-3">
-        <div className="animate-marquee flex whitespace-nowrap">
-          {Array.from({ length: 4 }).map((_, groupIndex) => (
-            <React.Fragment key={groupIndex}>
-              {MARQUEE_ITEMS.map((text, i) => (
-                <span
-                  key={`${groupIndex}-${i}`}
-                  className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-                >
-                  {text} •
-                </span>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-        <div className="animate-marquee2 absolute top-0 flex whitespace-nowrap py-3">
-          {Array.from({ length: 4 }).map((_, groupIndex) => (
-            <React.Fragment key={`clone-${groupIndex}`}>
-              {MARQUEE_ITEMS.map((text, i) => (
-                <span
-                  key={`clone-${groupIndex}-${i}`}
-                  className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-                >
-                  {text} •
-                </span>
-              ))}
-            </React.Fragment>
+        <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">
+          {/* Triple duplication to ensure seamless loop on all screen sizes */}
+          {Array.from({ length: 12 }).map((_, i) => (
+            <span
+              key={i}
+              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
+            >
+              {MARQUEE_ITEMS[i % MARQUEE_ITEMS.length]} •
+            </span>
           ))}
         </div>
       </div>
