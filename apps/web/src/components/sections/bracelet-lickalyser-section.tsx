@@ -27,6 +27,9 @@ export function BraceletLickalyserSection(): React.JSX.Element {
         status: 'Safe',
         icon: ThumbsUp,
         message: 'Tout va bien. Profitez de la soirée !',
+        className:
+          'border-emerald-500/20 bg-emerald-500/10 text-emerald-200 shadow-emerald-500/10 shadow-lg',
+        animation: { scale: [1, 1.02, 1], transition: { duration: 2, repeat: Infinity } },
       };
     }
     if (level < 0.8) {
@@ -35,6 +38,8 @@ export function BraceletLickalyserSection(): React.JSX.Element {
         status: 'Warning',
         icon: Info,
         message: 'Soyez prudent. Pensez à vous hydrater.',
+        className: 'border-yellow-500/20 bg-yellow-500/10 text-yellow-200',
+        animation: {},
       };
     }
     if (level < 1.2) {
@@ -43,6 +48,8 @@ export function BraceletLickalyserSection(): React.JSX.Element {
         status: 'Caution',
         icon: AlertTriangle,
         message: 'Ralentissez. Vos amis reçoivent une notification.',
+        className: 'border-orange-500/20 bg-orange-500/10 text-orange-200',
+        animation: {},
       };
     }
     return {
@@ -50,6 +57,12 @@ export function BraceletLickalyserSection(): React.JSX.Element {
       status: 'Danger',
       icon: ShieldAlert,
       message: 'Niveau critique. Alerte secours prête.',
+      className:
+        'border-red-500/50 bg-red-500/20 text-red-200 animate-pulse shadow-red-500/20 shadow-xl',
+      animation: {
+        x: [-2, 2, -2, 2, 0],
+        transition: { duration: 0.4, repeat: Infinity, repeatDelay: 1 },
+      },
     };
   };
 
@@ -111,12 +124,23 @@ export function BraceletLickalyserSection(): React.JSX.Element {
             <AnimatePresence mode="wait">
               <motion.div
                 key={state.message}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm"
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  ...state.animation,
+                }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                className={cn(
+                  'rounded-xl border p-4 backdrop-blur-sm transition-colors duration-300',
+                  state.className,
+                )}
               >
-                <p className="text-balance text-lg font-light">{state.message}</p>
+                <div className="flex items-center gap-3">
+                  <state.icon className={cn('h-6 w-6', bac >= 1.2 && 'animate-bounce')} />
+                  <p className="text-balance text-lg font-medium">{state.message}</p>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>

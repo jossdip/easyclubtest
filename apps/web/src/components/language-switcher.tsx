@@ -1,11 +1,16 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, usePathname } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
-import { Link, usePathname } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 
 export function LanguageSwitcher() {
+  // Temporarily hidden as requested
+  return null;
+
+  // To keep imports used for now until uncommented
+
   const locale = useLocale();
   const pathname = usePathname();
   const nextLocale = locale === 'fr' ? 'en' : 'fr';

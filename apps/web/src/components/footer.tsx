@@ -14,7 +14,7 @@ export function Footer() {
     { icon: Instagram, href: '#', label: 'Instagram', active: false },
     {
       icon: Linkedin,
-      href: 'https://www.linkedin.com/in/josselin-b-5b5b5b5b/',
+      href: 'https://www.linkedin.com/in/josselin-diperi-a4b5b8293',
       label: 'LinkedIn',
       active: true,
     },

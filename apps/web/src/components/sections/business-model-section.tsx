@@ -63,9 +63,13 @@ export function BusinessModelSection() {
               ))}
             </ul>
 
-            <div className="mt-8 border-t border-red-500/20 pt-6">
-              <p className="text-center text-sm font-medium text-red-400">
-                {t('traditional_summary')}
+            <div className="mt-8 rounded-xl bg-red-500/10 p-6 text-center">
+              <div className="mb-2 flex justify-center">
+                <CreditCard className="h-8 w-8 text-red-400" />
+              </div>
+              <p className="text-lg font-bold text-red-400">100% à votre charge</p>
+              <p className="text-sm text-red-200/70">
+                Frais fixes, maintenance et matériel, même sans chiffre d'affaires
               </p>
             </div>
           </Card>

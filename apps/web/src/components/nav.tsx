@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { LanguageSwitcher } from '@/components/language-switcher';
-import { Link } from '@/i18n/navigation';
+// import { Link } from '@/i18n/navigation';
 
 export function Nav() {
   return (
@@ -14,7 +14,7 @@ export function Nav() {
       >
         <div className="mx-auto flex h-32 max-w-7xl items-center justify-between px-6">
           {/* Logo - Bigger and pointer-events-auto to be clickable */}
-          <Link
+          <a
             href="/"
             className="pointer-events-auto relative block transition-transform hover:scale-105"
           >
@@ -26,7 +26,7 @@ export function Nav() {
               src="/logo.png"
               priority
             />
-          </Link>
+          </a>
 
           {/* Controls */}
           <div className="pointer-events-auto flex items-center gap-4">
