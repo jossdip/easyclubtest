@@ -1,16 +1,12 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const MARQUEE_ITEMS = [
-  'La Nightlife Réinventée',
-  "EasyClub : L'Expertise au Service de la Nuit",
-  "Opportunité d'Investissement : Levée de Fonds en Cours",
-];
-
 export function Footer() {
+  const t = useTranslations('Footer');
   const year = new Date().getFullYear();
 
   const socials = [
@@ -31,23 +27,9 @@ export function Footer() {
       role="contentinfo"
       aria-label="Pied de page"
     >
-      <div className="bg-accent/5 border-border/40 relative flex overflow-x-hidden border-b py-3">
-        <div className="animate-marquee flex w-max gap-8 whitespace-nowrap">
-          {/* Triple duplication to ensure seamless loop on all screen sizes */}
-          {Array.from({ length: 12 }).map((_, i) => (
-            <span
-              key={i}
-              className="text-muted-foreground/70 mx-4 text-sm font-medium uppercase tracking-[0.2em]"
-            >
-              {MARQUEE_ITEMS[i % MARQUEE_ITEMS.length]} •
-            </span>
-          ))}
-        </div>
-      </div>
-
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <p className="text-muted-foreground text-sm">© {year} EasyClub. Tous droits réservés.</p>
+          <p className="text-muted-foreground text-sm">{t('rights', { year })}</p>
 
           <div className="flex items-center gap-6">
             {socials.map(({ icon: Icon, href, label, active }) => (

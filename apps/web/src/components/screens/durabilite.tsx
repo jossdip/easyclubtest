@@ -10,7 +10,7 @@ export function DurabiliteSection(): React.JSX.Element {
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
       <Section
-        title="Durabilité — déchets, recyclage, réutilisable"
+        title="Durabilité"
         subtitle="Réduction des déchets, verres réutilisables, filières de recyclage et sensibilisation."
       >
         <div className="grid gap-6 lg:grid-cols-3">
