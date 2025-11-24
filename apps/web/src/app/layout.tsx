@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://easyclub.app'),
   icons: {
     icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 
