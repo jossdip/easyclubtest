@@ -1,5 +1,6 @@
-// Remove runtime config to let it be static by default
-// export const runtime = 'edge';
+// Explicitly force static generation for Cloudflare Pages compatibility
+export const runtime = 'edge';
+export const dynamic = 'force-static';
 
 export default function NotFound() {
   return (
