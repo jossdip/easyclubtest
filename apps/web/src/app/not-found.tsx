@@ -1,5 +1,5 @@
-// Remove runtime logic (redirect) to satisfy Cloudflare static generation for not-found
-export const runtime = 'edge';
+// Remove runtime config to let it be static by default
+// export const runtime = 'edge';
 
 export default function NotFound() {
   return (
