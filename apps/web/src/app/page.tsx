@@ -10,6 +10,7 @@ import { BusinessModelSection } from '@/components/sections/business-model-secti
 import { CTAContactSection } from '@/components/sections/cta-contact-section';
 import { SecurityIDSection } from '@/components/sections/security-id-section';
 import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
+import { TopBanner } from '@/components/top-banner';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -17,6 +18,7 @@ export const runtime = 'edge';
 export default function Home(): React.JSX.Element {
   return (
     <>
+      <TopBanner />
       <Nav />
       <main id="main">
         <Hero />

@@ -4,7 +4,15 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { CreditCard, Receipt, ServerCog } from 'lucide-react';
 import * as React from 'react';
 
+import { ImageCarousel } from '@/components/image-carousel';
 import { Section } from '@/components/section';
+
+const POS_IMAGES = [
+  '/images/fallback/screenshots/pos_screen_1.png',
+  '/images/fallback/screenshots/pos_screen_2.png',
+  '/images/fallback/screenshots/pos_screen_3.png',
+  '/images/fallback/screenshots/pos_screen_4.png',
+];
 
 export function POSSection(): React.JSX.Element {
   const prefersReducedMotion = useReducedMotion();
@@ -36,17 +44,10 @@ export function POSSection(): React.JSX.Element {
           style={{ transformPerspective: '800px' }}
           aria-hidden
         >
-          <div className="shadow-elev-2 relative mx-auto aspect-video max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-black/40">
-            <video
-              src="/videos/pos-cinematic.mp4"
-              className="h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          </div>
+          <ImageCarousel
+            images={POS_IMAGES}
+            className="shadow-elev-2 mx-auto max-w-3xl border border-white/10"
+          />
         </motion.div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <motion.div

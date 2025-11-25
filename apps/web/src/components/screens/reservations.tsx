@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import * as React from 'react';
 
 import { Section } from '@/components/section';
@@ -36,6 +37,22 @@ export function ReservationsSection(): React.JSX.Element {
               playsInline
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+            {/* App Mockup Overlay */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, x: 20 }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8, type: 'spring' }}
+              className="absolute -bottom-6 -right-6 z-10 w-1/3 min-w-[140px] max-w-[220px] rotate-[-5deg] transform transition-transform duration-500 hover:rotate-0 md:-bottom-10 md:-right-10 md:w-1/4"
+            >
+              <Image
+                src="/images/fallback/screenshots/app_mockup.png"
+                alt="App Interface Mockup"
+                width={300}
+                height={600}
+                className="h-auto w-full rounded-xl border border-white/20 shadow-2xl drop-shadow-2xl"
+              />
+            </motion.div>
           </div>
         </motion.div>
         <div className="relative mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
