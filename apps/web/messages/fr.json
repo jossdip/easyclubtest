@@ -62,6 +62,12 @@
       "pricing": "Tarifs",
       "contact": "Contact"
     },
-    "marquee": "EasyClub • POS • IA • NF525 • Monaco-grade • "
+    "marquee": "EasyClub • POS • IA • NF525 • Monaco-grade • ",
+    "legal": {
+      "company": "EasyClub est une marque de JLM GROUP SAS",
+      "notice": "Mentions légales",
+      "terms": "CGU",
+      "privacy": "Confidentialité"
+    }
   }
 }

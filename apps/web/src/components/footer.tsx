@@ -29,7 +29,27 @@ export function Footer() {
     >
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <p className="text-muted-foreground text-sm">{t('rights', { year })}</p>
+          <div className="text-muted-foreground flex flex-col items-center gap-1.5 text-sm md:items-start">
+            <p>{t('rights', { year })}</p>
+            <p className="text-xs">{t('legal.company')}</p>
+            <nav aria-label={t('legal.notice')} className="flex gap-4 text-xs">
+              <Link
+                href="/legal/mentions-legales"
+                className="hover:text-foreground transition-colors"
+              >
+                {t('legal.notice')}
+              </Link>
+              <Link href="/legal/cgu" className="hover:text-foreground transition-colors">
+                {t('legal.terms')}
+              </Link>
+              <Link
+                href="/legal/confidentialite"
+                className="hover:text-foreground transition-colors"
+              >
+                {t('legal.privacy')}
+              </Link>
+            </nav>
+          </div>
 
           <div className="flex items-center gap-6">
             {socials.map(({ icon: Icon, href, label, active }) => (
