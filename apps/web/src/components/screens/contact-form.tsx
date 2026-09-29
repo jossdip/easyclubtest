@@ -72,7 +72,7 @@ export function ContactForm(): React.JSX.Element {
             </Label>
             <Input
               id="name"
-              placeholder="Josselin Diperi"
+              placeholder="Marie Dupont"
               autoComplete="name"
               className="focus:border-primary/50 border-white/10 bg-white/5 transition-colors focus:bg-white/10"
               {...register('name')}

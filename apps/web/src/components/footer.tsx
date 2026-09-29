@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import * as React from 'react';
@@ -12,12 +12,6 @@ export function Footer() {
   const socials = [
     { icon: Twitter, href: '#', label: 'Twitter', active: false },
     { icon: Instagram, href: '#', label: 'Instagram', active: false },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/josselin-diperi-a4b5b8293',
-      label: 'LinkedIn',
-      active: true,
-    },
     { icon: Facebook, href: '#', label: 'Facebook', active: false },
   ];
 

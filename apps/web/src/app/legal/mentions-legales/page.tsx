@@ -13,7 +13,7 @@ export const metadata = { title: 'Mentions légales — EasyClub' };
 const SOCIETE = {
   raisonSociale: 'JLM GROUP',
   forme: 'société par actions simplifiée (SAS)',
-  capital: null as string | null,
+  capital: '100 €' as string | null,
   siege: '27 avenue Jean Médecin, 06000 Nice, France',
   rcs: 'RCS Nice 104 188 578',
   siret: '104 188 578 00017',
