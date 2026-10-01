@@ -18,7 +18,7 @@ const SOCIETE = {
   rcs: 'RCS Nice 104 188 578',
   siret: '104 188 578 00017',
   email: 'contact@easyclub.fr',
-  telephone: null as string | null,
+  telephone: '+33 6 51 70 76 53' as string | null,
   directeurPublication: 'le Président de JLM GROUP',
 };
 
