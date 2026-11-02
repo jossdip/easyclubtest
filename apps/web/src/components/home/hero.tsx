@@ -25,7 +25,11 @@ export function Hero(): React.JSX.Element {
   const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   return (
-    <section ref={ref} id="top" className="grain relative overflow-hidden pb-24 pt-28 sm:pt-36">
+    <section
+      ref={ref}
+      id="top"
+      className="grain relative overflow-hidden pb-24 pt-28 sm:pt-36 lg:pt-[184px]"
+    >
       {/* le ciel : un violet profond en haut, l'horizon qui s'allume en bas */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(120%_70%_at_50%_-10%,rgb(46_16_101/0.95),transparent_60%)]" />
@@ -36,7 +40,7 @@ export function Hero(): React.JSX.Element {
       <motion.div
         aria-hidden
         style={{ y: eclipseY, x: '-50%' }}
-        className="pointer-events-none absolute left-1/2 top-[-62vw] w-[165vw] opacity-90 sm:top-[-100px] sm:w-[min(1100px,120vw)]"
+        className="pointer-events-none absolute left-1/2 top-[-62vw] w-[165vw] opacity-90 sm:top-[-130px] sm:w-[min(1100px,120vw)] lg:top-[-100px]"
       >
         <Eclipse className="w-full" delay={0.15} duration={2.2} />
       </motion.div>
