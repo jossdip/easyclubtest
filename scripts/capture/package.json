@@ -1,0 +1,9 @@
+{
+  "name": "easyclub-site-capture",
+  "private": true,
+  "description": "Captures de l'app EasyClub OS pour le site (photos et vidéos).",
+  "type": "module",
+  "dependencies": {
+    "mp4-muxer": "5.2.2"
+  }
+}

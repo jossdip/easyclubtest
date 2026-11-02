@@ -1,73 +1,236 @@
 {
-  "Hero": {
-    "eyebrow": "POS • AI • NF525",
-    "title": "Monaco-grade Point of Sale.",
-    "subtitle": "NF525 certifiable register, integrated AI assistant, and pro hardware. Designed for hospitality where precision and speed are non-negotiable.",
-    "cta_demo": "Request a demo",
-    "cta_contact": "Contact"
+  "meta": {
+    "title": "EasyClub — the register built for the night",
+    "description": "EasyClub OS: point of sale and management for your bar, club or restaurant on iPad, with Easy, an AI agent that runs it by voice. Born in Monaco, made for the world."
   },
-  "ValueProps": {
-    "items": {
-      "compliance": {
-        "title": "NF525 Compliance",
-        "description": "Sealing, closures, archiving, audit, and advanced traceability."
+  "nav": {
+    "product": "The app",
+    "easy": "Easy",
+    "features": "For the night",
+    "apps": "Apps",
+    "monaco": "Monaco",
+    "demo": "Book a demo",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language",
+    "home": "EasyClub home"
+  },
+  "hero": {
+    "eyebrow": "EasyClub OS · iPad point of sale",
+    "title1": "The register",
+    "title2": "built for the night.",
+    "lead": "Sales, tables, reservations, stock, staff and numbers in one iPad app. And Easy, an AI agent that runs it with you, by voice.",
+    "ctaDemo": "Book a demo",
+    "ctaEasy": "See Easy at work",
+    "badge": "Piloting in Monte-Carlo",
+    "scroll": "Scroll",
+    "videoLabel": "Easy opens table 7, adds two spritz and a negroni, then sends them to the bar."
+  },
+  "marquee": [
+    "Quick sale",
+    "Floor plan",
+    "Register and Z close",
+    "Reservations",
+    "Live reports",
+    "Stock and recipes",
+    "Loyalty",
+    "Online orders",
+    "Events",
+    "Marketing",
+    "Time clock and tips",
+    "Multi-site"
+  ],
+  "easy": {
+    "eyebrow": "Easy · the AI agent",
+    "title1": "Say it.",
+    "title2": "Easy does it.",
+    "lead": "“Two spritz and a negroni for table 7.” Easy opens the table, adds the order and sends it to the bar when you say so. It works in the app like your team does, on the same screens.",
+    "points": {
+      "voice": {
+        "title": "By voice or in writing",
+        "text": "One sentence is enough, even mid-rush. Easy knows your menu and your tables."
       },
-      "ai": {
-        "title": "AI Assistant",
-        "description": "Voice commands, contextual actions, cost monitoring, offline continuity."
+      "rights": {
+        "title": "The rights of whoever is signed in",
+        "text": "A waiter can’t do what a manager does. Neither can Easy."
       },
-      "model": {
-        "title": "1% Model",
-        "description": "1% of payment split to the acquirer. No subscription."
-      },
-      "hardware": {
-        "title": "Pro Hardware",
-        "description": "Touch screens, thermal printers, Ingenico/Verifone terminals, scanners, cash drawer."
+      "confirm": {
+        "title": "Your go-ahead first",
+        "text": "Anything sensitive, like closing the register, always waits for a tap on screen."
       }
+    },
+    "tryTitle": "Try a request",
+    "tryHint": "Examples from the demo app",
+    "you": "You",
+    "validate": "Confirm",
+    "commands": [
+      {
+        "q": "Two spritz and a negroni for table 7",
+        "tool": "Added to T7: 2 × Spritz, 1 × Negroni",
+        "a": "Done on T7. Shall I send them to the bar?"
+      },
+      {
+        "q": "How much have we made tonight?",
+        "tool": "Read: tonight’s register",
+        "a": "€3,670.70 incl. VAT over 21 tickets since 11:05. Average ticket: €174.80."
+      },
+      {
+        "q": "Book 4 for tomorrow at 9 pm, name Morel",
+        "tool": "Reservation created: Morel, 4 guests",
+        "a": "Booked: Morel, 4 guests, tomorrow at 21:00."
+      },
+      {
+        "q": "What are we running low on?",
+        "tool": "Read: stock alerts",
+        "a": "10 items to restock, including brut champagne, sole and Dom Pérignon. Shall I prepare the supplier order?"
+      },
+      {
+        "q": "Who’s on shift?",
+        "tool": "Read: time clock",
+        "a": "4 people on shift: Hugo, Inès, Nora and Théo."
+      },
+      {
+        "q": "Close the register",
+        "tool": "Sensitive action: register close",
+        "a": "Closing the register needs your OK.",
+        "confirm": true
+      }
+    ]
+  },
+  "tour": {
+    "eyebrow": "EasyClub OS",
+    "title": "One app. The whole room.",
+    "lead": "Everything a service needs, on the iPad already in your hand.",
+    "steps": [
+      {
+        "app": "Quick sale",
+        "title": "The bar in three taps.",
+        "text": "Big tiles, categories, a crystal-clear ticket. Card, cash or mobile, tips included, receipt by e-mail, text or QR code."
+      },
+      {
+        "app": "Tables",
+        "title": "A floor plan that’s alive.",
+        "text": "Dining room, terrace and bar at a glance: covers, rounds sent to the bar or kitchen, split bills."
+      },
+      {
+        "app": "Register",
+        "title": "The register, to the cent.",
+        "text": "The current service, payment methods, VAT, sales per server. Every sale is sealed in a fiscal journal; the Z close takes one tap."
+      },
+      {
+        "app": "Reservations",
+        "title": "Service sets itself up.",
+        "text": "Tonight’s list, birthdays, the waiting list, and every guest placed on the floor plan as they arrive."
+      },
+      {
+        "app": "Reports",
+        "title": "Numbers during service.",
+        "text": "Revenue, average ticket, footfall by hour, menu engineering. Not the next morning: right now."
+      },
+      {
+        "app": "Stock",
+        "title": "Stock follows sales.",
+        "text": "Recipes with automatic depletion, stock-out alerts, movement log, supplier orders."
+      }
+    ]
+  },
+  "nightday": {
+    "eyebrow": "Night or day",
+    "title": "Readable in the dark. And on the terrace.",
+    "lead": "Dark by default, to read at arm’s length in a packed room. One gesture in the control centre and the app turns light.",
+    "night": "Night",
+    "day": "Day",
+    "drag": "Drag to compare"
+  },
+  "night": {
+    "eyebrow": "Built for 2 a.m.",
+    "title": "Made for the room, not the back office.",
+    "sync": {
+      "title": "Every iPad, live.",
+      "text": "Bar, floor and door see the same tables and the same orders the moment they change.",
+      "button": "Add a spritz",
+      "bar": "Bar",
+      "floor": "Floor",
+      "door": "Door"
+    },
+    "offline": {
+      "title": "Wi-Fi down? Keep going.",
+      "text": "Sales stay on the iPad and sync as soon as the network is back.",
+      "online": "Online",
+      "offline": "Offline",
+      "sell": "Charge",
+      "queued": "queued",
+      "synced": "synced"
+    },
+    "journal": {
+      "title": "A journal that can’t be erased.",
+      "text": "Every sale is sealed and chained to the one before. Any later change shows.",
+      "sealed": "sealed"
+    },
+    "brand": {
+      "title": "In your colours.",
+      "text": "Your venue’s name, logo and colour, at launch and on the lock screen."
+    },
+    "rights": {
+      "title": "Everyone their rights.",
+      "text": "Manager, waiter, bartender, host: one code each, and the session locks itself."
+    },
+    "native": {
+      "title": "A real iPad app.",
+      "text": "Full screen, always up to date: every improvement arrives without reinstalling."
     }
   },
-  "BusinessModel": {
-    "title": "No More Fixed Costs",
-    "subtitle": "A transparent business model aligned with your success",
-    "traditional_title": "Traditional Model",
-    "traditional_description": "Accumulation of fixed costs and multiple subscriptions",
-    "traditional_summary": "Thousands of euros in monthly fixed charges",
-    "costs": {
-      "subscriptions": "Multiple software subscriptions",
-      "pos_subscription": "POS rental fees",
-      "paper_costs": "Paper & consumables",
-      "hardware_costs": "Tablet & hardware purchases",
-      "maintenance": "Maintenance & update fees"
-    },
-    "easyclub_title": "EasyClub Model",
-    "easyclub_description": "All-inclusive, no commitment, no risk",
-    "benefits": {
-      "free_hardware": "Complete hardware provided for free",
-      "free_software": "All-in-one software included",
-      "maintenance_included": "24/7 maintenance & support included",
-      "no_subscription": "0€ monthly subscription",
-      "paper_included": "Printer paper provided"
-    },
-    "commission_rate": "Up to 1% commission",
-    "commission_details": "Only on credit card payments"
-  },
-  "Footer": {
-    "rights": "© {year} EasyClub. All rights reserved.",
-    "links": {
-      "home": "Home",
-      "solution": "Solution",
-      "features": "Features",
-      "hardware": "Hardware",
-      "compliance": "Compliance",
-      "pricing": "Pricing",
-      "contact": "Contact"
-    },
-    "marquee": "EasyClub • POS • AI • NF525 • Monaco-grade • ",
-    "legal": {
-      "company": "EasyClub is a brand of JLM GROUP SAS",
-      "notice": "Legal notice",
-      "terms": "Terms",
-      "privacy": "Privacy"
+  "apps": {
+    "eyebrow": "The apps",
+    "title": "Sixteen apps, one register.",
+    "lead": "Keep the ones your venue needs, tuck the others away. Tap an app to see it.",
+    "close": "Close",
+    "noPreview": "Preview coming soon",
+    "items": {
+      "vente-directe": { "name": "Quick Sale", "tagline": "Counter and bar checkout" },
+      "tables": { "name": "Tables", "tagline": "Floor plan and VIP service" },
+      "caisse": { "name": "Register", "tagline": "Tickets, Z, accounts and refunds" },
+      "reservations": { "name": "Reservations", "tagline": "Bookings and arrivals" },
+      "rapports": { "name": "Reports", "tagline": "Revenue, products, fiscal journal" },
+      "stock": { "name": "Stock", "tagline": "Inventory and stock-outs" },
+      "achats": { "name": "Purchasing", "tagline": "Suppliers and orders" },
+      "clients": { "name": "Customers", "tagline": "Profiles, tabs and history" },
+      "fidelite": { "name": "Loyalty", "tagline": "Points and gift cards" },
+      "marketing": { "name": "Marketing", "tagline": "E-mail and text campaigns" },
+      "evenements": { "name": "Events", "tagline": "Nights, DJs and ticketing" },
+      "online": { "name": "Online", "tagline": "QR, click & collect, delivery" },
+      "staff": { "name": "Staff", "tagline": "Time clock, rota and tips" },
+      "franchise": { "name": "Franchise", "tagline": "Multi-site and consolidated" },
+      "promos": { "name": "Promos", "tagline": "Coupons and promo codes" },
+      "reglages": { "name": "Settings", "tagline": "Menu, team, apps, hardware" }
     }
+  },
+  "monaco": {
+    "eyebrow": "Monaco",
+    "title1": "Born in Monaco,",
+    "title2": "made for the world.",
+    "lead": "EasyClub was born among the bars, clubs and restaurants that never sleep. A first pilot venue is in service in Monte-Carlo.",
+    "pilot": "Pilot in progress · Monte-Carlo"
+  },
+  "cta": {
+    "eyebrow": "Demo",
+    "title": "Let’s talk about your venue.",
+    "lead": "An iPad demo, at your place, while the room gets ready.",
+    "write": "Write to the team",
+    "call": "Call",
+    "subject": "EasyClub demo",
+    "body": "Hello,\n\nI would like an EasyClub demo for my venue.\n\nVenue name:\nCity:\nType (bar, club, restaurant):\n"
+  },
+  "footer": {
+    "slogan": "Born in Monaco, made for the world.",
+    "legal": "Legal notice",
+    "cgu": "Terms of use",
+    "privacy": "Privacy",
+    "company": "EasyClub is a brand of JLM GROUP SAS."
+  },
+  "notFound": {
+    "title": "This page doesn’t exist.",
+    "text": "It may have slipped into the dark.",
+    "back": "Back to home"
   }
 }

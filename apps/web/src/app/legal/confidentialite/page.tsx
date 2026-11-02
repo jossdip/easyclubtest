@@ -14,7 +14,7 @@ export default function ConfidentialitePage(): React.JSX.Element {
       <Nav />
       <main>
         <Section title="Confidentialité">
-          <p className="text-foreground/80 max-w-3xl">{content}</p>
+          <p className="text-mute max-w-3xl">{content}</p>
         </Section>
       </main>
       <Footer />

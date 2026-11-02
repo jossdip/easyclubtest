@@ -1,36 +1,31 @@
 import { Footer } from '@/components/footer';
-import { Hero } from '@/components/hero';
+import { AppsGrid } from '@/components/home/apps-grid';
+import { BuiltForNight } from '@/components/home/built-for-night';
+import { Contact } from '@/components/home/contact';
+import { EasySection } from '@/components/home/easy';
+import { Hero } from '@/components/home/hero';
+import { Marquee } from '@/components/home/marquee';
+import { Monaco } from '@/components/home/monaco';
+import { NightDay } from '@/components/home/night-day';
+import { Tour } from '@/components/home/tour';
 import { Nav } from '@/components/nav';
-import { ConformiteSection } from '@/components/screens/conformite';
-import { POSSection } from '@/components/screens/pos';
-import { ReservationsSection } from '@/components/screens/reservations';
-import { SecuriteSection } from '@/components/screens/securite';
-import { BraceletLickalyserSection } from '@/components/sections/bracelet-lickalyser-section';
-import { BusinessModelSection } from '@/components/sections/business-model-section';
-import { CTAContactSection } from '@/components/sections/cta-contact-section';
-import { SecurityIDSection } from '@/components/sections/security-id-section';
-import { VIPShuttlesSection } from '@/components/sections/vip-shuttles-section';
-import { TopBanner } from '@/components/top-banner';
 
-export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
 
-export default function Home(): React.JSX.Element {
+export default function HomePage(): React.JSX.Element {
   return (
     <>
-      <TopBanner />
       <Nav />
-      <main id="main">
+      <main>
         <Hero />
-        <POSSection />
-        <ReservationsSection />
-        <SecurityIDSection />
-        <BraceletLickalyserSection />
-        <VIPShuttlesSection />
-        <ConformiteSection />
-        <SecuriteSection />
-        <BusinessModelSection />
-        <CTAContactSection />
+        <Marquee />
+        <EasySection />
+        <Tour />
+        <NightDay />
+        <BuiltForNight />
+        <AppsGrid />
+        <Monaco />
+        <Contact />
       </main>
       <Footer />
     </>

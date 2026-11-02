@@ -1,118 +1,102 @@
-@import '../styles/tokens.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Couleurs du brand kit v3 (02-color/tokens.css) : Midnight, EasyClub Violet, Neon Lavender, Moonlight… */
 :root {
-  /* Nightlife Luxe palette (dark) */
-  --background: 228 15% 6%; /* deep navy/charcoal */
-  --foreground: 220 18% 94%; /* soft off-white for contrast */
-  --accent: 190 95% 55%; /* electric cyan */
-  --muted: 220 14% 18%; /* subdued surfaces */
-  --card: 230 12% 10%; /* card background */
-  --border: 220 14% 28%; /* subtle borders */
-
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 10px;
-
-  /* Neon accents */
-  --neon-cyan: 190 95% 55%;
-  --neon-magenta: 300 92% 62%;
-  --neon-violet: 260 88% 66%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 6%;
-    --accent: 175 100% 39%;
-    --muted: 0 0% 93%;
-    --card: 0 0% 100%;
-    --border: 0 0% 89%;
-  }
+  --midnight: 10 10 16;
+  --night: 7 6 12;
+  --violet: 139 92 246;
+  --lavender: 196 181 253;
+  --deep: 109 40 217;
+  --ultra: 46 16 101;
+  --moon: 245 245 250;
+  --gold: 232 184 75;
+  --mute: 168 168 186;
+  --faint: 124 124 146;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  color-scheme: dark;
 }
 
 html {
-  @apply bg-background text-foreground;
+  background: rgb(var(--midnight));
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  @apply antialiased;
-  background-color: hsl(var(--background));
-  background-image:
-    radial-gradient(1200px 600px at 10% -10%, rgba(0, 255, 200, 0.2), transparent 60%),
-    radial-gradient(1200px 600px at 90% 110%, rgba(120, 0, 255, 0.18), transparent 60%);
+  background: rgb(var(--midnight));
+  color: rgb(var(--moon));
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgb(var(--violet) / 0.45);
+  color: rgb(var(--moon));
+}
+
+/* Lenis (défilement doux) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@layer components {
+  /* Les libellés en capitales espacées, en Jost : la voix du logo */
+  .eyebrow {
+    @apply font-display tracking-eyebrow text-lavender text-[12.5px] font-medium uppercase;
+  }
+  .display {
+    @apply font-display font-medium tracking-[-0.015em];
+  }
+  /* Verre fumé : panneaux et bulles */
+  .glass {
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.025));
+    border: 1px solid rgb(255 255 255 / 0.09);
+    backdrop-filter: blur(22px) saturate(140%);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+  }
+  .hairline {
+    border-color: rgb(255 255 255 / 0.08);
+  }
+  /* Le grain de la nuit : évite les aplats en bandes sur les grands dégradés */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  }
+  .text-gradient {
+    background: linear-gradient(180deg, rgb(var(--moon)) 30%, rgb(var(--lavender)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-/* Foundations gated behind the redesign flag to avoid regressions */
-@layer base {
-  .skip-link {
-    position: absolute;
-    left: 0;
-    top: -40px;
-    background: hsl(var(--background));
-    color: hsl(var(--foreground));
-    padding: 0.5rem 0.75rem;
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius-sm);
-    z-index: 1000;
-  }
-  .skip-link:focus {
-    top: 8px;
-    outline: 2px solid hsl(var(--accent) / 0.7);
-    outline-offset: 2px;
-  }
-  html[data-redesign='1'] {
-    color-scheme: light dark;
-  }
-  html[data-redesign='1'] body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-family-sans);
-  }
-  html[data-redesign='1'] h1 {
-    font-size: var(--font-size-4xl);
-    line-height: var(--line-height-tight);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: -0.01em;
-  }
-  html[data-redesign='1'] h2 {
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-snug);
-    font-weight: var(--font-weight-semibold);
-  }
-  html[data-redesign='1'] h3 {
-    font-size: var(--font-size-2xl);
-    line-height: var(--line-height-snug);
-    font-weight: var(--font-weight-medium);
-  }
-  html[data-redesign='1'] p {
-    line-height: var(--line-height-normal);
-  }
-  html[data-redesign='1'] a {
-    color: hsl(var(--accent));
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-  }
-  html[data-redesign='1'] a:hover {
-    text-decoration: underline;
-  }
-  html[data-redesign='1'] :focus-visible {
-    outline: 2px solid hsl(var(--accent) / 0.7);
-    outline-offset: 2px;
-  }
-  html[data-redesign='1'] button,
-  html[data-redesign='1'] input,
-  html[data-redesign='1'] textarea,
-  html[data-redesign='1'] select {
-    border-radius: var(--radius-md);
   }
 }

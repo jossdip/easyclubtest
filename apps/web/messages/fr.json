@@ -1,73 +1,236 @@
 {
-  "Hero": {
-    "eyebrow": "POS • IA • NF525",
-    "title": "Point de vente Monaco‑grade.",
-    "subtitle": "Caisse certifiable NF525, assistant IA intégré et matériel pro. Pensé pour l’hôtellerie‑restauration où la précision et la vitesse ne se négocient pas.",
-    "cta_demo": "Demandez une démo",
-    "cta_contact": "Contact"
+  "meta": {
+    "title": "EasyClub — la caisse qui tient la nuit",
+    "description": "EasyClub OS : la caisse et la gestion de votre bar, club ou restaurant sur iPad, avec Easy, un agent IA qui la pilote à la voix. Né à Monaco, fait pour le monde."
   },
-  "ValueProps": {
-    "items": {
-      "compliance": {
-        "title": "Conformité NF525",
-        "description": "Scellement, clôtures, archivage, audit et traçabilité avancée."
+  "nav": {
+    "product": "L’app",
+    "easy": "Easy",
+    "features": "Pour la nuit",
+    "apps": "Apps",
+    "monaco": "Monaco",
+    "demo": "Demander une démo",
+    "menu": "Menu",
+    "close": "Fermer",
+    "language": "Langue",
+    "home": "Accueil EasyClub"
+  },
+  "hero": {
+    "eyebrow": "EasyClub OS · caisse et gestion sur iPad",
+    "title1": "La caisse",
+    "title2": "qui tient la nuit.",
+    "lead": "Vente, tables, réservations, stock, équipe et chiffres dans une seule app iPad. Et Easy, un agent IA qui la pilote avec vous, à la voix.",
+    "ctaDemo": "Demander une démo",
+    "ctaEasy": "Voir Easy en action",
+    "badge": "En pilote à Monte-Carlo",
+    "scroll": "Défiler",
+    "videoLabel": "Easy ouvre la table 7, ajoute deux spritz et un negroni, puis les envoie au bar."
+  },
+  "marquee": [
+    "Vente directe",
+    "Plan de salle",
+    "Caisse et clôture Z",
+    "Réservations",
+    "Rapports en direct",
+    "Stock et recettes",
+    "Fidélité",
+    "Commandes en ligne",
+    "Événements",
+    "Marketing",
+    "Pointeuse et pourboires",
+    "Multi-sites"
+  ],
+  "easy": {
+    "eyebrow": "Easy · l’agent IA",
+    "title1": "Dites-le.",
+    "title2": "Easy s’en charge.",
+    "lead": "« Deux spritz et un negroni à la table 7. » Easy ouvre la table, ajoute la commande et l’envoie au bar quand vous le dites. Il agit dans l’app comme votre équipe, sur les mêmes écrans.",
+    "points": {
+      "voice": {
+        "title": "À la voix ou par écrit",
+        "text": "Une phrase suffit, même en plein service. Easy connaît votre carte et vos tables."
       },
-      "ai": {
-        "title": "Assistant IA",
-        "description": "Commandes vocales, actions contextuelles, monitoring des coûts, continuité hors‑ligne."
+      "rights": {
+        "title": "Les droits de la personne connectée",
+        "text": "Un serveur ne fait pas ce qu’un manager fait. Easy non plus."
       },
-      "model": {
-        "title": "Modèle 1%",
-        "description": "1% du paiement split à l’acquéreur. Pas d’abonnement."
-      },
-      "hardware": {
-        "title": "Matériel pro",
-        "description": "Écrans tactiles, imprimantes thermiques, TPE Ingenico/Verifone, scanners, tiroir‑caisse."
+      "confirm": {
+        "title": "Votre feu vert d’abord",
+        "text": "Une action sensible, comme une clôture de caisse, attend toujours une validation à l’écran."
       }
+    },
+    "tryTitle": "Essayez une demande",
+    "tryHint": "Exemples tirés de l’app de démonstration",
+    "you": "Vous",
+    "validate": "Valider",
+    "commands": [
+      {
+        "q": "Deux spritz et un negroni à la table 7",
+        "tool": "Ajouté à T7 : 2 × Spritz, 1 × Negroni",
+        "a": "C’est noté sur la T7. Je les envoie au bar ?"
+      },
+      {
+        "q": "Combien on a fait ce soir ?",
+        "tool": "Lecture : caisse du service",
+        "a": "3 670,70 € TTC sur 21 tickets depuis 11 h 05. Panier moyen : 174,80 €."
+      },
+      {
+        "q": "Réserve pour 4 demain à 21 h au nom de Morel",
+        "tool": "Réservation créée : Morel, 4 couverts",
+        "a": "Réservé : Morel, 4 personnes, demain à 21:00."
+      },
+      {
+        "q": "Qu’est-ce qui manque en stock ?",
+        "tool": "Lecture : alertes de stock",
+        "a": "10 références à réapprovisionner, dont le champagne brut, la sole et le Dom Pérignon. Je prépare la commande fournisseur ?"
+      },
+      {
+        "q": "Qui est en poste ?",
+        "tool": "Lecture : pointeuse",
+        "a": "4 personnes en poste : Hugo, Inès, Nora et Théo."
+      },
+      {
+        "q": "Ferme la caisse",
+        "tool": "Action sensible : clôture de caisse",
+        "a": "La clôture de caisse demande votre accord.",
+        "confirm": true
+      }
+    ]
+  },
+  "tour": {
+    "eyebrow": "EasyClub OS",
+    "title": "Une app. Toute la salle.",
+    "lead": "Tout ce qu’un service demande, sur l’iPad que vous avez déjà en main.",
+    "steps": [
+      {
+        "app": "Vente directe",
+        "title": "Le comptoir en trois touches.",
+        "text": "Grandes tuiles, catégories, ticket limpide. Carte, espèces ou mobile, pourboire compris, reçu par e-mail, SMS ou QR code."
+      },
+      {
+        "app": "Tables",
+        "title": "Le plan de salle, vivant.",
+        "text": "Salle, terrasse et bar en un coup d’œil : couverts, tournées envoyées au bar ou en cuisine, addition partagée."
+      },
+      {
+        "app": "Caisse",
+        "title": "La caisse, au centime près.",
+        "text": "Le service en cours, les moyens de paiement, la TVA, les ventes par serveur. Chaque vente est scellée dans un journal fiscal, la clôture Z se fait en un geste."
+      },
+      {
+        "app": "Réservations",
+        "title": "Le service se prépare tout seul.",
+        "text": "La liste du soir, les anniversaires, la liste d’attente, et chaque client placé sur le plan à son arrivée."
+      },
+      {
+        "app": "Rapports",
+        "title": "Les chiffres pendant le service.",
+        "text": "Chiffre d’affaires, panier moyen, affluence par heure, menu engineering. Pas le lendemain matin : tout de suite."
+      },
+      {
+        "app": "Stock",
+        "title": "Le stock suit les ventes.",
+        "text": "Recettes et décrément automatique, alertes de rupture, journal des mouvements, commandes fournisseurs."
+      }
+    ]
+  },
+  "nightday": {
+    "eyebrow": "Nuit ou jour",
+    "title": "Lisible dans le noir. Et en terrasse.",
+    "lead": "Sombre par défaut, pour lire à bout de bras dans une salle pleine. Un geste dans le centre de contrôle, et l’app passe en clair.",
+    "night": "Nuit",
+    "day": "Jour",
+    "drag": "Faites glisser pour comparer"
+  },
+  "night": {
+    "eyebrow": "Pensé pour 2 h du matin",
+    "title": "Fait pour la salle, pas pour le bureau.",
+    "sync": {
+      "title": "Tous les iPads, en direct.",
+      "text": "Le bar, la salle et l’accueil voient les mêmes tables et les mêmes commandes, à l’instant où elles changent.",
+      "button": "Ajouter un spritz",
+      "bar": "Bar",
+      "floor": "Salle",
+      "door": "Accueil"
+    },
+    "offline": {
+      "title": "Le Wi-Fi tombe ? On continue.",
+      "text": "Les ventes restent sur l’iPad et se synchronisent dès que le réseau revient.",
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "sell": "Encaisser",
+      "queued": "en attente",
+      "synced": "synchronisé"
+    },
+    "journal": {
+      "title": "Un journal qui ne s’efface pas.",
+      "text": "Chaque vente est scellée et chaînée à la précédente. Une modification après coup se voit.",
+      "sealed": "scellé"
+    },
+    "brand": {
+      "title": "À vos couleurs.",
+      "text": "Le nom, le logo et la couleur de l’établissement, au lancement et au verrouillage."
+    },
+    "rights": {
+      "title": "Chacun ses droits.",
+      "text": "Manager, serveur, barman, hôte : un code chacun, et la session se referme seule."
+    },
+    "native": {
+      "title": "Une vraie app iPad.",
+      "text": "Plein écran, toujours à jour : chaque amélioration arrive sans rien réinstaller."
     }
   },
-  "BusinessModel": {
-    "title": "Fini les Frais Fixes",
-    "subtitle": "Un modèle économique transparent qui s'aligne sur votre réussite",
-    "traditional_title": "Modèle Traditionnel",
-    "traditional_description": "Accumulation de coûts fixes et abonnements multiples",
-    "traditional_summary": "Des milliers d'euros de charges fixes mensuelles",
-    "costs": {
-      "subscriptions": "Abonnements logiciels multiples",
-      "pos_subscription": "Location de caisse",
-      "paper_costs": "Papier & consommables",
-      "hardware_costs": "Achat de tablettes & matériel",
-      "maintenance": "Frais de maintenance & mises à jour"
-    },
-    "easyclub_title": "Modèle EasyClub",
-    "easyclub_description": "Tout inclus, sans engagement, sans risque",
-    "benefits": {
-      "free_hardware": "Matériel complet fourni gratuitement",
-      "free_software": "Logiciel tout-en-un inclus",
-      "maintenance_included": "Maintenance & support 24/7 inclus",
-      "no_subscription": "0€ d'abonnement mensuel",
-      "paper_included": "Papier imprimante fourni"
-    },
-    "commission_rate": "Jusqu'à 1% de commission",
-    "commission_details": "Uniquement sur les paiements par carte bancaire"
-  },
-  "Footer": {
-    "rights": "© {year} EasyClub. Tous droits réservés.",
-    "links": {
-      "home": "Accueil",
-      "solution": "Solution",
-      "features": "Fonctionnalités",
-      "hardware": "Matériel",
-      "compliance": "Conformité",
-      "pricing": "Tarifs",
-      "contact": "Contact"
-    },
-    "marquee": "EasyClub • POS • IA • NF525 • Monaco-grade • ",
-    "legal": {
-      "company": "EasyClub est une marque de JLM GROUP SAS",
-      "notice": "Mentions légales",
-      "terms": "CGU",
-      "privacy": "Confidentialité"
+  "apps": {
+    "eyebrow": "Les apps",
+    "title": "Seize apps, une seule caisse.",
+    "lead": "Gardez celles qui servent à votre établissement, rangez les autres. Touchez une app pour la voir.",
+    "close": "Fermer",
+    "noPreview": "Aperçu bientôt disponible",
+    "items": {
+      "vente-directe": { "name": "Vente Directe", "tagline": "Encaissement comptoir et bar" },
+      "tables": { "name": "Tables", "tagline": "Plan de salle et service VIP" },
+      "caisse": { "name": "Caisse", "tagline": "Tickets, Z, comptes et remboursements" },
+      "reservations": { "name": "Réservations", "tagline": "Agenda et arrivées" },
+      "rapports": { "name": "Rapports", "tagline": "CA, produits, journal fiscal" },
+      "stock": { "name": "Stock", "tagline": "Inventaire et ruptures" },
+      "achats": { "name": "Achats", "tagline": "Fournisseurs et commandes" },
+      "clients": { "name": "Clients", "tagline": "Fiches, ardoises et historique" },
+      "fidelite": { "name": "Fidélité", "tagline": "Points et cartes cadeaux" },
+      "marketing": { "name": "Marketing", "tagline": "Campagnes e-mail et SMS" },
+      "evenements": { "name": "Événements", "tagline": "Soirées, DJ et billetterie" },
+      "online": { "name": "En ligne", "tagline": "QR, click & collect, livraison" },
+      "staff": { "name": "Staff", "tagline": "Pointeuse, planning et pourboires" },
+      "franchise": { "name": "Franchise", "tagline": "Multi-sites et consolidé" },
+      "promos": { "name": "Promos", "tagline": "Coupons et codes promo" },
+      "reglages": { "name": "Réglages", "tagline": "Carte, équipe, apps, matériel" }
     }
+  },
+  "monaco": {
+    "eyebrow": "Monaco",
+    "title1": "Né à Monaco,",
+    "title2": "fait pour le monde.",
+    "lead": "EasyClub est né au contact des bars, des clubs et des restaurants qui ne dorment pas. Un premier établissement pilote est en service à Monte-Carlo.",
+    "pilot": "Pilote en cours · Monte-Carlo"
+  },
+  "cta": {
+    "eyebrow": "Démo",
+    "title": "Parlons de votre établissement.",
+    "lead": "Une démo sur iPad, chez vous, pendant que la salle se prépare.",
+    "write": "Écrire à l’équipe",
+    "call": "Appeler",
+    "subject": "Démo EasyClub",
+    "body": "Bonjour,\n\nJe souhaite une démo d’EasyClub pour mon établissement.\n\nNom de l’établissement :\nVille :\nType (bar, club, restaurant) :\n"
+  },
+  "footer": {
+    "slogan": "Né à Monaco, fait pour le monde.",
+    "legal": "Mentions légales",
+    "cgu": "Conditions d’utilisation",
+    "privacy": "Confidentialité",
+    "company": "EasyClub est une marque de JLM GROUP SAS."
+  },
+  "notFound": {
+    "title": "Cette page n’existe pas.",
+    "text": "Elle s’est peut-être éclipsée.",
+    "back": "Retour à l’accueil"
   }
 }

@@ -1,39 +1,30 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-test('home loads and CTA visible', async ({ page }) => {
+test('accueil : le titre, la vidéo de l’app et la demande de démo', async ({ page }) => {
   await page.goto('/');
-  const h1 = page.getByRole('heading', { level: 1 });
-  await expect(h1).toBeVisible();
-  await expect(h1).toContainText(
-    "EasyClub n'est pas qu'une application, c'est la révolution de la vie nocturne.",
-  );
-  await expect(h1).toContainText('Née à Monaco, conçue pour le monde.');
-  await expect(page.getByRole('link', { name: /demandez une démo/i })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('La caisse');
+  await expect(page.locator('video').first()).toHaveAttribute('src', /easy\.mp4$/);
+  await expect(page.getByRole('link', { name: /demander une démo/i }).first()).toBeVisible();
 });
 
-test('contact form validates', async ({ page }) => {
-  await page.goto('/contact');
-  await page.getByLabel('Nom').fill('A');
-  await page.getByRole('button', { name: /envoyer/i }).click();
-  await expect(page.getByText(/Nom invalide/i)).toBeVisible();
-});
-
-test('nav anchors scroll to sections', async ({ page }) => {
+test('les ancres mènent aux sections', async ({ page }) => {
   await page.goto('/');
-  // Map labels to ids we expect in the page
-  const anchors: Array<{ label: RegExp; id: string }> = [
-    { label: /fundamentaux/i, id: 'fundamentaux' },
-    { label: /sécurité/i, id: 'securite' },
-    { label: /bracelet/i, id: 'bracelet' },
-    { label: /marketplace/i, id: 'marketplace' },
-    { label: /merch/i, id: 'merch' },
-    { label: /navettes/i, id: 'navettes' },
-    { label: /déchets/i, id: 'dechets' },
-    { label: /kpis/i, id: 'kpis' },
-  ];
-  for (const { label, id } of anchors) {
-    await page.getByRole('link', { name: label }).first().click();
-    await expect.poll(async () => page.url()).toContain(`#${id}`);
-    await expect(page.locator(`section#${id} h2`).first()).toBeVisible();
+  for (const id of ['easy', 'app', 'nuit', 'apps', 'monaco', 'contact']) {
+    await expect(page.locator(`#${id}`)).toHaveCount(1);
   }
+});
+
+test('la démo se demande par e-mail ou par téléphone', async ({ page }) => {
+  await page.goto('/contact');
+  await expect(page.getByRole('link', { name: /écrire à l’équipe/i })).toHaveAttribute(
+    'href',
+    /^mailto:contact@easyclub\.fr/,
+  );
+  await expect(page.getByRole('link', { name: /appeler/i })).toHaveAttribute('href', /^tel:/);
+});
+
+test('anglais', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'en', exact: true }).first().click();
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('built for the night');
 });

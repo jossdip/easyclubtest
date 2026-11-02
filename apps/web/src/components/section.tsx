@@ -1,27 +1,15 @@
-import * as React from 'react';
-
-import { cn } from '@/lib/utils';
-
+/** Une page de texte (mentions légales, CGU, confidentialité) : un titre et son contenu. */
 export function Section({
-  id,
   title,
-  subtitle,
   children,
-  className,
 }: {
-  id?: string;
-  title: React.ReactNode;
-  subtitle?: string;
-  children?: React.ReactNode;
-  className?: string;
-}) {
+  title: string;
+  children: React.ReactNode;
+}): React.JSX.Element {
   return (
-    <section id={id} className={cn('mx-auto max-w-6xl px-4 py-16 md:py-24', className)}>
-      <div className="mb-8">
-        <h2 className="text-balance text-3xl font-semibold md:text-4xl">{title}</h2>
-        {subtitle ? <p className="text-foreground/70 mt-3 max-w-2xl">{subtitle}</p> : null}
-      </div>
-      {children}
+    <section className="max-w-site mx-auto px-5 pb-24 pt-36 sm:px-8 sm:pt-44">
+      <h1 className="display text-[clamp(36px,5vw,60px)] leading-[1.05]">{title}</h1>
+      <div className="mt-12 text-[16px] leading-relaxed">{children}</div>
     </section>
   );
 }

@@ -24,9 +24,9 @@ const SOCIETE = {
 
 function Bloc({ titre, children }: { titre: string; children: React.ReactNode }) {
   return (
-    <div className="border-border border-t py-6 first:border-t-0 first:pt-0">
+    <div className="border-t border-white/10 py-6 first:border-t-0 first:pt-0">
       <h3 className="mb-3 text-lg font-semibold">{titre}</h3>
-      <div className="text-foreground/80 space-y-1.5 leading-relaxed">{children}</div>
+      <div className="text-mute space-y-1.5 leading-relaxed">{children}</div>
     </div>
   );
 }
