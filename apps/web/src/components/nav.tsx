@@ -11,11 +11,11 @@ import { EASE } from '@/components/ui/motion';
 import { cn } from '@/lib/utils';
 
 const LINKS = [
+  { href: '/#gratuit', key: 'free' },
   { href: '/#easy', key: 'easy' },
+  { href: '/#relie', key: 'connected' },
   { href: '/#app', key: 'product' },
-  { href: '/#nuit', key: 'features' },
   { href: '/#apps', key: 'apps' },
-  { href: '/#monaco', key: 'monaco' },
 ] as const;
 
 export function Nav(): React.JSX.Element {

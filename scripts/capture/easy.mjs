@@ -28,3 +28,14 @@ export async function scriptEasy(page, steps) {
     });
   });
 }
+
+/** La transcription de la voix (Amazon Transcribe en service, absent du poste de capture) : la phrase dite. */
+export async function scriptVoice(page, phrases) {
+  let n = 0;
+  await page.route('**/api/v1/agent/transcribe', async (route) => {
+    const text = phrases[Math.min(n, phrases.length - 1)];
+    n += 1;
+    await new Promise((r) => setTimeout(r, 450));
+    return route.fulfill({ json: { text } });
+  });
+}

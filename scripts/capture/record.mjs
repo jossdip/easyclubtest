@@ -1,11 +1,16 @@
 // Vidéos de l'app pour le site : la scène est jouée dans l'app (instance de capture), filmée image par
 // image (screencast de Chrome), puis encodée en H.264/MP4 par Chrome lui-même (WebCodecs + mp4-muxer).
-//   node scripts/capture/record.mjs <scène> <sortie.mp4>        scènes : easy, vente
+//   node scripts/capture/record.mjs <scène> <sortie.mp4>   scènes : caisse, rapport, planning (Easy à la voix), vente
 // Prérequis : scripts/capture/reset-db.sh, puis l'instance de capture sur :4100, et `npm i` dans ce dossier.
-import { writeFileSync } from 'node:fs';
+// La voix : la phrase est dite par la voix française du Mac (`say`) et jouée comme le micro de l'iPad ;
+// l'app l'enregistre et détecte la fin de phrase comme en service. Seule la transcription est rejouée.
+import { execFileSync } from 'node:child_process';
+import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { scriptEasy } from './easy.mjs';
+import { scriptEasy, scriptVoice } from './easy.mjs';
 import { APP, hideBanners, home, launch, login, open } from './lib.mjs';
 
 const MUXER = fileURLToPath(
@@ -18,7 +23,7 @@ const BITRATE = 3_500_000;
 
 const [scene, outFile] = process.argv.slice(2);
 if (!scene || !outFile) {
-  console.error('usage : node record.mjs <easy|vente> <sortie.mp4>');
+  console.error('usage : node record.mjs <caisse|rapport|planning|vente> <sortie.mp4>');
   process.exit(2);
 }
 
@@ -48,58 +53,260 @@ async function tap(page, locator) {
   await locator.click();
 }
 
+/** Repères de la scène (en secondes de vidéo) : début de l'écoute, phrase entendue, réponse d'Easy. */
+const marks = {};
+const mark = (name) => {
+  marks[name] = Date.now() / 1000;
+};
+
 const button = (page, name) =>
   page.getByRole('button', { name, exact: typeof name === 'string' }).first();
 
+/** La phrase dite à Easy, en WAV : 0,6 s de silence, la phrase, 8 s de silence (la fin de phrase). */
+function voiceWav(text) {
+  const dir = mkdtempSync(join(tmpdir(), 'easyclub-voix-'));
+  execFileSync('say', ['-v', 'Flo (Français (France))', '-o', join(dir, 'v.aiff'), text]);
+  execFileSync('afconvert', [
+    '-f',
+    'WAVE',
+    '-d',
+    'LEI16@48000',
+    '-c',
+    '1',
+    join(dir, 'v.aiff'),
+    join(dir, 'raw.wav'),
+  ]);
+  const raw = readFileSync(join(dir, 'raw.wav'));
+  let p = 12;
+  let pcm = Buffer.alloc(0);
+  while (p < raw.length) {
+    const id = raw.toString('ascii', p, p + 4);
+    const size = raw.readUInt32LE(p + 4);
+    if (id === 'data') pcm = raw.subarray(p + 8, p + 8 + size);
+    p += 8 + size + (size % 2);
+  }
+  const rate = 48000;
+  const silence = (s) => Buffer.alloc(Math.round(rate * s) * 2);
+  const data = Buffer.concat([silence(0.6), pcm, silence(8)]);
+  const header = Buffer.alloc(44);
+  header.write('RIFF', 0);
+  header.writeUInt32LE(36 + data.length, 4);
+  header.write('WAVEfmt ', 8);
+  header.writeUInt32LE(16, 16);
+  header.writeUInt16LE(1, 20);
+  header.writeUInt16LE(1, 22);
+  header.writeUInt32LE(rate, 24);
+  header.writeUInt32LE(rate * 2, 28);
+  header.writeUInt16LE(2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write('data', 36);
+  header.writeUInt32LE(data.length, 40);
+  const out = join(dir, 'voix.wav');
+  writeFileSync(out, Buffer.concat([header, data]));
+  return { file: out, speech: pcm.length / 2 / rate };
+}
+
+/** Le planning d'une semaine (10 → 15 novembre), créneau par créneau, comme Easy le demande à l'app. */
+function weekShifts() {
+  const soir = (d, who, end = '00:30') => ({
+    name: 'plan_shift',
+    input: {
+      operator: who,
+      start: `2026-11-${d}T18:00`,
+      end: `2026-11-${String(Number(d) + 1)}T${end}`,
+    },
+  });
+  const midi = (d, who) => ({
+    name: 'plan_shift',
+    input: { operator: who, start: `2026-11-${d}T11:00`, end: `2026-11-${d}T15:30` },
+  });
+  const accueil = (d, end = '00:30') => ({
+    name: 'plan_shift',
+    input: {
+      operator: 'Hugo',
+      start: `2026-11-${d}T19:00`,
+      end: `2026-11-${String(Number(d) + 1)}T${end}`,
+    },
+  });
+  return [
+    soir('10', 'Inès'),
+    soir('10', 'Nora'),
+    midi('10', 'Théo'),
+    soir('11', 'Lucas'),
+    soir('11', 'Nora'),
+    midi('11', 'Théo'),
+    soir('12', 'Inès'),
+    soir('12', 'Lucas'),
+    soir('12', 'Nora'),
+    accueil('12'),
+    soir('13', 'Inès', '01:00'),
+    soir('13', 'Lucas', '01:00'),
+    soir('13', 'Théo', '01:00'),
+    soir('13', 'Nora', '01:00'),
+    accueil('13', '01:00'),
+    soir('14', 'Inès', '01:00'),
+    soir('14', 'Lucas', '01:00'),
+    soir('14', 'Théo', '01:00'),
+    soir('14', 'Nora', '01:00'),
+    accueil('14', '01:00'),
+    soir('14', 'Camille', '01:00'),
+    midi('15', 'Théo'),
+    midi('15', 'Lucas'),
+  ];
+}
+
 const SCENES = {
-  // Easy : une phrase, l'app ouvre la table et ajoute la commande ; puis « envoie » — au bar
-  async easy(page) {
-    await scriptEasy(page, [
-      {
-        delay: 1100,
-        tools: [
-          {
-            name: 'add_to_table',
-            input: {
-              table: 'T7',
-              items: [
-                { product: 'spritz', qty: 2 },
-                { product: 'negroni', qty: 1 },
-              ],
+  // Faire la caisse, à la voix : Easy compte les espèces, voit l'écart et les tables encore ouvertes,
+  // puis attend la validation à l'écran (une clôture est scellée et irréversible)
+  caisse: {
+    voice: {
+      say: 'Fais la caisse. J’ai compté trois cent quatre-vingt-seize euros cinquante en espèces.',
+      heard: 'Fais la caisse, j’ai compté 396,50 € en espèces.',
+    },
+    async setup(page) {
+      await scriptEasy(page, [
+        { delay: 1300, tools: [{ name: 'close_register', input: { counted_euros: 396.5 } }] },
+        { delay: 600, text: 'Caisse clôturée.' },
+      ]);
+    },
+    async play(page) {
+      await page.waitForTimeout(700);
+      await tap(page, button(page, 'Caisse'));
+      await page.waitForTimeout(1000);
+      await tap(page, button(page, 'Ouvrir Easy'));
+      await page.waitForTimeout(700);
+      await tap(page, button(page, 'Parler'));
+      mark('listen');
+      await page
+        .getByText(/^Fais la caisse/)
+        .last()
+        .waitFor({ timeout: 20000 });
+      mark('heard');
+      await page.getByText('Clôturer la caisse').last().waitFor({ timeout: 20000 });
+      mark('answer');
+      await page.waitForTimeout(3600);
+    },
+  },
+
+  // Le rapport de la semaine, à la voix : Easy lit les ventes de la semaine et de la précédente, et résume
+  rapport: {
+    voice: {
+      say: 'Fais-moi le rapport de la semaine.',
+      heard: 'Fais-moi le rapport de la semaine.',
+    },
+    async setup(page) {
+      await scriptEasy(page, [
+        {
+          delay: 1500,
+          tools: [
+            {
+              name: 'get_sales_report',
+              input: { from: '2026-10-25', to: '2026-10-31', group_by: 'jour' },
             },
-          },
-          { name: 'navigate', input: { app: 'tables', table: 'T7' } },
-        ],
-      },
-      {
-        delay: 700,
-        text: 'C’est noté : 2 Spritz et 1 Negroni sur la table T7. Je les envoie au bar ?',
-      },
-      {
-        delay: 900,
-        tools: [{ name: 'send_round', input: { table: 'T7', dest: 'bar' } }],
-      },
-      { delay: 600, text: 'Envoyé au bar : 2 Spritz et 1 Negroni pour la T7.' },
-    ]);
-    return async () => {
+            { name: 'get_sales_report', input: { from: '2026-10-18', to: '2026-10-24' } },
+            {
+              name: 'get_sales_report',
+              input: { from: '2026-10-25', to: '2026-10-31', group_by: 'produit', limit: 3 },
+            },
+          ],
+        },
+        {
+          delay: 900,
+          // les chiffres sont ceux que l'app renvoie pour ces trois lectures (base de capture)
+          text: 'Semaine du 25 au 31 octobre : 36 945,70 € TTC sur 206 tickets, 1,5 % de moins que la semaine d’avant, mais un panier moyen en hausse à 179,64 € (+4,7 %). Meilleur soir : vendredi, 6 545,60 €. En tête des ventes : le menu complet midi (48 vendus), puis le champagne rosé.',
+        },
+      ]);
+    },
+    async play(page) {
+      await page.waitForTimeout(700);
+      await tap(page, button(page, 'Rapports'));
+      await page.waitForTimeout(1000);
+      await tap(page, button(page, 'Ouvrir Easy'));
+      await page.waitForTimeout(700);
+      await tap(page, button(page, 'Parler'));
+      mark('listen');
+      await page
+        .getByText(/^Fais-moi le rapport/)
+        .last()
+        .waitFor({ timeout: 20000 });
+      mark('heard');
+      await page
+        .getByText(/Semaine du 25 au 31 octobre/)
+        .last()
+        .waitFor({ timeout: 20000 });
+      mark('answer');
+      await page.waitForTimeout(4200);
+    },
+  },
+
+  // Le planning de la semaine du 9 novembre, à la voix : Easy pose les créneaux, l'équipe les verra publiés
+  planning: {
+    voice: {
+      say: 'Prépare le planning de la semaine du neuf novembre.',
+      heard: 'Prépare le planning de la semaine du 9 novembre.',
+    },
+    async setup(page) {
+      const shifts = weekShifts();
+      await scriptEasy(page, [
+        { delay: 1500, tools: shifts },
+        {
+          delay: 700,
+          text: `Planning du 10 au 15 novembre prêt : ${shifts.length} créneaux pour 6 personnes, du mardi au dimanche, en brouillon. Il ne reste qu’à le publier.`,
+        },
+      ]);
+    },
+    async play(page) {
+      await page.waitForTimeout(700);
+      await tap(page, button(page, 'Staff'));
+      await page.waitForTimeout(1000);
+      await tap(page, button(page, 'Planning'));
       await page.waitForTimeout(900);
       await tap(page, button(page, 'Ouvrir Easy'));
       await page.waitForTimeout(700);
-      const input = page.getByPlaceholder('Écrire à Easy…');
-      await input.pressSequentially('Deux spritz et un negroni à la table T7', { delay: 48 });
-      await page.waitForTimeout(350);
-      await input.press('Enter');
-      await page.waitForTimeout(4200);
-      await input.pressSequentially('Oui, envoie', { delay: 60 });
-      await page.waitForTimeout(300);
-      await input.press('Enter');
-      await page.waitForTimeout(4000);
-    };
+      await tap(page, button(page, 'Parler'));
+      mark('listen');
+      await page
+        .getByText(/^Prépare le planning/)
+        .last()
+        .waitFor({ timeout: 20000 });
+      mark('heard');
+      await page
+        .getByText(/Planning du 10 au 15 novembre prêt/)
+        .last()
+        .waitFor({ timeout: 25000 });
+      mark('answer');
+      await page.waitForTimeout(2600);
+      // on referme Easy et on descend jusqu'à la nouvelle semaine, en brouillon
+      await tap(page, button(page, 'Replier'));
+      await page.waitForTimeout(600);
+      // la liste du planning commence deux semaines en arrière : défilement doux jusqu'au bout
+      await page.evaluate(async () => {
+        const list = [...document.querySelectorAll('.scroll-quiet')].sort(
+          (a, b) => b.scrollHeight - a.scrollHeight,
+        )[0];
+        if (!list) return;
+        const from = list.scrollTop;
+        const to = list.scrollHeight - list.clientHeight;
+        const t0 = performance.now();
+        await new Promise((done) => {
+          const step = (t) => {
+            const k = Math.min(1, (t - t0) / 2200);
+            const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+            list.scrollTop = from + (to - from) * e;
+            if (k < 1) requestAnimationFrame(step);
+            else done();
+          };
+          requestAnimationFrame(step);
+        });
+      });
+      await page.waitForTimeout(2600);
+    },
   },
 
   // Vente directe : un tour de cocktails et un dessert, en quelques touches
-  async vente(page) {
-    return async () => {
+  vente: {
+    async setup() {},
+    async play(page) {
       await page.waitForTimeout(800);
       await tap(page, button(page, 'Vente Directe'));
       await page.waitForTimeout(900);
@@ -123,7 +330,7 @@ const SCENES = {
       await page.waitForTimeout(1300);
       await tap(page, page.getByRole('button', { name: /Paiement accepté/ }).last());
       await page.waitForTimeout(2000);
-    };
+    },
   },
 };
 
@@ -210,9 +417,17 @@ async function encode(context, frames, tail) {
 
 // ─────────────────────────────── main
 
-const { browser, context, page } = await open({ scale: 2, flowing: true });
+const def = SCENES[scene];
+if (!def) {
+  console.error(`scène inconnue : ${scene}`);
+  process.exit(2);
+}
+const wav = def.voice ? voiceWav(def.voice.say) : null;
+const { browser, context, page } = await open({ scale: 2, flowing: true, voice: wav?.file });
 page.setDefaultTimeout(10000);
-const play = await SCENES[scene](page);
+if (def.voice) await scriptVoice(page, [def.voice.heard]);
+await def.setup(page);
+const play = () => def.play(page);
 await login(page);
 await hideBanners(page);
 
@@ -252,6 +467,21 @@ if (process.env.DUMP_FRAMES) {
 }
 const { buffer, frames: n } = await encode(context, frames, tail);
 writeFileSync(outFile, buffer);
+if (def.voice) {
+  // le sous-titrage de la voix sur le site : src/lib/site.ts lit ce fichier
+  const at = (k) => (marks[k] ? Math.round((marks[k] - frames[0].t) * 100) / 100 : null);
+  const cues = {
+    said: def.voice.heard,
+    listen: at('listen'),
+    speechStart: Math.round(((at('listen') ?? 0) + 0.6) * 100) / 100,
+    speechEnd: Math.round(((at('listen') ?? 0) + 0.6 + wav.speech) * 100) / 100,
+    heard: at('heard'),
+    answer: at('answer'),
+    duration: Math.round((n / FPS) * 100) / 100,
+  };
+  writeFileSync(outFile.replace(/\.mp4$/, '.json'), JSON.stringify(cues, null, 2) + '\n');
+  console.log('repères', JSON.stringify(cues));
+}
 console.log(
   `${scene} : ${n} images (${(n / FPS).toFixed(1)} s, ${frames.length} vues uniques), ${(buffer.length / 1e6).toFixed(2)} Mo → ${outFile}`,
 );

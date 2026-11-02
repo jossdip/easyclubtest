@@ -1,18 +1,19 @@
 'use client';
 
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import * as React from 'react';
 
 import { Eclipse } from '@/components/eclipse';
-import { IPad } from '@/components/ui/ipad';
-import { AppVideo, EASE, Magnetic } from '@/components/ui/motion';
+import { EASE, Magnetic } from '@/components/ui/motion';
 import { Stars } from '@/components/ui/stars';
-import { VIDEOS } from '@/lib/site';
+import { VoicePlayer } from '@/components/ui/voice';
+import { VOICE_VIDEOS } from '@/lib/site';
 
 export function Hero(): React.JSX.Element {
   const t = useTranslations('hero');
+  const te = useTranslations('easy');
   const ref = React.useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -57,7 +58,7 @@ export function Hero(): React.JSX.Element {
         >
           {t('eyebrow')}
         </motion.p>
-        <h1 className="display mt-6 text-[clamp(44px,8.4vw,112px)] leading-[0.98]">
+        <h1 className="display mt-6 text-[clamp(40px,6.2vw,92px)] leading-[0.98]">
           {[t('title1'), t('title2')].map((line, i) => (
             <span key={line} className="block overflow-hidden pb-[0.08em]">
               <motion.span
@@ -79,8 +80,18 @@ export function Hero(): React.JSX.Element {
         >
           {t('lead')}
         </motion.p>
+        {/* gratuit : le premier argument, juste sous la promesse */}
+        <motion.p
+          className="border-gold/30 bg-gold/[0.08] mt-7 inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-[15px] font-semibold text-[#F6DDA0] shadow-[0_0_40px_-10px_rgb(232_184_75/0.6)] sm:text-[16px]"
+          initial={reduce ? false : { opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1.05, ease: EASE }}
+        >
+          <Sparkles className="size-4" />
+          {t('free')}
+        </motion.p>
         <motion.div
-          className="mt-9 flex flex-wrap items-center justify-center gap-3"
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 1.1, ease: EASE }}
@@ -115,17 +126,20 @@ export function Hero(): React.JSX.Element {
         </motion.p>
       </motion.div>
 
-      {/* l'app, en vrai : Easy ouvre la table 7 et envoie la commande au bar */}
-      <div className="relative mx-auto mt-14 max-w-[1180px] px-4 [perspective:1600px] sm:mt-20 sm:px-8">
+      {/* l'app, en vrai : à la voix, Easy fait la caisse */}
+      <div className="relative z-10 mx-auto mt-14 max-w-[1180px] px-4 [perspective:1600px] sm:mt-20 sm:px-8">
         <motion.div
           style={{ rotateX, scale, y: lift, transformOrigin: '50% 0%' }}
           initial={reduce ? false : { opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4, delay: 0.9, ease: EASE }}
         >
-          <IPad>
-            <AppVideo src={VIDEOS.easy} poster={VIDEOS.poster} label={t('videoLabel')} />
-          </IPad>
+          <VoicePlayer
+            src={VOICE_VIDEOS.caisse.src}
+            cues={VOICE_VIDEOS.caisse.cues}
+            said={te('demos.0.said')}
+            label={t('videoLabel')}
+          />
         </motion.div>
       </div>
 

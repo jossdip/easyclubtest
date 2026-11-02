@@ -1,14 +1,14 @@
 {
   "meta": {
-    "title": "EasyClub — the register built for the night",
-    "description": "EasyClub OS: point of sale and management for your bar, club or restaurant on iPad, with Easy, an AI agent that runs it by voice. Born in Monaco, made for the world."
+    "title": "EasyClub — the future of restaurants and nightclubs",
+    "description": "Point of sale, reservations, stock, staff rota and reports in one iPad app, run by voice with Easy, an AI agent. Free, no subscription. Born in Monaco, made for the world."
   },
   "nav": {
-    "product": "The app",
     "easy": "Easy",
-    "features": "For the night",
+    "free": "Free",
+    "connected": "All connected",
+    "product": "The app",
     "apps": "Apps",
-    "monaco": "Monaco",
     "demo": "Book a demo",
     "menu": "Menu",
     "close": "Close",
@@ -16,39 +16,87 @@
     "home": "EasyClub home"
   },
   "hero": {
-    "eyebrow": "EasyClub OS · iPad point of sale",
-    "title1": "The register",
-    "title2": "built for the night.",
-    "lead": "Sales, tables, reservations, stock, staff and numbers in one iPad app. And Easy, an AI agent that runs it with you, by voice.",
+    "eyebrow": "EasyClub OS · on iPad",
+    "title1": "The future of restaurants",
+    "title2": "and nightclubs.",
+    "lead": "Point of sale, reservations, stock, staff rota and reports in one iPad app, that you run by voice with Easy.",
+    "free": "Free. No subscription.",
     "ctaDemo": "Book a demo",
     "ctaEasy": "See Easy at work",
     "badge": "Piloting in Monte-Carlo",
-    "scroll": "Scroll",
-    "videoLabel": "Easy opens table 7, adds two spritz and a negroni, then sends them to the bar."
+    "videoLabel": "By voice, Easy is asked to close the register: it compares the cash counted with the cash expected and waits for confirmation."
   },
   "marquee": [
-    "Quick sale",
-    "Floor plan",
-    "Register and Z close",
+    "Free",
+    "No subscription",
+    "Run it all by voice",
     "Reservations",
-    "Live reports",
     "Stock and recipes",
+    "Floor plan",
+    "Register and close",
+    "Live reports",
+    "Rota and time clock",
     "Loyalty",
     "Online orders",
-    "Events",
-    "Marketing",
-    "Time clock and tips",
     "Multi-site"
   ],
+  "free": {
+    "eyebrow": "Free",
+    "title1": "Ten subscriptions.",
+    "title2": "Or none.",
+    "lead": "A till here, booking software there, a spreadsheet for stock, an app for the rota, another for loyalty: that many subscriptions to pay every month, and none of them talk to each other.",
+    "tag": "subscription",
+    "notLinked": "None of them talk to each other",
+    "subs": [
+      "Point of sale",
+      "Reservations",
+      "Floor plan",
+      "Stock",
+      "Rota",
+      "Time clock",
+      "Loyalty",
+      "Online orders",
+      "Text campaigns",
+      "Reports"
+    ],
+    "price": "€0",
+    "per": "a month",
+    "card": "EasyClub OS",
+    "cardText": "The sixteen apps and Easy, the AI agent, in a single app. Connected to each other, always up to date.",
+    "points": ["No subscription", "No paid add-ons", "Every update included"],
+    "future": "This is the future of restaurants and nightclubs: one system, connected end to end, that you run by voice. And it’s free."
+  },
   "easy": {
-    "eyebrow": "Easy · the AI agent",
-    "title1": "Say it.",
-    "title2": "Easy does it.",
-    "lead": "“Two spritz and a negroni for table 7.” Easy opens the table, adds the order and sends it to the bar when you say so. It works in the app like your team does, on the same screens.",
+    "eyebrow": "Easy · the AI agent, by voice",
+    "title1": "Just say it.",
+    "title2": "Easy does the rest.",
+    "lead": "No keyboard, no menus to dig through: you talk to the iPad. Easy closes the register, pulls the weekly report, builds the rota and prepares supplier orders, on the same screens as your team.",
+    "listening": "Listening…",
+    "said": "Said to Easy",
+    "demos": [
+      {
+        "id": "caisse",
+        "tab": "Close the register",
+        "said": "Close the register, I counted €396.50 in cash.",
+        "result": "Easy counts, finds the gap and the tables still open, then waits for your go-ahead: a close is sealed and can’t be undone."
+      },
+      {
+        "id": "rapport",
+        "tab": "The weekly report",
+        "said": "Give me this week’s report.",
+        "result": "Revenue, tickets, average ticket, comparison with the week before, best night, best sellers: in one sentence."
+      },
+      {
+        "id": "planning",
+        "tab": "Next week’s rota",
+        "said": "Build the rota for the week of 9 November.",
+        "result": "Twenty-three shifts set for the whole team, as a draft: all that’s left is to publish it."
+      }
+    ],
     "points": {
       "voice": {
-        "title": "By voice or in writing",
-        "text": "One sentence is enough, even mid-rush. Easy knows your menu and your tables."
+        "title": "Everything runs by voice",
+        "text": "Press, speak. Easy knows your menu, your tables, your stock and your team."
       },
       "rights": {
         "title": "The rights of whoever is signed in",
@@ -59,43 +107,120 @@
         "text": "Anything sensitive, like closing the register, always waits for a tap on screen."
       }
     },
-    "tryTitle": "Try a request",
-    "tryHint": "Examples from the demo app",
-    "you": "You",
+    "tryTitle": "Things you can say",
+    "tryHint": "Tap a sentence to hear it in action",
+    "speak": "Hear the answer",
     "validate": "Confirm",
     "commands": [
       {
-        "q": "Two spritz and a negroni for table 7",
-        "tool": "Added to T7: 2 × Spritz, 1 × Negroni",
-        "a": "Done on T7. Shall I send them to the bar?"
-      },
-      {
-        "q": "How much have we made tonight?",
-        "tool": "Read: tonight’s register",
-        "a": "€3,670.70 incl. VAT over 21 tickets since 11:05. Average ticket: €174.80."
-      },
-      {
-        "q": "Book 4 for tomorrow at 9 pm, name Morel",
-        "tool": "Reservation created: Morel, 4 guests",
-        "a": "Booked: Morel, 4 guests, tomorrow at 21:00."
-      },
-      {
-        "q": "What are we running low on?",
-        "tool": "Read: stock alerts",
-        "a": "10 items to restock, including brut champagne, sole and Dom Pérignon. Shall I prepare the supplier order?"
-      },
-      {
-        "q": "Who’s on shift?",
-        "tool": "Read: time clock",
-        "a": "4 people on shift: Hugo, Inès, Nora and Théo."
-      },
-      {
-        "q": "Close the register",
-        "tool": "Sensitive action: register close",
-        "a": "Closing the register needs your OK.",
+        "q": "Close the register, I counted €396.50 in cash",
+        "steps": ["Cash expected: €398.50", "Gap: −€2.00", "6 tables still open"],
+        "a": "Cash is €2.00 short, and six tables are still open. Close anyway?",
         "confirm": true
+      },
+      {
+        "q": "Give me this week’s report",
+        "steps": ["Sales from 25 to 31 October", "Comparison with the week before", "Best sellers"],
+        "a": "€36,945.70 over 206 tickets, average ticket €179.64 (+4.7%). Best night: Friday, €6,545.60."
+      },
+      {
+        "q": "Build next week’s rota",
+        "steps": ["23 shifts set", "6 people", "Rota saved as a draft"],
+        "a": "Rota for 10 to 15 November ready: 23 shifts for 6 people. Shall I publish it?",
+        "confirm": true
+      },
+      {
+        "q": "Order what we’re missing from Caves du Rocher",
+        "steps": ["Reading stock alerts", "Purchase order created, as a draft"],
+        "a": "Purchase order ready for Caves du Rocher: brut champagne, Dom Pérignon, Veuve Clicquot and Chablis. Shall I send it?",
+        "confirm": true
+      },
+      {
+        "q": "Book 8 for Saturday at 10 pm, name Morel",
+        "steps": ["Reservation created: Morel, 8 guests", "Table T11 held"],
+        "a": "Booked: Morel, 8 guests, Saturday at 22:00, table T11."
+      },
+      {
+        "q": "Who sold the most this week?",
+        "steps": ["Sales per server, 25 to 31 October"],
+        "a": "Théo: €12,242.25 over 62 tickets, ahead of Lucas and Inès."
+      }
+    ],
+    "quote": {
+      "open": "“",
+      "close": "”"
+    },
+    "voiceReply": "Easy answers out loud too",
+    "thinking": "Easy is on it…",
+    "tapToSpeak": "Tap a sentence"
+  },
+  "connected": {
+    "eyebrow": "All connected",
+    "title1": "One database.",
+    "title2": "Everything talks.",
+    "lead": "What happens in one app lands in all the others at once, on every iPad in the room. No double entry, no exports, no numbers that don’t add up.",
+    "live": "Live on every iPad",
+    "steps": [
+      {
+        "app": "Reservations",
+        "text": "Morel books for 4 at 9 pm"
+      },
+      {
+        "app": "Tables",
+        "text": "He arrives: seated at table 7"
+      },
+      {
+        "app": "Order",
+        "text": "2 Negroni, 2 sole meunière"
+      },
+      {
+        "app": "Stock",
+        "text": "Gin, Campari and sole depleted"
+      },
+      {
+        "app": "Register",
+        "text": "€112.00 charged and sealed"
+      },
+      {
+        "app": "Reports",
+        "text": "Tonight’s revenue, up to date"
+      },
+      {
+        "app": "Customers",
+        "text": "Morel’s profile: 4th visit, points added"
       }
     ]
+  },
+  "reservations": {
+    "eyebrow": "Reservations",
+    "title": "Every booking finds its table.",
+    "lead": "Tonight’s bookings, the waiting list and the floor plan in one place. The guest arrives: one gesture, they’re seated, and their table opens in their name.",
+    "points": [
+      "Birthdays, allergies and requests visible to the whole team",
+      "Waiting list, with covers and arrival time",
+      "Tonight’s free seats, live",
+      "By voice: “8 people Saturday at 10 pm, name Morel”"
+    ],
+    "toast": "New reservation",
+    "toastText": "Morel · 8 guests · Saturday 22:00 · T11"
+  },
+  "stock": {
+    "eyebrow": "Stock",
+    "title": "Stock counts itself.",
+    "lead": "Every sale depletes its ingredients through recipes. When an item drops below its threshold, the alert goes out, and the supplier order is ready.",
+    "points": [
+      "Recipes with automatic depletion on every sale",
+      "Stock-out alerts and per-item thresholds",
+      "Stock counts and movement log",
+      "Supplier purchase orders, prepared by Easy"
+    ],
+    "demoTitle": "Pour a Negroni",
+    "recipe": "Recipe: 3 cl gin, 3 cl Campari, 3 cl vermouth",
+    "serve": "Pour a Negroni",
+    "served": "poured",
+    "threshold": "threshold",
+    "alert": "Campari below its threshold: added to the Caves du Rocher order",
+    "reset": "Start again"
   },
   "tour": {
     "eyebrow": "EasyClub OS",
@@ -115,32 +240,19 @@
       {
         "app": "Register",
         "title": "The register, to the cent.",
-        "text": "The current service, payment methods, VAT, sales per server. Every sale is sealed in a fiscal journal; the Z close takes one tap."
-      },
-      {
-        "app": "Reservations",
-        "title": "Service sets itself up.",
-        "text": "Tonight’s list, birthdays, the waiting list, and every guest placed on the floor plan as they arrive."
+        "text": "The current service, payment methods, VAT, sales per server. Every sale is sealed in a fiscal journal; the close is done by voice."
       },
       {
         "app": "Reports",
         "title": "Numbers during service.",
-        "text": "Revenue, average ticket, footfall by hour, menu engineering. Not the next morning: right now."
+        "text": "Revenue, tickets, average ticket, payment methods. Not the next morning: right now."
       },
       {
-        "app": "Stock",
-        "title": "Stock follows sales.",
-        "text": "Recipes with automatic depletion, stock-out alerts, movement log, supplier orders."
+        "app": "Staff",
+        "title": "Next week’s rota, dictated.",
+        "text": "Shifts, time clock, breaks, tips. Easy builds the week, you publish it, the team sees it."
       }
     ]
-  },
-  "nightday": {
-    "eyebrow": "Night or day",
-    "title": "Readable in the dark. And on the terrace.",
-    "lead": "Dark by default, to read at arm’s length in a packed room. One gesture in the control centre and the app turns light.",
-    "night": "Night",
-    "day": "Day",
-    "drag": "Drag to compare"
   },
   "night": {
     "eyebrow": "Built for 2 a.m.",
@@ -182,27 +294,75 @@
   },
   "apps": {
     "eyebrow": "The apps",
-    "title": "Sixteen apps, one register.",
-    "lead": "Keep the ones your venue needs, tuck the others away. Tap an app to see it.",
+    "title": "Sixteen apps. No subscription.",
+    "lead": "Everything is included. Keep the ones your venue needs, tuck the others away. Tap an app to see it.",
     "close": "Close",
     "noPreview": "Preview coming soon",
     "items": {
-      "vente-directe": { "name": "Quick Sale", "tagline": "Counter and bar checkout" },
-      "tables": { "name": "Tables", "tagline": "Floor plan and VIP service" },
-      "caisse": { "name": "Register", "tagline": "Tickets, Z, accounts and refunds" },
-      "reservations": { "name": "Reservations", "tagline": "Bookings and arrivals" },
-      "rapports": { "name": "Reports", "tagline": "Revenue, products, fiscal journal" },
-      "stock": { "name": "Stock", "tagline": "Inventory and stock-outs" },
-      "achats": { "name": "Purchasing", "tagline": "Suppliers and orders" },
-      "clients": { "name": "Customers", "tagline": "Profiles, tabs and history" },
-      "fidelite": { "name": "Loyalty", "tagline": "Points and gift cards" },
-      "marketing": { "name": "Marketing", "tagline": "E-mail and text campaigns" },
-      "evenements": { "name": "Events", "tagline": "Nights, DJs and ticketing" },
-      "online": { "name": "Online", "tagline": "QR, click & collect, delivery" },
-      "staff": { "name": "Staff", "tagline": "Time clock, rota and tips" },
-      "franchise": { "name": "Franchise", "tagline": "Multi-site and consolidated" },
-      "promos": { "name": "Promos", "tagline": "Coupons and promo codes" },
-      "reglages": { "name": "Settings", "tagline": "Menu, team, apps, hardware" }
+      "vente-directe": {
+        "name": "Quick Sale",
+        "tagline": "Counter and bar checkout"
+      },
+      "tables": {
+        "name": "Tables",
+        "tagline": "Floor plan and VIP service"
+      },
+      "caisse": {
+        "name": "Register",
+        "tagline": "Tickets, close, accounts and refunds"
+      },
+      "reservations": {
+        "name": "Reservations",
+        "tagline": "Bookings and arrivals"
+      },
+      "rapports": {
+        "name": "Reports",
+        "tagline": "Revenue, products, fiscal journal"
+      },
+      "stock": {
+        "name": "Stock",
+        "tagline": "Inventory and stock-outs"
+      },
+      "achats": {
+        "name": "Purchasing",
+        "tagline": "Suppliers and orders"
+      },
+      "clients": {
+        "name": "Customers",
+        "tagline": "Profiles, tabs and history"
+      },
+      "fidelite": {
+        "name": "Loyalty",
+        "tagline": "Points and gift cards"
+      },
+      "marketing": {
+        "name": "Marketing",
+        "tagline": "E-mail and text campaigns"
+      },
+      "evenements": {
+        "name": "Events",
+        "tagline": "Nights, DJs and ticketing"
+      },
+      "online": {
+        "name": "Online",
+        "tagline": "QR, click & collect, delivery"
+      },
+      "staff": {
+        "name": "Staff",
+        "tagline": "Time clock, rota and tips"
+      },
+      "franchise": {
+        "name": "Franchise",
+        "tagline": "Multi-site and consolidated"
+      },
+      "promos": {
+        "name": "Promos",
+        "tagline": "Coupons and promo codes"
+      },
+      "reglages": {
+        "name": "Settings",
+        "tagline": "Menu, team, apps, hardware"
+      }
     }
   },
   "monaco": {
@@ -213,9 +373,9 @@
     "pilot": "Pilot in progress · Monte-Carlo"
   },
   "cta": {
-    "eyebrow": "Demo",
-    "title": "Let’s talk about your venue.",
-    "lead": "An iPad demo, at your place, while the room gets ready.",
+    "eyebrow": "Free",
+    "title": "Step into the future. It’s free.",
+    "lead": "An iPad demo, at your place, while the room gets ready. You speak, Easy does the rest.",
     "write": "Write to the team",
     "call": "Call",
     "subject": "EasyClub demo",

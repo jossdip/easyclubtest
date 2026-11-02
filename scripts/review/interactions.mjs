@@ -20,14 +20,28 @@ const to = async (sel) => {
 };
 const ok = (label) => console.log('✓', label);
 
-// Easy : on choisit « Ferme la caisse », la réponse demande validation, on valide
+// Easy : la console « dit » la demande de clôture ; la réponse attend une validation, on valide
 await to('#easy');
-await page.getByRole('button', { name: 'Ferme la caisse' }).click();
-await page.waitForTimeout(3500);
+await page.locator('#easy button[aria-pressed]').first().click();
+await page.waitForTimeout(6500);
 await page.getByRole('button', { name: 'Valider' }).click();
 await page.waitForTimeout(400);
 await page.locator('#easy').screenshot({ path: `${out}/easy.png` });
-ok('Easy : demande sensible validée');
+ok('Easy : demande à la voix, action sensible validée');
+
+// Gratuit : la carte 0 € apparaît en fin d'absorption
+await page.evaluate(() => {
+  const s = document.getElementById('gratuit');
+  window.scrollTo(
+    0,
+    s.getBoundingClientRect().top + window.scrollY + s.firstElementChild.offsetHeight * 0.62,
+  );
+});
+await page.waitForTimeout(1200);
+console.log(
+  (await page.getByText('0 €').first().isVisible()) ? '✓' : '✗',
+  'gratuit : carte 0 € visible',
+);
 
 // Synchro : deux spritz ajoutés apparaissent sur les trois iPads
 await to('#nuit');
@@ -50,11 +64,18 @@ const synced = await page.getByText('synchronisé').count();
 console.log(queued && synced ? '✓' : '✗', 'hors ligne : 2 en attente puis synchronisé');
 await page.locator('#nuit').screenshot({ path: `${out}/nuit.png` });
 
-// Comparateur nuit/jour au clavier
-const slider = page.getByRole('slider');
-await slider.focus();
-for (let i = 0; i < 6; i++) await page.keyboard.press('ArrowLeft');
-ok(`comparateur : ${await slider.getAttribute('aria-valuenow')} %`);
+// Stock : trois Negroni font passer le Campari sous son seuil
+await to('#stock');
+for (let i = 0; i < 3; i++)
+  await page
+    .locator('#stock button', { hasText: /Negroni/ })
+    .first()
+    .click();
+await page.waitForTimeout(600);
+console.log(
+  (await page.getByText(/Campari sous son seuil/).count()) ? '✓' : '✗',
+  'stock : alerte Campari',
+);
 
 // Apps : la fiche Caisse s'ouvre et se ferme avec Échap
 await to('#apps');
@@ -63,7 +84,7 @@ await page.waitForTimeout(800);
 await page.screenshot({ path: `${out}/app-caisse.png` });
 const dialog = await page.getByRole('dialog').count();
 await page.keyboard.press('Escape');
-await page.waitForTimeout(500);
+await page.waitForTimeout(1200);
 console.log(
   dialog && !(await page.getByRole('dialog').count()) ? '✓' : '✗',
   'apps : fiche ouverte puis fermée',
@@ -74,7 +95,7 @@ await page.evaluate(() => window.scrollTo(0, 0));
 await page.getByRole('button', { name: 'en', exact: true }).first().click();
 await page.waitForTimeout(2500);
 const h1 = await page.locator('h1').innerText();
-console.log(/built for the night/i.test(h1) ? '✓' : '✗', 'anglais :', h1.replace(/\n/g, ' '));
+console.log(/future of restaurants/i.test(h1) ? '✓' : '✗', 'anglais :', h1.replace(/\n/g, ' '));
 await page.screenshot({ path: `${out}/en.png` });
 await page.getByRole('button', { name: 'fr', exact: true }).first().click();
 await page.waitForTimeout(1500);

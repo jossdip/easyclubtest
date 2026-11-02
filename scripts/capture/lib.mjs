@@ -11,13 +11,22 @@ export const IPAD = { width: 1180, height: 820 }; // iPad Air, paysage
 /** L'heure des captures : le jeu de données est généré autour de ce samedi soir de service. */
 export const SERVICE_TIME = new Date(process.env.CAPTURE_NOW ?? '2026-10-31T21:45:00');
 
-export async function open({ scale = 2, video, flowing = false } = {}) {
-  const browser = await chromium.launch({ channel: 'chrome', headless: true });
+export async function open({ scale = 2, video, flowing = false, voice } = {}) {
+  // `voice` : un fichier WAV joué comme s'il venait du micro de l'iPad (la phrase dite à Easy)
+  const args = voice
+    ? [
+        '--use-fake-ui-for-media-stream',
+        '--use-fake-device-for-media-stream',
+        `--use-file-for-fake-audio-capture=${voice}`,
+      ]
+    : [];
+  const browser = await chromium.launch({ channel: 'chrome', headless: true, args });
   const context = await browser.newContext({
     viewport: IPAD,
     deviceScaleFactor: scale,
     ...(video ? { recordVideo: video } : {}),
   });
+  if (voice) await context.grantPermissions(['microphone'], { origin: APP });
   const page = await context.newPage();
   // l'horloge du navigateur à l'heure du jeu de données (figée pour les photos, qui avance pour les vidéos)
   if (flowing) {
@@ -30,12 +39,20 @@ export async function open({ scale = 2, video, flowing = false } = {}) {
   await page.route('**/api/v1/agent/status', (route) =>
     route.fulfill({ json: { available: true, model: 'claude', voice: true } }),
   );
-  // pas de curseur de saisie qui clignote sur les captures
+  // pas de curseur de saisie qui clignote, ni la bannière « Nouvelle version disponible » (l'instance de
+  // capture sert une app recompilée) : elle est masquée dès qu'elle apparaît, pendant toute la capture
   await page.addInitScript(() => {
     document.addEventListener('DOMContentLoaded', () => {
       const css = document.createElement('style');
       css.textContent = '*{caret-color:transparent!important}';
       document.head.appendChild(css);
+      const hide = () => {
+        for (const el of document.querySelectorAll('button')) {
+          if (/Nouvelle version disponible/.test(el.textContent ?? '')) el.style.display = 'none';
+        }
+      };
+      new MutationObserver(hide).observe(document.body, { childList: true, subtree: true });
+      hide();
     });
   });
   return { browser, context, page };

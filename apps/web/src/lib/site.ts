@@ -18,6 +18,10 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
+import caisseCues from '../../public/media/video/easy-caisse.json';
+import planningCues from '../../public/media/video/easy-planning.json';
+import rapportCues from '../../public/media/video/easy-rapport.json';
+
 export const SITE_URL = 'https://easyclub.fr';
 
 export const CONTACT = {
@@ -33,25 +37,21 @@ export const CONTACT = {
 export type Shot =
   | 'lock'
   | 'home'
-  | 'home-day'
   | 'vd-categories'
   | 'vd-cocktails'
   | 'tables'
-  | 'tables-day'
   | 'table'
   | 'caisse'
   | 'reservations'
   | 'rapports'
-  | 'rapports-insights'
-  | 'rapports-day'
   | 'stock'
   | 'en-ligne'
   | 'staff'
+  | 'staff-planning'
   | 'fidelite'
   | 'marketing'
   | 'evenements'
-  | 'reglages-apps'
-  | 'easy';
+  | 'reglages-apps';
 
 export function shot(name: Shot): { src: string; srcSet: string } {
   return {
@@ -60,9 +60,31 @@ export function shot(name: Shot): { src: string; srcSet: string } {
   };
 }
 
-/** Vidéos de l'app filmées sur la même base (scripts/capture/record.mjs). */
+/**
+ * Repères d'une vidéo d'Easy à la voix, en secondes (écrits par scripts/capture/record.mjs) :
+ * le micro s'ouvre, la phrase est dite, Easy l'a entendue, sa réponse arrive.
+ */
+export interface VoiceCues {
+  said: string;
+  listen: number;
+  speechStart: number;
+  speechEnd: number;
+  heard: number;
+  answer: number;
+  duration: number;
+}
+
+/** Vidéos de l'app filmées sur la même base : Easy piloté à la voix, et la vente au comptoir. */
+export const VOICE_VIDEOS: Record<
+  'caisse' | 'rapport' | 'planning',
+  { src: string; cues: VoiceCues }
+> = {
+  caisse: { src: '/media/video/easy-caisse.mp4', cues: caisseCues },
+  rapport: { src: '/media/video/easy-rapport.mp4', cues: rapportCues },
+  planning: { src: '/media/video/easy-planning.mp4', cues: planningCues },
+};
+
 export const VIDEOS = {
-  easy: '/media/video/easy.mp4',
   venteDirecte: '/media/video/vente-directe.mp4',
   poster: '/media/video/poster-home.webp',
 } as const;
@@ -115,7 +137,7 @@ export const APPS: Array<{ id: AppId; icon: LucideIcon; gradient: string; shot?:
     id: 'rapports',
     icon: BarChart3,
     gradient: 'linear-gradient(135deg, #0E7490 0%, #22D3EE 100%)',
-    shot: 'rapports-insights',
+    shot: 'rapports',
   },
   {
     id: 'stock',
@@ -174,7 +196,6 @@ export const TOUR_MEDIA: Array<{ shot: Shot; video?: string }> = [
   { shot: 'vd-cocktails', video: VIDEOS.venteDirecte },
   { shot: 'tables' },
   { shot: 'caisse' },
-  { shot: 'reservations' },
-  { shot: 'rapports-insights' },
-  { shot: 'stock' },
+  { shot: 'rapports' },
+  { shot: 'staff-planning' },
 ];

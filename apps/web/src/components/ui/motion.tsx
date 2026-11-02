@@ -80,6 +80,7 @@ export function AppVideo({
   className,
   onEnded,
   loop = true,
+  videoRef,
 }: {
   src: string;
   poster: string;
@@ -87,8 +88,11 @@ export function AppVideo({
   className?: string;
   onEnded?: () => void;
   loop?: boolean;
+  /** Pour suivre la lecture de l'extérieur (sous-titrage de la voix). */
+  videoRef?: React.RefObject<HTMLVideoElement>;
 }): React.JSX.Element {
-  const ref = React.useRef<HTMLVideoElement>(null);
+  const own = React.useRef<HTMLVideoElement>(null);
+  const ref = videoRef ?? own;
   const visible = useInView(ref, { margin: '-10% 0px -10% 0px' });
   const reduce = useReducedMotion();
   React.useEffect(() => {

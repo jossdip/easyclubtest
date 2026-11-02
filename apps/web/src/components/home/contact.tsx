@@ -19,7 +19,7 @@ export function Contact(): React.JSX.Element {
           <Eclipse className="w-full" delay={0.1} />
         </Reveal>
         <Reveal>
-          <p className="eyebrow mt-4">{t('eyebrow')}</p>
+          <p className="eyebrow !text-gold mt-4">{t('eyebrow')}</p>
         </Reveal>
         <h2 className="display mx-auto mt-5 max-w-[900px] text-[clamp(40px,6.4vw,84px)] leading-[1.02]">
           <Words text={t('title')} />

@@ -3,7 +3,6 @@
 // Prérequis : l'instance de capture (launch.json « site-capture » du dépôt de l'app) sur :4100.
 import { mkdirSync } from 'node:fs';
 
-import { scriptEasy } from './easy.mjs';
 import { APP, hideBanners, home, launch, login, open } from './lib.mjs';
 
 const OUT = process.argv[2];
@@ -31,25 +30,6 @@ async function attempt(label, fn) {
     console.log('✗', label, e.message.split('\n')[0]);
   }
 }
-
-await scriptEasy(page, [
-  {
-    tools: [
-      {
-        name: 'add_to_table',
-        input: {
-          table: 'T7',
-          items: [
-            { product: 'spritz', qty: 2 },
-            { product: 'negroni', qty: 1 },
-          ],
-        },
-      },
-      { name: 'navigate', input: { app: 'tables', table: 'T7' } },
-    ],
-  },
-  { text: 'C’est noté : 2 Spritz et 1 Negroni sur la table T7. Je les envoie au bar ?' },
-]);
 
 // verrouillage
 await page.goto(APP + '/');
@@ -117,11 +97,19 @@ for (const [app, name] of [
     await shot(name);
   });
 }
-await attempt('insights', async () => {
+await attempt('planning', async () => {
   await home(page);
-  await launch(page, 'Rapports');
-  await tap(/Insights/);
-  await shot('rapports-insights');
+  await launch(page, 'Staff');
+  await tap('Planning');
+  // la liste commence deux semaines en arrière : on la montre sur la semaine à venir
+  await page.evaluate(() => {
+    const list = [...document.querySelectorAll('.scroll-quiet')].sort(
+      (a, b) => b.scrollHeight - a.scrollHeight,
+    )[0];
+    if (list) list.scrollTop = list.scrollHeight;
+  });
+  await page.waitForTimeout(500);
+  await shot('staff-planning');
 });
 await attempt('reglages', async () => {
   await home(page);
@@ -129,43 +117,5 @@ await attempt('reglages', async () => {
   await tap(/^Apps$/);
   await shot('reglages-apps');
 });
-
-// thème jour
-await attempt('jour', async () => {
-  await home(page);
-  await page.getByRole('button', { name: 'Centre de contrôle' }).click();
-  await page.waitForTimeout(500);
-  await tap(/^Thème/);
-  await login(page); // le thème est gardé par l'iPad : on recharge pour fermer le centre de contrôle
-  await shot('home-day');
-  await launch(page, 'Tables');
-  await shot('tables-day');
-  await home(page);
-  await launch(page, 'Rapports');
-  await shot('rapports-day');
-});
-
-// retour au thème nuit
-await attempt('nuit', async () => {
-  await page.getByRole('button', { name: 'Centre de contrôle' }).click();
-  await page.waitForTimeout(500);
-  await tap(/^Thème/);
-  await login(page);
-});
-
-// Easy en dernier (il modifie la table T7 : la salle reste identique sur les écrans nuit et jour)
-// Easy : la demande, les outils exécutés par l'app, la réponse
-await attempt('easy', async () => {
-  await home(page);
-  await page.getByRole('button', { name: 'Ouvrir Easy' }).click();
-  await page.waitForTimeout(600);
-  const input = page.getByPlaceholder('Écrire à Easy…');
-  await input.fill('Deux spritz et un negroni à la table T7');
-  await input.press('Enter');
-  await page.waitForTimeout(3500);
-  await shot('easy');
-});
-// repartir d'un écran propre (la réponse d'Easy reste affichée dans la barre)
-await login(page);
 
 await browser.close();
