@@ -72,7 +72,6 @@
     "title2": "Easy fait le reste.",
     "lead": "Pas de clavier, pas de menus à fouiller : on parle à l’iPad. Easy fait la caisse, sort le rapport de la semaine, prépare le planning et les commandes fournisseurs, sur les mêmes écrans que votre équipe.",
     "listening": "Je vous écoute…",
-    "said": "Dit à Easy",
     "demos": [
       {
         "id": "caisse",
@@ -130,19 +129,19 @@
       {
         "q": "Prépare le planning de la semaine prochaine",
         "steps": ["23 créneaux posés", "6 personnes", "Planning en brouillon"],
-        "a": "Planning du 10 au 15 novembre prêt : 23 créneaux pour 6 personnes. Je le publie ?",
+        "a": "Planning de la semaine prochaine prêt : 23 créneaux pour 6 personnes, du mardi au dimanche. Je le publie ?",
         "confirm": true
       },
       {
         "q": "Commande ce qui manque chez Caves du Rocher",
         "steps": ["Lecture des alertes de stock", "Bon de commande créé, en brouillon"],
-        "a": "Bon de commande prêt pour Caves du Rocher : champagne brut, Dom Pérignon, Veuve Clicquot et Chablis. Je l’envoie ?",
+        "a": "Bon de commande prêt pour Caves du Rocher : champagne brut, Chablis 1er cru et bière sans alcool. Je l’envoie ?",
         "confirm": true
       },
       {
-        "q": "Réserve pour 8 samedi à 22 h au nom de Morel",
+        "q": "Réserve pour 8 samedi prochain à 22 h au nom de Morel",
         "steps": ["Réservation créée : Morel, 8 couverts", "Table T11 retenue"],
-        "a": "Réservé : Morel, 8 personnes, samedi à 22:00, à la table T11."
+        "a": "Réservé : Morel, 8 personnes, samedi prochain à 22:00, à la table T11."
       },
       {
         "q": "Qui a le plus vendu cette semaine ?",
@@ -155,8 +154,7 @@
       "close": " »"
     },
     "voiceReply": "Easy répond aussi à voix haute",
-    "thinking": "Easy s’en occupe…",
-    "tapToSpeak": "Touchez une phrase"
+    "thinking": "Easy s’en occupe…"
   },
   "connected": {
     "eyebrow": "Tout est relié",
@@ -183,7 +181,7 @@
       },
       {
         "app": "Caisse",
-        "text": "112,00 € encaissés et scellés"
+        "text": "134,00 € encaissés et scellés"
       },
       {
         "app": "Rapports",
@@ -203,10 +201,10 @@
       "Anniversaires, allergies et demandes visibles par toute l’équipe",
       "Liste d’attente, avec couverts et heure d’arrivée",
       "Les places libres du soir, en direct",
-      "À la voix : « 8 personnes samedi à 22 h, au nom de Morel »"
+      "À la voix : « 8 personnes samedi prochain à 22 h, au nom de Morel »"
     ],
     "toast": "Nouvelle réservation",
-    "toastText": "Morel · 8 pers. · samedi 22:00 · T11"
+    "toastText": "Morel · 8 pers. · samedi prochain 22:00 · T11"
   },
   "stock": {
     "eyebrow": "Stock",
@@ -260,7 +258,7 @@
   },
   "night": {
     "eyebrow": "Pensé pour 2 h du matin",
-    "title": "Fait pour la salle, pas pour le bureau.",
+    "title": "Solide, même un samedi soir.",
     "sync": {
       "title": "Tous les iPads, en direct.",
       "text": "Le bar, la salle et l’accueil voient les mêmes tables et les mêmes commandes, à l’instant où elles changent.",

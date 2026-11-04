@@ -7,6 +7,17 @@ import { cn } from '@/lib/utils';
 
 export const EASE = [0.2, 0.8, 0.2, 1] as const;
 
+/**
+ * « Moins d'animations » demandé, mais seulement une fois la page montée : le serveur ne connaît pas ce
+ * réglage, et un rendu qui en dépend dès l'hydratation ne correspondrait pas au HTML reçu.
+ */
+export function useCalm(): boolean {
+  const reduce = useReducedMotion();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  return mounted && Boolean(reduce);
+}
+
 /** Apparaît en montant légèrement, en sortant du flou, quand l'élément entre dans l'écran. */
 export function Reveal({
   children,

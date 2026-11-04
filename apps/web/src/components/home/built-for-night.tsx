@@ -22,7 +22,7 @@ import { cn } from '@/lib/utils';
 export function BuiltForNight(): React.JSX.Element {
   const t = useTranslations('night');
   return (
-    <section id="nuit" className="relative py-28 sm:py-36">
+    <section id="nuit" className="relative overflow-x-clip py-28 sm:py-36">
       <div className="max-w-site mx-auto px-5 sm:px-8">
         <Reveal>
           <p className="eyebrow">{t('eyebrow')}</p>

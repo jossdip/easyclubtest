@@ -13,7 +13,8 @@ page.setDefaultTimeout(8000);
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
 page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
-await page.goto(url, { waitUntil: 'networkidle' });
+await page.goto(url, { waitUntil: 'load', timeout: 30000 });
+await page.waitForTimeout(2500);
 const to = async (sel) => {
   await page.evaluate((s) => document.querySelector(s)?.scrollIntoView({ block: 'start' }), sel);
   await page.waitForTimeout(1500);

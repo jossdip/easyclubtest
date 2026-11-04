@@ -23,7 +23,7 @@ export function Tour(): React.JSX.Element {
   const t = useTranslations('tour');
   const steps = t.raw('steps') as Step[];
   return (
-    <section id="app" className="relative py-28 sm:py-36">
+    <section id="app" className="relative overflow-x-clip py-28 sm:py-36">
       <div className="max-w-site mx-auto px-5 sm:px-8">
         <Reveal>
           <p className="eyebrow">{t('eyebrow')}</p>

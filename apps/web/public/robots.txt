@@ -4,3 +4,6 @@ Allow: /
 
 # Host
 Host: https://easyclub.fr
+
+# Sitemaps
+Sitemap: https://easyclub.fr/sitemap.xml

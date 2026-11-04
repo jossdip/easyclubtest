@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
 import {
   Armchair,
   BarChart3,
@@ -19,7 +19,7 @@ import {
 import { useTranslations } from 'next-intl';
 import * as React from 'react';
 
-import { Reveal, Words } from '@/components/ui/motion';
+import { Reveal, useCalm, Words } from '@/components/ui/motion';
 
 /** Une icône par abonnement remplacé (même ordre que `free.subs` dans les messages). */
 const ICONS: LucideIcon[] = [
@@ -55,7 +55,7 @@ const SPOTS: Array<[x: number, y: number, rotate: number]> = [
  */
 export function Free(): React.JSX.Element {
   const t = useTranslations('free');
-  const reduce = useReducedMotion();
+  const reduce = useCalm();
   const ref = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress: p } = useScroll({ target: ref, offset: ['start start', 'end end'] });
   const subs = t.raw('subs') as string[];

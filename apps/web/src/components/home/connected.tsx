@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
   Armchair,
   BarChart3,
@@ -14,7 +14,7 @@ import {
 import { useTranslations } from 'next-intl';
 import * as React from 'react';
 
-import { EASE, Reveal, Words } from '@/components/ui/motion';
+import { EASE, Reveal, useCalm, Words } from '@/components/ui/motion';
 import { cn } from '@/lib/utils';
 
 /** Le parcours d'un client à travers les apps, avec l'icône et la couleur de chaque app. */
@@ -39,11 +39,16 @@ export function Connected(): React.JSX.Element {
   const steps = t.raw('steps') as Array<{ app: string; text: string }>;
   const ref = React.useRef<HTMLDivElement>(null);
   const visible = useInView(ref, { margin: '-15% 0px -15% 0px' });
-  const reduce = useReducedMotion();
-  const [lit, setLit] = React.useState(reduce ? steps.length - 1 : -1);
+  const reduce = useCalm();
+  const [lit, setLit] = React.useState(-1);
 
   React.useEffect(() => {
-    if (!visible || reduce) {
+    if (reduce) {
+      // sans animation : tout le parcours, allumé d'emblée
+      setLit(steps.length - 1);
+      return;
+    }
+    if (!visible) {
       return;
     }
     // la lumière avance d'app en app, s'attarde sur la dernière, puis la soirée recommence

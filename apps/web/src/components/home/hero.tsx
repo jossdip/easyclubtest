@@ -69,6 +69,8 @@ export function Hero(): React.JSX.Element {
               >
                 {line}
               </motion.span>
+              {/* l'espace entre les deux lignes, pour les lecteurs d'écran et les moteurs de recherche */}
+              {i === 0 ? ' ' : null}
             </span>
           ))}
         </h1>

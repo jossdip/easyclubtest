@@ -72,7 +72,6 @@
     "title2": "Easy does the rest.",
     "lead": "No keyboard, no menus to dig through: you talk to the iPad. Easy closes the register, pulls the weekly report, builds the rota and prepares supplier orders, on the same screens as your team.",
     "listening": "Listening…",
-    "said": "Said to Easy",
     "demos": [
       {
         "id": "caisse",
@@ -126,19 +125,19 @@
       {
         "q": "Build next week’s rota",
         "steps": ["23 shifts set", "6 people", "Rota saved as a draft"],
-        "a": "Rota for 10 to 15 November ready: 23 shifts for 6 people. Shall I publish it?",
+        "a": "Next week’s rota is ready: 23 shifts for 6 people, Tuesday to Sunday. Shall I publish it?",
         "confirm": true
       },
       {
         "q": "Order what we’re missing from Caves du Rocher",
         "steps": ["Reading stock alerts", "Purchase order created, as a draft"],
-        "a": "Purchase order ready for Caves du Rocher: brut champagne, Dom Pérignon, Veuve Clicquot and Chablis. Shall I send it?",
+        "a": "Purchase order ready for Caves du Rocher: brut champagne, Chablis premier cru and alcohol-free beer. Shall I send it?",
         "confirm": true
       },
       {
-        "q": "Book 8 for Saturday at 10 pm, name Morel",
+        "q": "Book 8 for next Saturday at 10 pm, name Morel",
         "steps": ["Reservation created: Morel, 8 guests", "Table T11 held"],
-        "a": "Booked: Morel, 8 guests, Saturday at 22:00, table T11."
+        "a": "Booked: Morel, 8 guests, next Saturday at 22:00, table T11."
       },
       {
         "q": "Who sold the most this week?",
@@ -151,8 +150,7 @@
       "close": "”"
     },
     "voiceReply": "Easy answers out loud too",
-    "thinking": "Easy is on it…",
-    "tapToSpeak": "Tap a sentence"
+    "thinking": "Easy is on it…"
   },
   "connected": {
     "eyebrow": "All connected",
@@ -179,7 +177,7 @@
       },
       {
         "app": "Register",
-        "text": "€112.00 charged and sealed"
+        "text": "€134.00 charged and sealed"
       },
       {
         "app": "Reports",
@@ -199,10 +197,10 @@
       "Birthdays, allergies and requests visible to the whole team",
       "Waiting list, with covers and arrival time",
       "Tonight’s free seats, live",
-      "By voice: “8 people Saturday at 10 pm, name Morel”"
+      "By voice: “8 people next Saturday at 10 pm, name Morel”"
     ],
     "toast": "New reservation",
-    "toastText": "Morel · 8 guests · Saturday 22:00 · T11"
+    "toastText": "Morel · 8 guests · next Saturday 22:00 · T11"
   },
   "stock": {
     "eyebrow": "Stock",
@@ -256,7 +254,7 @@
   },
   "night": {
     "eyebrow": "Built for 2 a.m.",
-    "title": "Made for the room, not the back office.",
+    "title": "Rock-solid, even on a Saturday night.",
     "sync": {
       "title": "Every iPad, live.",
       "text": "Bar, floor and door see the same tables and the same orders the moment they change.",
