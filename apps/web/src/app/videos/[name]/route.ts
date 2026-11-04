@@ -40,7 +40,9 @@ async function serve(
   const headers = new Headers({
     'content-type': 'video/mp4',
     'accept-ranges': 'bytes',
-    'cache-control': 'public, max-age=86400',
+    // « private » : le cache de Cloudflare garde sinon le fichier entier et répond 200 à chaque demande
+    // de morceau, même une fois en cache (vérifié sur easyclub.fr) ; seul le navigateur le garde.
+    'cache-control': 'private, max-age=86400',
   });
   const head = request.method === 'HEAD';
   const range = parseRange(request.headers.get('range'), size);

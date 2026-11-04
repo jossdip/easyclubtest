@@ -76,19 +76,19 @@ export interface VoiceCues {
 
 /**
  * Vidéos de l'app filmées sur la même base : Easy piloté à la voix, et la vente au comptoir. Fichiers dans
- * public/media/video, servis par /video/[name] qui sait répondre par morceaux (indispensable à Safari).
+ * public/media/video, servis par /videos/[name] qui sait répondre par morceaux (indispensable à Safari).
  */
 export const VOICE_VIDEOS: Record<
   'caisse' | 'rapport' | 'planning',
   { src: string; cues: VoiceCues }
 > = {
-  caisse: { src: '/video/easy-caisse.mp4', cues: caisseCues },
-  rapport: { src: '/video/easy-rapport.mp4', cues: rapportCues },
-  planning: { src: '/video/easy-planning.mp4', cues: planningCues },
+  caisse: { src: '/videos/easy-caisse.mp4', cues: caisseCues },
+  rapport: { src: '/videos/easy-rapport.mp4', cues: rapportCues },
+  planning: { src: '/videos/easy-planning.mp4', cues: planningCues },
 };
 
 export const VIDEOS = {
-  venteDirecte: '/video/vente-directe.mp4',
+  venteDirecte: '/videos/vente-directe.mp4',
   poster: '/media/video/poster-home.webp',
 } as const;
 
