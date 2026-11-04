@@ -82,13 +82,13 @@ export const VOICE_VIDEOS: Record<
   'caisse' | 'rapport' | 'planning',
   { src: string; cues: VoiceCues }
 > = {
-  caisse: { src: '/videos/easy-caisse.mp4', cues: caisseCues },
-  rapport: { src: '/videos/easy-rapport.mp4', cues: rapportCues },
-  planning: { src: '/videos/easy-planning.mp4', cues: planningCues },
+  caisse: { src: '/videos/easy-caisse', cues: caisseCues },
+  rapport: { src: '/videos/easy-rapport', cues: rapportCues },
+  planning: { src: '/videos/easy-planning', cues: planningCues },
 };
 
 export const VIDEOS = {
-  venteDirecte: '/videos/vente-directe.mp4',
+  venteDirecte: '/videos/vente-directe',
   poster: '/media/video/poster-home.webp',
 } as const;
 

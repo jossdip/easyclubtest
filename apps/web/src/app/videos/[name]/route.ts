@@ -4,17 +4,16 @@ import { parseRange } from '@/lib/range';
 
 export const runtime = 'edge';
 
-/** Seules les vidéos du site passent par ici (elles vivent dans public/media/video). */
-const FILES = new Set([
-  'easy-caisse.mp4',
-  'easy-rapport.mp4',
-  'easy-planning.mp4',
-  'vente-directe.mp4',
-]);
+/**
+ * Seules les vidéos du site passent par ici (fichiers .mp4 de public/media/video). L'adresse n'a pas
+ * d'extension : avec « .mp4 », le cache de Cloudflare se saisit de la première demande (fichier entier,
+ * 200) avant de voir qu'il ne doit pas la garder ; sans extension, la demande arrive telle quelle ici.
+ */
+const FILES = new Set(['easy-caisse', 'easy-rapport', 'easy-planning', 'vente-directe']);
 
 /** Le fichier statique, par le binding ASSETS de Cloudflare Pages ou, en développement, par simple fetch. */
 async function asset(request: Request, name: string): Promise<Response> {
-  const url = new URL(`/media/video/${name}`, request.url);
+  const url = new URL(`/media/video/${name}.mp4`, request.url);
   const env = getOptionalRequestContext()?.env as { ASSETS?: { fetch: typeof fetch } } | undefined;
   return env?.ASSETS ? env.ASSETS.fetch(url) : fetch(url);
 }
@@ -27,7 +26,7 @@ async function serve(
   request: Request,
   { params }: { params: Promise<{ name: string }> },
 ): Promise<Response> {
-  const { name } = await params;
+  const name = (await params).name.replace(/\.mp4$/, '');
   if (!FILES.has(name)) {
     return new Response('Not found', { status: 404 });
   }

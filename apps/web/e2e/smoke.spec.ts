@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test('accueil : le titre, la vidéo de l’app et la demande de démo', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Le futur des restaurants');
-  await expect(page.locator('video').first()).toHaveAttribute('src', /easy-caisse\.mp4$/);
+  await expect(page.locator('video').first()).toHaveAttribute('src', /\/videos\/easy-caisse$/);
   await expect(page.getByRole('link', { name: /demander une démo/i }).first()).toBeVisible();
 });
 
